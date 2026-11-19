@@ -28,7 +28,7 @@ def main():
     A = L.append
     A("# 日本語 스피킹 표현집 총정리")
     A("")
-    A("> 일본어 스피킹 훈련 웹앱 **https://neveziel.github.io/jp-speaking/** 의 전체 수록 내용입니다.")
+    A("> 일본어 스피킹 훈련 웹앱 **https://neveziel.github.io/Jp-speaking-/** 의 전체 수록 내용입니다.")
     A("> 모든 표현은 뜻(한국어) → 일본어 → 가나 → 뉘앙스 → 예문 순으로, 앱에서는 같은 문장의 성우 MP3로 듣고 따라 말할 수 있습니다.")
     A("")
     lvc = {}
