@@ -1,0 +1,70 @@
+{
+"app": {
+"title": "일본어 스피킹 훈련소",
+"sub": "회화 표현 · 쉐도잉 · 실전 롤플레이",
+"version": "1.0",
+"builtAt": "2026-11-20"
+},
+"method": [
+{"n":1,"t":"한국어 뜻만 보고 먼저 말하기","d":"카드 앞면에는 한국어 뜻만 나옵니다. 일본어를 떠올려 소리 내어 말한 뒤에 넘기세요. '알고 있는 것'과 '입에서 나오는 것'은 다릅니다. 인출(retrieval)이 기억을 만듭니다."},
+{"n":2,"t":"원어민 음성 듣고 바로 따라 말하기(쉐도잉)","d":"표현 카드의 '듣고 3초 따라말하기' 루프를 쓰세요. 음성을 듣고 → 3초 안에 따라 말하고 → 다시 듣습니다. 속도는 0.75x부터 시작해 1.15x까지 올리면 리듬이 몸에 붙습니다."},
+{"n":3,"t":"내 목소리 녹음과 비교","d":"한 번 말하고 녹음해 원어민 음성과 번갈아 들어 보세요. 억양·길이·강세가 어디서 어긋나는지 귀로 확인하는 것이 가장 빠른 교정입니다."},
+{"n":4,"t":"롤플레이는 A를 듣고 B를 말하기","d":"실전 대화에서는 상대(A) 음성을 먼저 듣고, 내 차례(B)의 한국어 힌트만 보고 말합니다. 막히면 정답을 열어 성우 음성을 듣고, 같은 턴을 다시 말해 보세요."},
+{"n":5,"t":"매일 10문장 드릴","d":"'오늘의 드릴'은 전체 표현에서 무작위 10문장을 뽑습니다. 10분이면 끝나고, 완료 체크와 저장함은 이 기기에 남습니다."}
+],
+"tips": [
+{"cat":"발음·억양","t":"일본어는 '박자(モーラ)' 언어","d":"한 글자 = 한 박자입니다. きって는 '킷-테'(3박), きて는 '키-테'(2박). 한국어처럼 붙여 읽으면 길이가 뭉개지므로, 손뼉으로 박자를 치며 따라 말해 보세요.","src":"https://shadowingjapanese.com/ja/practice","srcName":"ShadowingJapanese"},
+{"cat":"발음·억양","t":"피치(고저)를 같이 따라하기","d":"일본어는 강세가 아니라 높낮이입니다. はし(橋·다리)는 '하-시↘', はし(箸·젓가락)는 '하↗시'. 단어 카드에서 로마자 밑 화살표 대신 원어민 음성의 높낮이를 그대로 흉내 내 보세요.","src":"https://www.tofugu.com/japanese-learning-resources-database/studyin-daily-japanese/","srcName":"Tofugu / StudyIn Daily Japanese"},
+{"cat":"발음·억양","t":"쉐도잉은 '1~2초 늦게, 같은 리듬으로'","d":"통역사 훈련에서 온 방법입니다. 뜻을 이해하려 애쓰지 말고 소리·억양·속도를 그림자처럼 복제하세요. 하루 15분이면 3주 안에 리듬이 바뀝니다.","src":"https://shadowingjapanese.com/ja/practice","srcName":"ShadowingJapanese"},
+{"cat":"쉐도잉 교재","t":"'新・シャドーイング 日本語を話そう!' 시리즈","d":"초~중급부터 상급까지 단계별 문장과 정중체/반말 표기가 함께 있는 교재. 음원을 내려받아 앱의 쉐도잉 루프와 같이 쓰기 좋습니다.","src":"https://www.9640.jp/nihongo/ja/detail/?850","srcName":"くろしお出版"},
+{"cat":"유튜브","t":"日本語の森 — JLPT별 문법·회화","d":"N1~N5 문법과 회화를 레벨별로 정리. 관서 사투리 강좌도 있어 리듬 적응에 도움.","src":"https://nihongocafe.jp/8-youtube-channels-for-learning-japanese-language/","srcName":"nihongocafe / YouTube"},
+{"cat":"유튜브","t":"Japanese with Shun — 레벨 표기된 실제 대화","d":"제목에 N5~N3 레벨이 붙은 인터뷰·일상 대화. 화면 자막과 함께 3~4줄씩 따라 말하기에 적합.","src":"https://playlingo.app/ja/blog/best-youtube-channels-to-learn-japanese","srcName":"PlayLingo"},
+{"cat":"유튜브","t":"Sayuri Saying / Miku Real Japanese — 자연스러운 수다","d":"원어민끼리 실제로 주고받는 속도와 추임새를 익히기 좋습니다. 자막을 켜고 본 뒤 끄고 다시 보세요.","src":"https://nihongocafe.jp/8-youtube-channels-for-learning-japanese-language/","srcName":"nihongocafe"},
+{"cat":"유튜브","t":"あかね的日本語教室 — 생활 장면 회화","d":"전화 응대, 아르바이트 면접, 택배 재배달 같은 '실제로 막히는 장면'을 다룹니다. Lv.2~3과 함께 보면 좋습니다.","src":"https://konekura.com/nihongo-youtube-2/","srcName":"ジャパリのまち"},
+{"cat":"유튜브","t":"Speak Japanese Naturally — 후리가나 Vlog","d":"일상 브이로그에 학습자용 나레이션과 후리가나 자막. 앱의 후리가나 토글과 병행하면 읽기 훈련이 됩니다.","src":"https://playlingo.app/ja/blog/best-youtube-channels-to-learn-japanese","srcName":"PlayLingo"},
+{"cat":"네이버 블로그","t":"추임새·리액션 표현은 '짧게' 익히기","d":"そうなんだ！・なるほど・確かに・それな・それはちょっと… 같은 한 줄 리액션이 회화 체감을 가장 크게 바꿉니다. Lv.1 카드가 이 역할입니다.","src":"https://m.blog.naver.com/shj0504/221667027820","srcName":"네이버 블로그"},
+{"cat":"네이버 블로그","t":"'그냥'은 なんとなく, '뭐래는거야'는 意味わからない","d":"한국어 '그냥'을 ただ로 옮기면 어색합니다. 이유 없이 말할 때는 なんとなく가 자연스럽고, 상대 말이 이해 안 될 때는 意味わからない(→わかんない)를 씁니다.","src":"https://m.blog.naver.com/sonyloves/221985183205","srcName":"네이버 블로그"},
+{"cat":"네이버 블로그","t":"한국인이 자주 틀리는 경어 습관","d":"自分の家族には さん을 붙이지 않습니다(私の父は…). 先生様처럼 존칭 위에 様를 겹치지도 않습니다. 한국어 경어 습관이 그대로 나오는 지점입니다.","src":"https://m.blog.naver.com/cufspr/222468575982","srcName":"사이버한국외대 블로그"},
+{"cat":"네이버 블로그","t":"간사이벤 최소 세트","d":"あかん=안 돼, ええ=좋아, ほんま=진짜, ちゃう=아니야, めっちゃ=엄청, おおきに=고맙습니다. 오사카·교토 여행 전에 이 여섯 개만 익혀도 반응이 달라집니다.","src":"https://m.blog.naver.com/hackersjapan/223872742971","srcName":"해커스 일본어 블로그"},
+{"cat":"여행 회화","t":"です/ます만 붙여도 절반은 통한다","d":"짧은 표현 + です·ます + 미소. 모르면 すみません + 제스처 + 번역앱. 정중한 말투 자체를 일본인은 크게 평가합니다.","src":"https://m.blog.naver.com/heechul1204/224159133130","srcName":"네이버 블로그"},
+{"cat":"X(트위터)","t":"요즘 말은 '줄임'과 '접두어'로 만든다","d":"2025년 전후로는 爆(ばく)·激(げき)을 붙이는 강조(激うま·爆バズ), 긴 말을 줄이는 축약(あーね·きまZ·り)이 유행. 세대·장면을 벗어나면 통하지 않으니 친한 사이에서만.","src":"https://x.com/dannydenny95356/status/2118905016392315181","srcName":"X 공개 포스트"},
+{"cat":"X(트위터)","t":"유행어는 반감기가 짧다","d":"ぴえん·まじ卍처럼 한 세대를 지나면 '옛말'이 됩니다. 앱의 Lv.1은 지금 쓰이는 것과 곧 사라질 것을 구분해 표시했으니, 처음 만난 사람에게는 Lv.2 표준 표현을 쓰세요.","src":"https://www.koukouseishinbun.jp/articles/-/11188","srcName":"고교생신문 설문"},
+{"cat":"인스타그램","t":"짧은 릴스로 장면별 표현 수집","d":"공개 계정의 릴스는 문장이 짧고 자막이 붙어 있어 표현 수집에 좋습니다(예: StudyIn Daily Japanese). 단, 인스타는 로그인 장벽이 있어 공개 웹에 색인된 범위만 참고했습니다.","src":"https://www.tofugu.com/japanese-learning-resources-database/studyin-daily-japanese/","srcName":"Tofugu"},
+{"cat":"인스타그램","t":"소셜 미디어 몰입 루틴","d":"일본어 계정만 20~30개 팔로우 → 하루 10분 표현 캡처 → 주 1회 3문장 요약. 피드를 '일본어만'으로 바꾸는 것이 가장 큰 효과.","src":"https://hanabira.org/blog/social-media-immersion-for-japanese","srcName":"Hanabira"},
+{"cat":"경청(Lv.4~5)","t":"조언보다 '받아주기'가 먼저","d":"「たいしたことじゃない」「元気出して」는 역효과. 「そうだったんだ」「それは辛かったね」「よく話してくれたね」가 실제로 위로가 됩니다.","src":"https://www4.city.sapporo.jp/hottokenai-kokoro/shinpai/taiou/sakeru.html","srcName":"삿포로시 마음의 나비"},
+{"cat":"경청(Lv.4~5)","t":"오ウム返し · 요약 · 감정 언어화","d":"상대 말을 그대로 되돌려 주고(「仕事が忙しくて大変なんですね」), 마지막에 요약(「つまり〜ということですね」), 감정을 단어로(「不安なんですね」). 이 세 가지만으로 대화의 깊이가 달라집니다.","src":"https://www.therapeia.jp/20250212/","srcName":"심리상담실 세라페이아"},
+{"cat":"경청(Lv.4~5)","t":"'어떻게 들어주길 원하는지' 먼저 묻기","d":"「話を聞くだけでいい？アドバイスがほしい？」 — 조언·공감·정리를 먼저 확인하면 엇나간 위로를 막을 수 있습니다.","src":"https://lightring.or.jp/magazine/magazine04/","srcName":"NPO Light Ring"},
+{"cat":"경청(Lv.4~5)","t":"Why 대신 How로 묻기","d":"「どうして？」는 추궁으로 들립니다. 「どんな感じだった？」「どんなふうに思う？」가 대화를 엽니다. I(아이)메시지로 내 감정을 주어로 말하는 것도 같은 원리.","src":"https://www.mhlw.go.jp/kokoro/parent/mental/ftf/ftf_02.html","srcName":"후생노동성"},
+{"cat":"비즈니스","t":"쿠션어는 '한 문장에 하나만'","d":"恐れ入りますが·お手数ですが·差し支えなければ를 겹치면 용건이 묻힙니다. 하나 고르고 곧바로 구체적 부탁(무엇을·언제까지)을 붙이세요.","src":"https://mail-sakusei.com/guide/kushion-kotoba","srcName":"비즈니스 문서 AI"},
+{"cat":"비즈니스","t":"거절은 3단 구조로","d":"감사(ありがたいお話ですが) → 사정(あいにく) → 결론(今回は見送らせていただきます). 이 순서를 지키면 관계가 상하지 않습니다.","src":"https://mail-sakusei.com/guide/kushion-kotoba","srcName":"비즈니스 문서 AI"},
+{"cat":"비즈니스","t":"보고는 결론부터","d":"「結論から申し上げますと」로 시작하고, 원인·대응·다음 단계를 붙입니다. 사과는 변명 없이 '내 확인 부족'을 먼저 인정.","src":"https://www.business-bunrei.com/mail/697/","srcName":"비즈니스 문례 내비"}
+],
+"sources": [
+{"k":"YouTube","n":"日本語の森 / Japanese with Shun / Sayuri Saying / Miku Real Japanese / Meshclass 日本語 / Speak Japanese Naturally / あかね的日本語教室 / Japanese Ammo with Misa","u":"https://nihongocafe.jp/8-youtube-channels-for-learning-japanese-language/"},
+{"k":"YouTube","n":"레벨별 추천 채널 정리(2026-10 실제 확인)","u":"https://playlingo.app/ja/blog/best-youtube-channels-to-learn-japanese"},
+{"k":"네이버 블로그","n":"일상생활 일본어 회화 표현 정리(리액션 30선)","u":"https://m.blog.naver.com/shj0504/221667027820"},
+{"k":"네이버 블로그","n":"현지인이 진짜 쓰는 일본어(なんとなく·意味わからない)","u":"https://m.blog.naver.com/sonyloves/221985183205"},
+{"k":"네이버 블로그","n":"한국인이 실수하기 쉬운 일본어 어휘·회화","u":"https://m.blog.naver.com/cufspr/222468575982"},
+{"k":"네이버 블로그","n":"간사이벤 회화 정리(해커스)","u":"https://m.blog.naver.com/hackersjapan/223872742971"},
+{"k":"네이버 블로그","n":"일본 여행 필수 회화 상황별 모음","u":"https://m.blog.naver.com/heechul1204/224159133130"},
+{"k":"X","n":"2025 유행어 'ドパガキ'·신어 후보 분석 포스트","u":"https://x.com/dannydenny95356/status/2118905016392315181"},
+{"k":"웹","n":"Z세대若者言葉 45선(닛푸티부동산, 2025-10 설문)","u":"https://myhome-style.com/column/kaji/251126509670/"},
+{"k":"웹","n":"중고생 若者言葉·LINE用語 설문(고교생신문)","u":"https://www.koukouseishinbun.jp/articles/-/11188"},
+{"k":"웹","n":"2025 若者言葉 완전 가이드(OMOTENASHI)","u":"https://omotenashi-world.com/content/article2/"},
+{"k":"웹","n":"クッション言葉 40선·거절 3단 구조","u":"https://mail-sakusei.com/guide/kushion-kotoba"},
+{"k":"웹","n":"傾聴(경청) 3원칙·반영·요약","u":"https://www.therapeia.jp/20250212/"},
+{"k":"웹","n":"삿포로시 '피하고 싶은 말 걸기'","u":"https://www4.city.sapporo.jp/hottokenai-kokoro/shinpai/taiou/sakeru.html"},
+{"k":"웹","n":"후생노동성 '이야기를 듣는 요령'","u":"https://www.mhlw.go.jp/kokoro/parent/mental/ftf/ftf_02.html"},
+{"k":"인스타그램(공개 웹)","n":"StudyIn Daily Japanese — 짧은 표현 릴스(공개 색인 범위)","u":"https://www.tofugu.com/japanese-learning-resources-database/studyin-daily-japanese/"},
+{"k":"인스타그램(공개 웹)","n":"소셜 미디어 몰입 학습법","u":"https://hanabira.org/blog/social-media-immersion-for-japanese"},
+{"k":"쉐도잉","n":"쉐도잉 방법론·연습 영상","u":"https://shadowingjapanese.com/ja/practice"},
+{"k":"쉐도잉","n":"新・シャドーイング 日本語を話そう! (くろしお出版)","u":"https://www.9640.jp/nihongo/ja/detail/?850"}
+],
+"limits": [
+"인스타그램은 로그인 장벽이 있어 공개 웹에 색인된 게시물·소개 글만 참고했습니다. 계정 내부 릴스·스토리·저장 콘텐츠는 수집 대상이 아닙니다.",
+"네이버는 블로그 공개 글을 참고했고, 카페·지식iN 로그인 전용 게시판은 제외했습니다.",
+"X는 공개 검색 결과만 사용했고, 보호된 계정·DM은 포함하지 않았습니다.",
+"유튜브는 영상 자막이 아닌 공개 설명·추천 목록·학습 후기 글을 근거로 삼았습니다.",
+"모든 표현은 원문 인용이 아니라 학습용으로 다시 쓴 것이며, 유행어는 2025~2026년 공개 자료 기준입니다. 실제 사용 전에는 상대와 장면(TPO)을 확인하세요."
+]
+}

@@ -1,0 +1,674 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#1f7a6d">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="default">
+<meta name="apple-mobile-web-app-title" content="日本語スピーキング">
+<meta name="description" content="일본어 회화 스피킹 훈련 — Lv.1 최신 유행어부터 Lv.5 마음속 깊은 대화까지, 뜻만 보고 말하고 원어민 음성으로 쉐도잉하는 훈련 앱">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<link rel="icon" href="icon-192.png">
+<title>일본어 스피킹 훈련소</title>
+<style>
+:root{
+  --bg:#f5f7f6; --card:#fff; --ink:#12211f; --sub:#61706d; --line:#e3e9e7;
+  --ac:#1f7a6d; --ac2:#0f9d84; --acSoft:#e5f3f0;
+  --gold:#b7791f; --goldSoft:#fdf3e0;
+  --pink:#c2406c; --pinkSoft:#fdebf2;
+  --blue:#2b5fa8; --blueSoft:#e8f0fb;
+  --r:18px; --sh:0 1px 2px rgba(16,40,36,.05),0 8px 24px rgba(16,40,36,.07);
+}
+@media (prefers-color-scheme: dark){
+  :root{
+    --bg:#0e1413; --card:#161f1e; --ink:#e8f1ef; --sub:#93a5a1; --line:#243230;
+    --ac:#54c9b3; --ac2:#3fd0b0; --acSoft:#122b28;
+    --gold:#e0ae5e; --goldSoft:#2a2317;
+    --pink:#f78bab; --pinkSoft:#2c1a22;
+    --blue:#8ab4f0; --blueSoft:#182434;
+    --sh:0 1px 2px rgba(0,0,0,.4),0 10px 28px rgba(0,0,0,.45);
+  }
+}
+*{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+html,body{margin:0;padding:0}
+body{
+  background:var(--bg); color:var(--ink);
+  font-family:-apple-system,BlinkMacSystemFont,"Apple SD Gothic Neo","Hiragino Sans","Noto Sans KR",sans-serif;
+  font-size:16px; line-height:1.55; -webkit-text-size-adjust:100%;
+  padding-bottom:calc(74px + env(safe-area-inset-bottom));
+  overscroll-behavior-y:contain;
+}
+button{font-family:inherit;font-size:inherit;color:inherit;cursor:pointer;border:0;background:none}
+.jp{font-family:"Hiragino Kaku Gothic ProN","Hiragino Sans","Yu Gothic","Noto Sans JP",-apple-system,sans-serif;letter-spacing:.01em}
+ruby{ruby-align:center;ruby-position:over}
+rt{font-size:.5em;line-height:1.1;font-weight:400;color:var(--sub);letter-spacing:0}
+body.nofuri rt{display:none}
+
+/* ── header ── */
+header{
+  position:sticky;top:0;z-index:40;
+  padding:calc(8px + env(safe-area-inset-top)) 14px 9px;
+  background:color-mix(in srgb,var(--bg) 90%,transparent);
+  -webkit-backdrop-filter:saturate(180%) blur(14px);backdrop-filter:saturate(180%) blur(14px);
+  border-bottom:1px solid var(--line);
+}
+.hrow{display:flex;align-items:center;gap:9px}
+.htitle{font-size:16px;font-weight:800;letter-spacing:-.3px;display:flex;align-items:baseline;gap:6px;min-width:0}
+.htitle em{font-style:normal;font-size:10.5px;font-weight:600;color:var(--sub);letter-spacing:0}
+.hprog{margin-left:auto;display:flex;align-items:center;gap:6px;font-size:11px;color:var(--sub);white-space:nowrap}
+.hprog b{color:var(--ac);font-size:13px}
+.hbar{height:4px;border-radius:99px;background:var(--line);overflow:hidden;margin-top:7px}
+.hbar>i{display:block;height:100%;width:0;background:linear-gradient(90deg,var(--ac),var(--ac2));transition:width .3s}
+.chips{display:flex;gap:6px;overflow-x:auto;padding:9px 0 2px;scrollbar-width:none}
+.chips::-webkit-scrollbar{display:none}
+.chip{flex:0 0 auto;padding:5px 11px;border-radius:99px;background:var(--card);border:1px solid var(--line);font-size:12.5px;font-weight:700;color:var(--sub)}
+.chip.on{background:var(--ac);border-color:var(--ac);color:#fff}
+@media (prefers-color-scheme: dark){.chip.on{color:#08110f}}
+.trow{display:flex;gap:7px;align-items:center;margin-top:7px}
+.search{flex:1;display:flex;align-items:center;gap:6px;background:var(--card);border:1px solid var(--line);border-radius:11px;padding:6px 10px}
+.search input{flex:1;border:0;background:none;font:inherit;font-size:13.5px;color:var(--ink);outline:none;min-width:0}
+.search span{font-size:13px;color:var(--sub)}
+.tgl{display:flex;align-items:center;gap:5px;font-size:11px;font-weight:700;color:var(--sub);background:var(--card);border:1px solid var(--line);border-radius:11px;padding:6px 9px;white-space:nowrap}
+.sw{position:relative;width:30px;height:17px;border-radius:99px;background:var(--line);flex:0 0 auto;transition:background .18s}
+.sw i{position:absolute;top:2px;left:2px;width:13px;height:13px;border-radius:50%;background:#fff;box-shadow:0 1px 2px rgba(0,0,0,.3);transition:left .18s}
+.sw.on{background:var(--ac2)}
+.sw.on i{left:15px}
+
+/* ── layout ── */
+main{padding:13px 14px 8px;max-width:640px;margin:0 auto}
+.tab{display:none}
+.tab.on{display:block;animation:fade .18s ease}
+@keyframes fade{from{opacity:0;transform:translateY(3px)}to{opacity:1;transform:none}}
+.card{background:var(--card);border:1px solid var(--line);border-radius:var(--r);box-shadow:var(--sh)}
+.meta{display:flex;align-items:center;gap:6px;flex-wrap:wrap;font-size:11px;color:var(--sub)}
+.badge{padding:2px 8px;border-radius:99px;font-weight:800;font-size:10.5px;letter-spacing:.02em}
+.b-lv{background:var(--acSoft);color:var(--ac)}
+.b-tag{background:var(--goldSoft);color:var(--gold)}
+.b-pol{background:var(--blueSoft);color:var(--blue)}
+.b-cas{background:var(--pinkSoft);color:var(--pink)}
+
+/* ── speaking card ── */
+.deck{position:relative}
+.qcard{padding:20px 18px 16px;min-height:322px;display:flex;flex-direction:column}
+.qcard.done{border-color:var(--ac2)}
+.qko{font-size:24px;font-weight:800;line-height:1.42;letter-spacing:-.5px;margin:14px 0 6px}
+.qtip{font-size:12px;color:var(--sub);margin-top:auto;padding-top:12px}
+.answer{margin-top:14px;border-top:1px dashed var(--line);padding-top:14px;animation:fade .2s}
+.ajp{font-size:23px;font-weight:700;line-height:2.05}
+.akana{font-size:12.5px;color:var(--sub);margin-top:6px}
+.aroma{font-size:11.5px;color:var(--sub);font-style:italic;margin-top:2px}
+.note{font-size:12.5px;color:var(--sub);margin-top:9px;background:var(--acSoft);border-radius:11px;padding:9px 11px;line-height:1.6}
+.ex{margin-top:10px;border-radius:12px;padding:10px 11px;background:color-mix(in srgb,var(--card) 92%,var(--line));border:1px solid var(--line)}
+.ex .ej{font-size:15px;font-weight:600;line-height:2.0}
+.ex .ek{font-size:11.5px;color:var(--sub);margin-top:3px}
+.acts{display:flex;gap:7px;flex-wrap:wrap;margin-top:14px;align-items:center}
+.btn{display:flex;align-items:center;gap:5px;padding:9px 13px;border-radius:12px;background:var(--bg);border:1px solid var(--line);font-size:13px;font-weight:700}
+.btn.pri{background:var(--ac);border-color:var(--ac);color:#fff}
+@media (prefers-color-scheme: dark){.btn.pri{color:#08110f}}
+.btn.ghost{background:none}
+.btn:disabled{opacity:.4}
+.btn.on{background:var(--acSoft);border-color:var(--ac);color:var(--ac)}
+.btn.rec.on{background:var(--pink);border-color:var(--pink);color:#fff;animation:pulse 1s infinite}
+@keyframes pulse{50%{opacity:.62}}
+.krow{display:flex;gap:7px;margin-top:12px}
+.krow .btn{flex:1;justify-content:center}
+.rate{display:flex;gap:4px;background:var(--bg);border:1px solid var(--line);border-radius:11px;padding:3px;margin-left:auto}
+.rate button{padding:5px 9px;border-radius:8px;font-size:11.5px;font-weight:800;color:var(--sub)}
+.rate button.on{background:var(--card);color:var(--ac);box-shadow:0 1px 3px rgba(0,0,0,.12)}
+.idx{font-size:11px;color:var(--sub);font-variant-numeric:tabular-nums}
+.star{font-size:17px;line-height:1}
+
+/* ── roleplay ── */
+.dlist{display:flex;flex-direction:column;gap:9px}
+.ditem{padding:13px 14px;display:flex;align-items:center;gap:11px}
+.ditem .dt{font-size:15px;font-weight:800;line-height:1.45}
+.ditem .ds{font-size:11.5px;color:var(--sub);margin-top:3px}
+.ditem .arw{margin-left:auto;color:var(--sub);font-size:17px}
+.dnum{flex:0 0 auto;width:30px;height:30px;border-radius:10px;background:var(--acSoft);color:var(--ac);font-weight:800;font-size:12px;display:flex;align-items:center;justify-content:center}
+.chat{padding:12px 12px 6px}
+.line{display:flex;gap:8px;margin-bottom:11px;align-items:flex-start}
+.line.B{flex-direction:row-reverse}
+.ava{flex:0 0 auto;width:30px;height:30px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:800;background:var(--acSoft);color:var(--ac);margin-top:2px}
+.line.B .ava{background:var(--goldSoft);color:var(--gold)}
+.bub{max-width:82%;background:var(--bg);border:1px solid var(--line);border-radius:14px;padding:9px 11px}
+.line.B .bub{background:var(--acSoft);border-color:transparent}
+.bub .lj{font-size:16px;font-weight:600;line-height:2.0}
+.bub .lk{font-size:11.5px;color:var(--sub);margin-top:3px}
+.bub .ln{font-size:11px;color:var(--sub);margin-top:5px;opacity:.85}
+.bub .bplay{font-size:11.5px;font-weight:800;color:var(--ac);margin-top:6px}
+.bturn{border:1px dashed var(--ac);background:var(--card)}
+.bturn .hint{font-size:13px;font-weight:700;color:var(--ink)}
+.bturn .say{font-size:11px;color:var(--sub);margin-top:3px}
+.line.playing .bub{outline:2px solid var(--ac);outline-offset:1px}
+.line.hidden-b .bub .lj,.line.hidden-b .bub .lk{display:none}
+
+/* ── drill ── */
+.drilltop{display:flex;align-items:center;gap:8px;margin-bottom:10px}
+.pdots{display:flex;gap:3px;flex:1}
+.pdots i{flex:1;height:5px;border-radius:99px;background:var(--line)}
+.pdots i.on{background:var(--ac)}
+.pdots i.cur{background:var(--ac2);opacity:.55}
+
+/* ── tips ── */
+.tips h3{font-size:12px;color:var(--sub);font-weight:800;letter-spacing:.04em;margin:18px 0 7px;text-transform:uppercase}
+.mitem{display:flex;gap:10px;padding:11px 0;border-bottom:1px solid var(--line)}
+.mitem:last-child{border-bottom:0}
+.mnum{flex:0 0 auto;width:22px;height:22px;border-radius:50%;background:var(--ac);color:#fff;font-size:11px;font-weight:800;display:flex;align-items:center;justify-content:center;margin-top:1px}
+.mitem b{display:block;font-size:13.5px}
+.mitem p{margin:3px 0 0;font-size:12.5px;color:var(--sub);line-height:1.62}
+.tip{padding:12px 0;border-bottom:1px solid var(--line)}
+.tip:last-child{border-bottom:0}
+.tip b{font-size:13.5px}
+.tip p{margin:4px 0 0;font-size:12.5px;color:var(--sub);line-height:1.62}
+.tip a{font-size:11px;color:var(--ac);text-decoration:none;display:inline-block;margin-top:5px}
+.warn{font-size:12px;color:var(--sub);line-height:1.62;padding:11px 0;border-bottom:1px dashed var(--line)}
+.srcline{display:flex;gap:8px;font-size:11.5px;color:var(--sub);padding:7px 0;border-bottom:1px solid var(--line);align-items:baseline}
+.srcline b{color:var(--ink);font-weight:700;flex:0 0 auto;font-size:10.5px;background:var(--acSoft);color:var(--ac);padding:1px 6px;border-radius:6px}
+.srcline a{color:var(--sub);text-decoration:none;word-break:break-all}
+
+/* ── bottom nav ── */
+nav{
+  position:fixed;left:0;right:0;bottom:0;z-index:40;display:flex;
+  padding:6px 6px calc(6px + env(safe-area-inset-bottom));
+  background:color-mix(in srgb,var(--bg) 92%,transparent);
+  -webkit-backdrop-filter:saturate(180%) blur(14px);backdrop-filter:saturate(180%) blur(14px);
+  border-top:1px solid var(--line);
+}
+nav button{flex:1;display:flex;flex-direction:column;align-items:center;gap:2px;padding:5px 2px;color:var(--sub);font-size:10px;font-weight:700}
+nav button i{font-style:normal;font-size:18px;line-height:1.15}
+nav button.on{color:var(--ac)}
+nav button.on i{transform:translateY(-1px)}
+
+.toast{position:fixed;left:50%;bottom:calc(88px + env(safe-area-inset-bottom));transform:translateX(-50%) translateY(10px);background:rgba(18,33,31,.94);color:#fff;font-size:12.5px;font-weight:600;padding:9px 14px;border-radius:99px;opacity:0;pointer-events:none;transition:.22s;z-index:60;max-width:86vw;text-align:center}
+.toast.on{opacity:1;transform:translateX(-50%) translateY(0)}
+.empty{text-align:center;color:var(--sub);font-size:13px;padding:38px 20px;line-height:1.7}
+h2.sec{font-size:14px;margin:2px 0 9px;display:flex;align-items:center;gap:7px}
+h2.sec small{font-size:11px;font-weight:600;color:var(--sub)}
+.linkback{font-size:12.5px;font-weight:700;color:var(--ac);padding:6px 0;display:inline-block}
+.recbar{margin-top:9px;display:flex;align-items:center;gap:8px;font-size:11.5px;color:var(--sub)}
+</style>
+</head>
+<body class="">
+<header>
+  <div class="hrow">
+    <div class="htitle">일본어 스피킹 <em>日本語スピーキング</em></div>
+    <div class="hprog"><b id="doneN">0</b><span id="doneT">/141</span></div>
+  </div>
+  <div class="hbar"><i id="hbar"></i></div>
+  <div class="chips" id="lvchips">
+    <button class="chip on" data-lv="0">전체</button>
+    <button class="chip" data-lv="1">Lv.1 유행·SNS</button>
+    <button class="chip" data-lv="2">Lv.2 일상</button>
+    <button class="chip" data-lv="3">Lv.3 직장</button>
+    <button class="chip" data-lv="4">Lv.4 상담</button>
+    <button class="chip" data-lv="5">Lv.5 심화</button>
+  </div>
+  <div class="trow">
+    <div class="search"><span>🔍</span><input id="q" placeholder="한국어·일본어·태그 검색" autocomplete="off"></div>
+    <button class="tgl" id="furiBtn"><span class="sw on" id="furiSw"><i></i></span>후리가나</button>
+    <button class="tgl" id="polBtn"><span class="sw on" id="polSw"><i></i></span>반말/정중</button>
+  </div>
+</header>
+
+<main>
+  <!-- ══ 카드 ══ -->
+  <section class="tab on" id="tab-card">
+    <div class="deck" id="deck"></div>
+  </section>
+
+  <!-- ══ 롤플레이 ══ -->
+  <section class="tab" id="tab-role">
+    <div id="roleList"></div>
+    <div id="roleView" style="display:none"></div>
+  </section>
+
+  <!-- ══ 드릴 ══ -->
+  <section class="tab" id="tab-drill">
+    <div id="drillWrap"></div>
+  </section>
+
+  <!-- ══ 저장함 ══ -->
+  <section class="tab" id="tab-saved">
+    <div id="savedWrap"></div>
+  </section>
+
+  <!-- ══ 팁 ══ -->
+  <section class="tab" id="tab-tips">
+    <div class="tips" id="tipsWrap"></div>
+  </section>
+</main>
+
+<nav>
+  <button class="on" data-tab="card"><i>🎙️</i>스피킹 카드</button>
+  <button data-tab="role"><i>💬</i>롤플레이</button>
+  <button data-tab="drill"><i>⚡</i>오늘의 드릴</button>
+  <button data-tab="saved"><i>⭐</i>저장함</button>
+  <button data-tab="tips"><i>💡</i>팁·출처</button>
+</nav>
+<div class="toast" id="toast"></div>
+
+<script>
+var DATA = /*__DATA__*/;
+
+/* ═════════ state ═════════ */
+var KEY = 'jpspk.v1';
+var S = {furi:true, pol:true, rate:1, lv:0, q:'', saved:{}, done:{}, rev:{}, tab:'card', drill:null};
+try { var raw = localStorage.getItem(KEY); if (raw) { var o = JSON.parse(raw); for (var k in o) S[k] = o[k]; } } catch(e) {}
+function save(){ try { localStorage.setItem(KEY, JSON.stringify(S)); } catch(e) {} }
+function $(s){ return document.querySelector(s); }
+function esc(s){ return String(s).replace(/[&<>"]/g, function(c){ return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]; }); }
+var toastT;
+function toast(msg){ var t=$('#toast'); t.textContent=msg; t.classList.add('on'); clearTimeout(toastT); toastT=setTimeout(function(){ t.classList.remove('on'); },1900); }
+
+/* ═════════ kana → romaji ═════════ */
+var R1 = {'あ':'a','い':'i','う':'u','え':'e','お':'o','か':'ka','き':'ki','く':'ku','け':'ke','こ':'ko','さ':'sa','し':'shi','す':'su','せ':'se','そ':'so','た':'ta','ち':'chi','つ':'tsu','て':'te','と':'to','な':'na','に':'ni','ぬ':'nu','ね':'ne','の':'no','は':'ha','ひ':'hi','ふ':'fu','へ':'he','ほ':'ho','ま':'ma','み':'mi','む':'mu','め':'me','も':'mo','や':'ya','ゆ':'yu','よ':'yo','ら':'ra','り':'ri','る':'ru','れ':'re','ろ':'ro','わ':'wa','を':'o','ん':'n','が':'ga','ぎ':'gi','ぐ':'gu','げ':'ge','ご':'go','ざ':'za','じ':'ji','ず':'zu','ぜ':'ze','ぞ':'zo','だ':'da','ぢ':'ji','づ':'zu','で':'de','ど':'do','ば':'ba','び':'bi','ぶ':'bu','べ':'be','ぼ':'bo','ぱ':'pa','ぴ':'pi','ぷ':'pu','ぺ':'pe','ぽ':'po','ぁ':'a','ぃ':'i','ぅ':'u','ぇ':'e','ぉ':'o','ゃ':'ya','ゅ':'yu','ょ':'yo','ゎ':'wa','ゔ':'vu','ー':'-'};
+var R2 = {'きゃ':'kya','きゅ':'kyu','きょ':'kyo','しゃ':'sha','しゅ':'shu','しょ':'sho','ちゃ':'cha','ちゅ':'chu','ちょ':'cho','にゃ':'nya','にゅ':'nyu','にょ':'nyo','ひゃ':'hya','ひゅ':'hyu','ひょ':'hyo','みゃ':'mya','みゅ':'myu','みょ':'myo','りゃ':'rya','りゅ':'ryu','りょ':'ryo','ぎゃ':'gya','ぎゅ':'gyu','ぎょ':'gyo','じゃ':'ja','じゅ':'ju','じょ':'jo','びゃ':'bya','びゅ':'byu','びょ':'byo','ぴゃ':'pya','ぴゅ':'pyu','ぴょ':'pyo','ふぁ':'fa','ふぃ':'fi','ふぇ':'fe','ふぉ':'fo','てぃ':'ti','でぃ':'di','とぅ':'tu','どぅ':'du','うぇ':'we','うぃ':'wi','ゔぁ':'va','ゔぃ':'vi','ゔぇ':'ve','ゔぉ':'vo','しぇ':'she','ちぇ':'che','じぇ':'je'};
+function romaji(str){
+  var s = str.replace(/[\u30a1-\u30f6]/g, function(c){ return String.fromCharCode(c.charCodeAt(0)-0x60); });
+  var out = '', i = 0, lastVowel = '';
+  while (i < s.length) {
+    var c = s[i], two = s.substr(i,2);
+    if (c === 'っ') { i++; var nx = s[i]; var r0 = R2[s.substr(i,2)] || R1[nx] || ''; if (r0) out += r0[0]; continue; }
+    if (c === 'ー') { out += lastVowel; i++; continue; }
+    if (c === 'ん') { var nx2 = s[i+1] || ''; out += (/[あいうえおやゆよ]/.test(nx2) ? "n'" : 'n'); i++; continue; }
+    var r = R2[two];
+    if (r) { out += r; lastVowel = r.slice(-1); i += 2; continue; }
+    r = R1[c];
+    if (r) { out += r; lastVowel = /[aeiou]/.test(r.slice(-1)) ? r.slice(-1) : lastVowel; i++; continue; }
+    if (/[、。！？…\s「」]/.test(c)) { out += ' '; i++; continue; }
+    out += c; i++;
+  }
+  return out.replace(/\s+/g,' ').trim();
+}
+
+/* ═════════ audio ═════════ */
+var curA = null, curBtn = null, loopTimer = null, loopOn = false, loopCount = 0;
+var canAudio = (typeof Audio !== 'undefined') && !/^file:/i.test(location.protocol||'');
+function stopAll(){
+  loopOn = false; loopCount = 0; clearTimeout(loopTimer); loopTimer = null;
+  if (curA) { try{ curA.pause(); }catch(e){} curA = null; }
+  if (curBtn) { curBtn.classList.remove('on'); curBtn = null; }
+  document.querySelectorAll('.line.playing').forEach(function(l){ l.classList.remove('playing'); });
+  var lb = $('#loopBtn'); if (lb) { lb.classList.remove('on'); lb.textContent = '🔁 쉐도잉 루프'; }
+  var sp = $('#spk'); if (sp && window.speechSynthesis) { try{ speechSynthesis.cancel(); }catch(e){} }
+}
+function playFile(name, btn, onend, opts){
+  opts = opts || {};
+  if (!opts.keep) stopAll();
+  if (!canAudio) { toast('이 환경에서는 음원을 재생할 수 없습니다'); return; }
+  var a = new Audio('audio/' + name + '.mp3');
+  a.preload = 'auto';
+  try { a.playbackRate = S.rate; } catch(e){}
+  a.onplaying = function(){ try { if (Math.abs((a.playbackRate||1)-S.rate) > .01) a.playbackRate = S.rate; } catch(e){} };
+  a.onended = function(){ if (curA === a) curA = null; if (onend) onend(); else if (btn) btn.classList.remove('on'); };
+  a.onerror = function(){ toast('음원을 불러오지 못했습니다'); if (btn) btn.classList.remove('on'); };
+  curA = a; curBtn = btn || null;
+  if (btn) btn.classList.add('on');
+  var p = a.play(); if (p && p.catch) p.catch(function(){ toast('재생이 차단되었습니다. 다시 눌러 주세요'); if (btn) btn.classList.remove('on'); });
+}
+
+/* ═════════ recording ═════════ */
+var rec = null, recChunks = [], recUrl = null, recStream = null, recTimer = null, recBtnEl = null;
+function hasRec(){ return !!(navigator.mediaDevices && navigator.mediaDevices.getUserMedia && window.MediaRecorder); }
+function stopRec(){
+  if (rec && rec.state !== 'inactive') { try { rec.stop(); } catch(e){} }
+  clearTimeout(recTimer);
+  if (recStream) { recStream.getTracks().forEach(function(t){ t.stop(); }); recStream = null; }
+  if (recBtnEl) { recBtnEl.classList.remove('on'); recBtnEl.textContent = '● 녹음'; }
+}
+function toggleRec(btn, phId){
+  if (!hasRec()) { toast('이 브라우저는 녹음을 지원하지 않아요 (Safari 최신 버전 권장)'); return; }
+  if (rec && rec.state === 'recording') { stopRec(); return; }
+  stopAll();
+  recBtnEl = btn;
+  navigator.mediaDevices.getUserMedia({audio:{echoCancellation:true, noiseSuppression:true}}).then(function(st){
+    recStream = st; recChunks = [];
+    var mime = (window.MediaRecorder.isTypeSupported && MediaRecorder.isTypeSupported('audio/mp4')) ? 'audio/mp4' : '';
+    try { rec = mime ? new MediaRecorder(st, {mimeType:mime}) : new MediaRecorder(st); } catch(e){ rec = new MediaRecorder(st); }
+    rec.ondataavailable = function(e){ if (e.data && e.data.size) recChunks.push(e.data); };
+    rec.onstop = function(){
+      var blob = new Blob(recChunks, {type: recChunks[0] && recChunks[0].type || 'audio/mp4'});
+      if (recUrl) URL.revokeObjectURL(recUrl);
+      recUrl = URL.createObjectURL(blob);
+      var pb = document.getElementById('playRec_' + phId);
+      if (pb) { pb.style.display = 'flex'; pb.textContent = '▶ 내 목소리'; }
+      var wrap = document.getElementById('recwrap_' + phId);
+      if (wrap) wrap.textContent = '녹음 완료 — 원어민 음성과 번갈아 들어 보세요';
+    };
+    rec.start();
+    btn.classList.add('on'); btn.textContent = '■ 중지';
+    recTimer = setTimeout(stopRec, 12000);
+  }).catch(function(){
+    toast('마이크 권한이 필요합니다. 설정 > Safari > 마이크에서 허용해 주세요');
+  });
+}
+function playRec(btn){ if (!recUrl) return; stopAll(); var a = new Audio(recUrl); curA = a; btn.classList.add('on'); a.onended = function(){ btn.classList.remove('on'); }; a.play(); }
+
+/* ═════════ card deck ═════════ */
+var deck = [], di = 0, revealed = false;
+function filtered(){
+  var q = S.q.trim().toLowerCase();
+  return DATA.phrases.filter(function(p){
+    if (S.lv && p.lv !== S.lv) return false;
+    if (!q) return true;
+    return (p.ko + ' ' + p.jp + ' ' + p.kana + ' ' + p.tag + ' ' + p.ex + ' ' + p.note).toLowerCase().indexOf(q) >= 0;
+  });
+}
+function buildDeck(keepIdx){
+  var ids = filtered().map(function(p){ return p.id; });
+  var curId = deck[di];
+  deck = ids;
+  di = keepIdx && curId && ids.indexOf(curId) >= 0 ? ids.indexOf(curId) : 0;
+  revealed = false;
+  renderDeck();
+}
+function cardById(id){ for (var i=0;i<DATA.phrases.length;i++) if (DATA.phrases[i].id === id) return DATA.phrases[i]; return null; }
+var POL = {casual:'반말 · タメ口', polite:'정중체 · です/ます'};
+
+function renderDeck(){
+  var host = $('#deck');
+  if (!deck.length) { host.innerHTML = '<div class="empty">조건에 맞는 표현이 없어요.<br>검색어나 레벨을 바꿔 보세요.</div>'; return; }
+  var p = cardById(deck[di]);
+  var done = !!S.done[p.id], sv = !!S.saved[p.id];
+  var rubyOn = S.furi && !document.body.classList.contains('nofuri');
+  var h = '';
+  h += '<div class="card qcard' + (done ? ' done' : '') + '" id="qcard">';
+  h += '<div class="meta"><span class="badge b-lv">Lv.' + p.lv + '</span><span class="badge b-tag">' + esc(p.tag) + '</span>';
+  if (S.pol) h += '<span class="badge ' + (p.pol === 'casual' ? 'b-cas' : 'b-pol') + '">' + POL[p.pol] + '</span>';
+  h += '<span class="idx" style="margin-left:auto">' + (di+1) + ' / ' + deck.length + '</span></div>';
+  h += '<div class="qko">' + esc(p.ko) + '</div>';
+  if (!revealed) {
+    h += '<div class="qtip">일본어로 소리 내어 말해 본 뒤, 정답을 여세요.<br>바로 들으면 인출 훈련이 되지 않습니다.</div>';
+    h += '<div class="krow"><button class="btn pri" id="revealBtn" style="flex:1;justify-content:center">정답 보기 · 答え</button></div>';
+  } else {
+    h += '<div class="answer">';
+    h += '<div class="ajp jp">' + (rubyOn ? p.ruby : esc(p.jp)) + '</div>';
+    h += '<div class="akana jp">' + esc(p.kana) + '</div>';
+    h += '<div class="aroma">' + esc(romaji(p.kana)) + '</div>';
+    h += '<div class="note">💡 ' + esc(p.note) + '</div>';
+    h += '<div class="ex"><div class="ej jp">' + (rubyOn ? p.exRuby : esc(p.ex)) + '</div><div class="ek">' + esc(p.exKo) + '</div>' +
+         '<button class="btn ghost" style="padding:5px 9px;margin-top:7px;font-size:11.5px" id="exPlay">🔊 예문</button></div>';
+    h += '<div class="acts">';
+    h += '<button class="btn pri" id="spk">🔊 원어민</button>';
+    h += '<button class="btn" id="loopBtn">🔁 쉐도잉 루프</button>';
+    h += '<button class="btn rec" id="recBtn">● 녹음</button>';
+    h += '<button class="btn" id="playRec_' + 'x" style="display:none">▶ 내 목소리</button>';
+    h += '</div>';
+    h += '<div class="recbar" id="recwrap_' + p.id + '">듣고 → 3초 안에 따라 말하기 → 다시 듣기</div>';
+    h += '<div class="acts" style="margin-top:11px">';
+    h += '<button class="btn' + (sv ? ' on' : '') + '" id="saveBtn">' + (sv ? '★ 저장됨' : '☆ 저장') + '</button>';
+    h += '<button class="btn' + (done ? ' on' : '') + '" id="doneBtn">' + (done ? '✓ 연습 완료' : '✓ 완료 체크') + '</button>';
+    h += '<div class="rate">';
+    [0.75,1,1.15].forEach(function(r){ h += '<button data-rate="' + r + '" class="' + (Math.abs(S.rate-r)<.01?'on':'') + '">' + r + 'x</button>'; });
+    h += '</div></div>';
+    h += '</div>';
+  }
+  h += '</div>';
+  h += '<div class="krow" style="margin-top:10px">';
+  h += '<button class="btn" id="prevBtn">← 이전</button>';
+  h += '<button class="btn" id="shufBtn">🔀 섞기</button>';
+  h += '<button class="btn" id="nextBtn">다음 →</button>';
+  h += '</div>';
+  host.innerHTML = h;
+
+  // wire
+  var rb = $('#revealBtn'); if (rb) rb.onclick = function(){ revealed = true; renderDeck(); };
+  var sp = $('#spk'); if (sp) sp.onclick = function(){ playFile('p_' + p.id, sp); };
+  var ep = $('#exPlay'); if (ep) ep.onclick = function(){ playFile('e_' + p.id, ep); };
+  var lb = $('#loopBtn'); if (lb) lb.onclick = function(){ startLoop(p, lb); };
+  var rc = $('#recBtn'); if (rc) rc.onclick = function(){ toggleRec(rc, p.id); };
+  var pr = host.querySelector('.btn[style*="display:none"]'); // 내 목소리
+  if (pr) { pr.id = 'playRec_' + p.id; pr.onclick = function(){ playRec(pr); }; }
+  var sb = $('#saveBtn'); if (sb) sb.onclick = function(){ S.saved[p.id] = !S.saved[p.id]; save(); renderDeck(); updateHead(); };
+  var db = $('#doneBtn'); if (db) db.onclick = function(){ S.done[p.id] = !S.done[p.id]; save(); renderDeck(); updateHead(); toast(S.done[p.id] ? '연습 완료로 표시했어요' : '완료를 해제했어요'); };
+  document.querySelectorAll('.rate button').forEach(function(b){ b.onclick = function(){ S.rate = parseFloat(b.dataset.rate); save(); renderDeck(); }; });
+  var pb = $('#prevBtn'); if (pb) pb.onclick = function(){ if (di>0){ di--; revealed=false; stopAll(); renderDeck(); } };
+  var nb = $('#nextBtn'); if (nb) nb.onclick = function(){ if (di<deck.length-1){ di++; revealed=false; stopAll(); renderDeck(); } else { toast('마지막 카드예요'); } };
+  var sh = $('#shufBtn'); if (sh) sh.onclick = function(){ deck.sort(function(){ return Math.random()-.5; }); di=0; revealed=false; stopAll(); renderDeck(); toast('카드를 섞었어요'); };
+}
+function startLoop(p, btn){
+  if (loopOn) { stopAll(); return; }
+  loopOn = true; loopCount = 0; btn.classList.add('on');
+  var step = function(){
+    if (!loopOn) return;
+    loopCount++;
+    btn.textContent = '🔁 ' + loopCount + '/5 듣는 중';
+    playFile('p_' + p.id, null, function(){
+      if (!loopOn) return;
+      var left = 3;
+      btn.textContent = '🗣 ' + left + '초 안에 따라 말하기';
+      var tick = setInterval(function(){
+        left--;
+        if (!loopOn) { clearInterval(tick); return; }
+        if (left > 0) { btn.textContent = '🗣 ' + left + '초 안에 따라 말하기'; }
+        else {
+          clearInterval(tick);
+          if (loopCount >= 5) { stopAll(); toast('5회 완료 — 다음 카드로 넘어가세요'); return; }
+          step();
+        }
+      }, 1000);
+    }, {keep:true});
+  };
+  step();
+}
+
+/* ═════════ roleplay ═════════ */
+var openD = null;
+function renderRoleList(){
+  var host = $('#roleList'), v = $('#roleView');
+  v.style.display = 'none'; host.style.display = 'block';
+  var h = '<h2 class="sec">실전 롤플레이 <small>' + DATA.dialogues.length + '개 상황 · ' + DATA.dialogues.reduce(function(a,d){return a+d.lines.length;},0) + '턴</small></h2><div class="dlist">';
+  DATA.dialogues.forEach(function(d){
+    var revN = d.lines.filter(function(l,i){ return S.rev[d.id+':'+i]; }).length;
+    var bN = d.lines.filter(function(l){ return l.r==='B'; }).length;
+    h += '<button class="card ditem" data-d="' + d.id + '"><div class="dnum">' + d.id + '</div><div style="min-width:0"><div class="dt jp">' + d.titleRuby + '</div>';
+    h += '<div class="ds">Lv.' + d.lv + ' · ' + esc(d.situation) + (revN ? ' · B ' + revN + '/' + bN + ' 확인' : '') + '</div></div><div class="arw">›</div></button>';
+  });
+  h += '</div>';
+  host.innerHTML = h;
+  host.querySelectorAll('.ditem').forEach(function(el){ el.onclick = function(){ openDialogue(el.dataset.d); }; });
+}
+function openDialogue(id){
+  var d = null; DATA.dialogues.forEach(function(x){ if (x.id === id) d = x; });
+  if (!d) return;
+  openD = d;
+  $('#roleList').style.display = 'none';
+  var v = $('#roleView'); v.style.display = 'block';
+  var h = '<button class="linkback" id="backRole">‹ 롤플레이 목록</button>';
+  h += '<div class="meta" style="margin:2px 0 8px"><span class="badge b-lv">Lv.' + d.lv + '</span><span class="badge b-tag">' + d.lines.length + '턴</span></div>';
+  h += '<h2 class="sec jp" style="font-size:17px">' + d.titleRuby + '</h2>';
+  h += '<p style="font-size:12.5px;color:var(--sub);margin:0 0 11px">' + esc(d.situation) + '</p>';
+  h += '<div class="acts" style="margin:0 0 11px"><button class="btn pri" id="playAll">▶ 전체 연속 재생</button><button class="btn" id="playB">🎙 B(내 턴)만</button><button class="btn" id="stopAll">■ 정지</button></div>';
+  h += '<div class="card chat" id="chat">';
+  d.lines.forEach(function(l, i){
+    var rev = !!S.rev[d.id + ':' + i];
+    var isB = l.r === 'B';
+    var show = !isB || rev;
+    h += '<div class="line ' + l.r + (show ? '' : ' hidden-b') + '" id="ln' + i + '" data-i="' + i + '">';
+    h += '<div class="ava">' + l.r + '</div><div class="bub' + (isB && !rev ? ' bturn' : '') + '">';
+    if (isB && !rev) {
+      h += '<div class="hint">' + esc(l.ko) + '</div><div class="say">내 차례 — 일본어로 말해 보세요</div>';
+      h += '<button class="bplay" data-rev="' + i + '">정답 보기 · 答え</button>';
+    } else {
+      h += '<div class="lj jp">' + (S.furi ? l.ruby : esc(l.jp)) + '</div>';
+      h += '<div class="lk jp">' + esc(l.kana) + '</div>';
+      h += '<div class="lk">' + esc(l.ko) + '</div>';
+      if (l.note) h += '<div class="ln">' + esc(l.note) + '</div>';
+      h += '<button class="bplay" data-play="' + i + '">🔊 듣기</button>';
+    }
+    h += '</div></div>';
+  });
+  h += '</div>';
+  v.innerHTML = h;
+  $('#backRole').onclick = function(){ stopAll(); renderRoleList(); };
+  v.querySelectorAll('[data-rev]').forEach(function(b){ b.onclick = function(){ S.rev[d.id + ':' + b.dataset.rev] = 1; save(); openDialogue(d.id); }; });
+  v.querySelectorAll('[data-play]').forEach(function(b){ b.onclick = function(){ playLine(d, +b.dataset.play); }; });
+  $('#playAll').onclick = function(){ playSeq(d, d.lines.map(function(_,i){ return i; }), 0); };
+  $('#playB').onclick = function(){ playSeq(d, d.lines.map(function(l,i){ return i; }).filter(function(i){ return d.lines[i].r==='B'; }), 0); };
+  $('#stopAll').onclick = function(){ stopAll(); };
+}
+function playLine(d, i){
+  var ln = document.getElementById('ln' + i);
+  if (ln) { document.querySelectorAll('.line.playing').forEach(function(x){ x.classList.remove('playing'); }); ln.classList.add('playing'); }
+  playFile('d' + d.id + '_' + i, null, function(){ if (ln) ln.classList.remove('playing'); });
+}
+function playSeq(d, arr, k){
+  if (k >= arr.length) return;
+  var i = arr[k];
+  var ln = document.getElementById('ln' + i);
+  document.querySelectorAll('.line.playing').forEach(function(x){ x.classList.remove('playing'); });
+  if (ln) { ln.classList.add('playing'); if (ln.scrollIntoView) ln.scrollIntoView({block:'center', behavior:'smooth'}); }
+  playFile('d' + d.id + '_' + i, null, function(){
+    if (ln) ln.classList.remove('playing');
+    loopTimer = setTimeout(function(){ playSeq(d, arr, k+1); }, 350);
+  }, {keep:true});
+}
+
+/* ═════════ drill ═════════ */
+function startDrill(){
+  var pool = filtered().slice();
+  pool.sort(function(){ return Math.random()-.5; });
+  S.drill = {ids: pool.slice(0, 10).map(function(p){ return p.id; }), i: 0, rev: false, done: false};
+  save(); renderDrill();
+}
+function renderDrill(){
+  var host = $('#drillWrap');
+  if (!S.drill || !S.drill.ids.length) { startDrill(); return; }
+  var D = S.drill, id = D.ids[D.i], p = cardById(id);
+  if (!p) { startDrill(); return; }
+  var h = '<div class="drilltop"><span class="idx">오늘의 드릴 ' + (D.i+1) + '/10</span>';
+  h += '<div class="pdots">';
+  for (var i=0;i<D.ids.length;i++) h += '<i class="' + (i < D.i ? 'on' : (i===D.i?'cur':'')) + '"></i>';
+  h += '</div><button class="btn ghost" id="reDrill" style="padding:5px 9px;font-size:11.5px">🔄 새로</button></div>';
+  h += '<div class="card qcard">';
+  h += '<div class="meta"><span class="badge b-lv">Lv.' + p.lv + '</span><span class="badge b-tag">' + esc(p.tag) + '</span></div>';
+  h += '<div class="qko">' + esc(p.ko) + '</div>';
+  if (!D.rev) {
+    h += '<div class="qtip">10초 안에 일본어로 말해 보세요. 막히면 정답을 여세요.</div>';
+    h += '<div class="krow"><button class="btn pri" id="dRev" style="flex:1;justify-content:center">정답 보기</button></div>';
+  } else {
+    h += '<div class="answer"><div class="ajp jp">' + (S.furi ? p.ruby : esc(p.jp)) + '</div>';
+    h += '<div class="akana jp">' + esc(p.kana) + '</div><div class="aroma">' + esc(romaji(p.kana)) + '</div>';
+    h += '<div class="note">💡 ' + esc(p.note) + '</div>';
+    h += '<div class="acts"><button class="btn pri" id="dSpk">🔊 원어민</button><button class="btn" id="dAgain">🗣 다시 말하기</button>';
+    h += '<button class="btn" id="dSave">' + (S.saved[p.id] ? '★' : '☆') + '</button></div></div>';
+  }
+  h += '</div>';
+  h += '<div class="krow" style="margin-top:10px"><button class="btn" id="dPrev">← 이전</button><button class="btn pri" id="dNext">' + (D.i === 9 ? '드릴 완료' : '다음 →') + '</button></div>';
+  if (D.done) h += '<div class="empty" style="padding:18px 0">🎉 오늘의 드릴 10문장 완료! 수고했어요.<br><button class="btn pri" id="dRestart" style="margin-top:12px">새 드릴 시작</button></div>';
+  host.innerHTML = h;
+  var rv = $('#dRev'); if (rv) rv.onclick = function(){ D.rev = true; save(); renderDrill(); };
+  var sp = $('#dSpk'); if (sp) sp.onclick = function(){ playFile('p_' + p.id, sp); };
+  var ag = $('#dAgain'); if (ag) ag.onclick = function(){ D.rev = false; save(); renderDrill(); };
+  var sv = $('#dSave'); if (sv) sv.onclick = function(){ S.saved[p.id] = !S.saved[p.id]; save(); renderDrill(); updateHead(); };
+  var pv = $('#dPrev'); if (pv) pv.onclick = function(){ if (D.i>0){ D.i--; D.rev=false; stopAll(); save(); renderDrill(); } };
+  var nx = $('#dNext'); if (nx) nx.onclick = function(){
+    S.done[p.id] = true; save(); updateHead();
+    if (D.i < 9) { D.i++; D.rev=false; stopAll(); save(); renderDrill(); }
+    else { D.done = true; save(); renderDrill(); toast('드릴 10문장 완료!'); }
+  };
+  var rd = $('#reDrill'); if (rd) rd.onclick = function(){ stopAll(); startDrill(); };
+  var rs = $('#dRestart'); if (rs) rs.onclick = function(){ stopAll(); startDrill(); };
+}
+
+/* ═════════ saved ═════════ */
+function renderSaved(){
+  var host = $('#savedWrap');
+  var ids = Object.keys(S.saved).filter(function(k){ return S.saved[k]; });
+  if (!ids.length) { host.innerHTML = '<div class="empty">저장한 표현이 없어요.<br>카드를 넘기다가 ☆ 버튼으로 담아 두세요.</div>'; return; }
+  var h = '<h2 class="sec">저장함 <small>' + ids.length + '개</small></h2><div class="dlist">';
+  ids.forEach(function(id){
+    var p = cardById(id); if (!p) return;
+    h += '<div class="card ditem"><div class="dnum">Lv' + p.lv + '</div><div style="min-width:0;flex:1">';
+    h += '<div class="dt jp">' + (S.furi ? p.ruby : esc(p.jp)) + '</div><div class="ds">' + esc(p.ko) + '</div></div>';
+    h += '<button class="btn" data-p="' + id + '" style="padding:7px 10px">🔊</button>';
+    h += '<button class="btn" data-u="' + id + '" style="padding:7px 10px;margin-left:5px">✕</button></div>';
+  });
+  h += '</div>';
+  host.innerHTML = h;
+  host.querySelectorAll('[data-p]').forEach(function(b){ b.onclick = function(){ playFile('p_' + b.dataset.p, b); }; });
+  host.querySelectorAll('[data-u]').forEach(function(b){ b.onclick = function(){ S.saved[b.dataset.u] = false; save(); renderSaved(); updateHead(); }; });
+}
+
+/* ═════════ tips ═════════ */
+function renderTips(){
+  var M = DATA.meta, h = '';
+  h += '<h2 class="sec">훈련법 <small>이 앱을 제대로 쓰는 5단계</small></h2><div class="card" style="padding:4px 14px">';
+  M.method.forEach(function(m){ h += '<div class="mitem"><div class="mnum">' + m.n + '</div><div><b>' + esc(m.t) + '</b><p>' + esc(m.d) + '</p></div></div>'; });
+  h += '</div>';
+  var cats = [], byCat = {};
+  M.tips.forEach(function(t){ if (!byCat[t.cat]) { byCat[t.cat] = []; cats.push(t.cat); } byCat[t.cat].push(t); });
+  cats.forEach(function(c){
+    h += '<h3>' + esc(c) + '</h3><div class="card" style="padding:2px 14px">';
+    byCat[c].forEach(function(t){
+      h += '<div class="tip"><b>' + esc(t.t) + '</b><p>' + esc(t.d) + '</p><a href="' + t.src + '" target="_blank" rel="noopener">↗ ' + esc(t.srcName) + '</a></div>';
+    });
+    h += '</div>';
+  });
+  h += '<h3>수집 출처</h3><div class="card" style="padding:2px 14px">';
+  M.sources.forEach(function(s){ h += '<div class="srcline"><b>' + esc(s.k) + '</b><a href="' + s.u + '" target="_blank" rel="noopener">' + esc(s.n) + '</a></div>'; });
+  h += '</div>';
+  h += '<h3>수집 한계 (정직 고지)</h3><div class="card" style="padding:2px 14px">';
+  M.limits.forEach(function(l){ h += '<div class="warn">· ' + esc(l) + '</div>'; });
+  h += '</div>';
+  h += '<h3>아이폰 홈 화면에 추가</h3><div class="card" style="padding:4px 14px"><div class="tip"><p>Safari에서 이 페이지를 연 뒤 <b>공유(□↑) → 홈 화면에 추가</b>를 누르면 앱처럼 전체 화면으로 열립니다. 음성은 사전 녹음된 MP3라 아이폰 무음 모드에서도 재생됩니다.</p></div></div>';
+  $('#tipsWrap').innerHTML = h;
+}
+
+/* ═════════ head / tabs ═════════ */
+function updateHead(){
+  var total = DATA.phrases.length;
+  var n = DATA.phrases.filter(function(p){ return S.done[p.id]; }).length;
+  $('#doneN').textContent = n; $('#doneT').textContent = '/' + total;
+  $('#hbar').style.width = (n / total * 100) + '%';
+}
+function setTab(t){
+  S.tab = t; save();
+  document.querySelectorAll('nav button').forEach(function(b){ b.classList.toggle('on', b.dataset.tab === t); });
+  document.querySelectorAll('.tab').forEach(function(s){ s.classList.remove('on'); });
+  $('#tab-' + t).classList.add('on');
+  stopAll();
+  if (t === 'card') renderDeck();
+  if (t === 'role') { if (openD && $('#roleView').style.display !== 'none') { /* keep open */ } else renderRoleList(); }
+  if (t === 'drill') { if (!S.drill) startDrill(); else renderDrill(); }
+  if (t === 'saved') renderSaved();
+  if (t === 'tips') renderTips();
+  window.scrollTo(0, 0);
+}
+
+/* ═════════ init ═════════ */
+document.body.classList.toggle('nofuri', !S.furi);
+$('#furiSw').classList.toggle('on', S.furi);
+$('#polSw').classList.toggle('on', S.pol);
+$('#furiBtn').onclick = function(){ S.furi = !S.furi; save(); document.body.classList.toggle('nofuri', !S.furi); $('#furiSw').classList.toggle('on', S.furi); if (S.tab === 'card') renderDeck(); if (openD) openDialogue(openD.id); };
+$('#polBtn').onclick = function(){ S.pol = !S.pol; save(); $('#polSw').classList.toggle('on', S.pol); renderDeck(); };
+$('#q').value = S.q || '';
+var qi;
+$('#q').oninput = function(e){ clearTimeout(qi); var v = e.target.value; qi = setTimeout(function(){ S.q = v; save(); buildDeck(); }, 220); };
+document.querySelectorAll('#lvchips .chip').forEach(function(c){
+  if (+c.dataset.lv === S.lv) { document.querySelectorAll('#lvchips .chip').forEach(function(x){ x.classList.remove('on'); }); c.classList.add('on'); }
+  c.onclick = function(){
+    S.lv = +c.dataset.lv; save();
+    document.querySelectorAll('#lvchips .chip').forEach(function(x){ x.classList.remove('on'); }); c.classList.add('on');
+    buildDeck(); if (S.tab === 'drill') { S.drill = null; startDrill(); }
+  };
+});
+document.querySelectorAll('nav button').forEach(function(b){ b.onclick = function(){ setTab(b.dataset.tab); }; });
+
+buildDeck(); updateHead();
+if (S.tab && S.tab !== 'card') setTab(S.tab);
+
+// swipe on the deck
+var sx = 0, sy = 0;
+$('#deck').addEventListener('touchstart', function(e){ sx = e.touches[0].clientX; sy = e.touches[0].clientY; }, {passive:true});
+$('#deck').addEventListener('touchend', function(e){
+  var dx = e.changedTouches[0].clientX - sx, dy = e.changedTouches[0].clientY - sy;
+  if (Math.abs(dx) < 55 || Math.abs(dy) > 45) return;
+  if (dx < 0 && di < deck.length-1) { di++; revealed=false; stopAll(); renderDeck(); }
+  if (dx > 0 && di > 0) { di--; revealed=false; stopAll(); renderDeck(); }
+}, {passive:true});
+</script>
+</body>
+</html>
