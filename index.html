@@ -37,64 +37,59 @@ body{
   background:var(--bg); color:var(--ink);
   font-family:-apple-system,BlinkMacSystemFont,"Apple SD Gothic Neo","Hiragino Sans","Noto Sans KR",sans-serif;
   font-size:16px; line-height:1.55; -webkit-text-size-adjust:100%;
-  padding-bottom:calc(74px + env(safe-area-inset-bottom));
+  padding-bottom:calc(70px + env(safe-area-inset-bottom));
   overscroll-behavior-y:contain;
 }
+body.tab-card{padding-bottom:calc(158px + env(safe-area-inset-bottom))}
 button{font-family:inherit;font-size:inherit;color:inherit;cursor:pointer;border:0;background:none}
 .jp{font-family:"Hiragino Kaku Gothic ProN","Hiragino Sans","Yu Gothic","Noto Sans JP",-apple-system,sans-serif;letter-spacing:.01em}
 ruby{ruby-align:center;ruby-position:over}
 rt{font-size:.5em;line-height:1.1;font-weight:400;color:var(--sub);letter-spacing:0}
 body.nofuri rt{display:none}
 
-/* ── header ── */
+/* ── header (slim) ── */
 header{
   position:sticky;top:0;z-index:40;
-  padding:calc(8px + env(safe-area-inset-top)) 14px 9px;
+  padding:calc(6px + env(safe-area-inset-top)) 12px 0;
   background:color-mix(in srgb,var(--bg) 90%,transparent);
   -webkit-backdrop-filter:saturate(180%) blur(14px);backdrop-filter:saturate(180%) blur(14px);
   border-bottom:1px solid var(--line);
 }
-.hrow{display:flex;align-items:center;gap:9px}
-.htitle{font-size:16px;font-weight:800;letter-spacing:-.3px;display:flex;align-items:baseline;gap:6px;min-width:0}
-.htitle em{font-style:normal;font-size:10.5px;font-weight:600;color:var(--sub);letter-spacing:0}
-.hprog{margin-left:auto;display:flex;align-items:center;gap:6px;font-size:11px;color:var(--sub);white-space:nowrap}
-.hprog b{color:var(--ac);font-size:13px}
-.hbar{height:4px;border-radius:99px;background:var(--line);overflow:hidden;margin-top:7px}
+.hrow{display:flex;align-items:center;gap:8px;height:34px}
+.htitle{font-size:15px;font-weight:800;letter-spacing:-.3px;white-space:nowrap}
+.htitle em{font-style:normal;font-size:10px;font-weight:600;color:var(--sub);margin-left:4px;letter-spacing:0}
+.hlv{padding:2px 8px;border-radius:99px;background:var(--acSoft);color:var(--ac);font-size:10.5px;font-weight:800}
+.hprog{margin-left:auto;font-size:10.5px;color:var(--sub);font-variant-numeric:tabular-nums;white-space:nowrap}
+.hprog b{color:var(--ac);font-size:12px}
+.ico{width:34px;height:34px;border-radius:11px;display:flex;align-items:center;justify-content:center;font-size:16px;background:var(--card);border:1px solid var(--line);color:var(--sub)}
+.ico.on{background:var(--acSoft);border-color:var(--ac);color:var(--ac)}
+.hbar{height:3px;border-radius:99px;background:var(--line);overflow:hidden;margin:2px 0 0}
 .hbar>i{display:block;height:100%;width:0;background:linear-gradient(90deg,var(--ac),var(--ac2));transition:width .3s}
-.chips{display:flex;gap:6px;overflow-x:auto;padding:9px 0 2px;scrollbar-width:none}
-.chips::-webkit-scrollbar{display:none}
-.chip{flex:0 0 auto;padding:5px 11px;border-radius:99px;background:var(--card);border:1px solid var(--line);font-size:12.5px;font-weight:700;color:var(--sub)}
-.chip.on{background:var(--ac);border-color:var(--ac);color:#fff}
-@media (prefers-color-scheme: dark){.chip.on{color:#08110f}}
-.trow{display:flex;gap:7px;align-items:center;margin-top:7px}
-.search{flex:1;display:flex;align-items:center;gap:6px;background:var(--card);border:1px solid var(--line);border-radius:11px;padding:6px 10px}
-.search input{flex:1;border:0;background:none;font:inherit;font-size:13.5px;color:var(--ink);outline:none;min-width:0}
-.search span{font-size:13px;color:var(--sub)}
-.tgl{display:flex;align-items:center;gap:5px;font-size:11px;font-weight:700;color:var(--sub);background:var(--card);border:1px solid var(--line);border-radius:11px;padding:6px 9px;white-space:nowrap}
-.sw{position:relative;width:30px;height:17px;border-radius:99px;background:var(--line);flex:0 0 auto;transition:background .18s}
-.sw i{position:absolute;top:2px;left:2px;width:13px;height:13px;border-radius:50%;background:#fff;box-shadow:0 1px 2px rgba(0,0,0,.3);transition:left .18s}
-.sw.on{background:var(--ac2)}
-.sw.on i{left:15px}
 
 /* ── layout ── */
-main{padding:13px 14px 8px;max-width:640px;margin:0 auto}
+main{padding:11px 13px 8px;max-width:600px;margin:0 auto}
 .tab{display:none}
 .tab.on{display:block;animation:fade .18s ease}
 @keyframes fade{from{opacity:0;transform:translateY(3px)}to{opacity:1;transform:none}}
 .card{background:var(--card);border:1px solid var(--line);border-radius:var(--r);box-shadow:var(--sh)}
-.meta{display:flex;align-items:center;gap:6px;flex-wrap:wrap;font-size:11px;color:var(--sub)}
+.meta{display:flex;align-items:center;gap:5px;flex-wrap:wrap;font-size:11px;color:var(--sub)}
 .badge{padding:2px 8px;border-radius:99px;font-weight:800;font-size:10.5px;letter-spacing:.02em}
 .b-lv{background:var(--acSoft);color:var(--ac)}
 .b-tag{background:var(--goldSoft);color:var(--gold)}
 .b-pol{background:var(--blueSoft);color:var(--blue)}
 .b-cas{background:var(--pinkSoft);color:var(--pink)}
+.idx{font-size:11px;color:var(--sub);font-variant-numeric:tabular-nums}
 
 /* ── speaking card ── */
-.deck{position:relative}
-.qcard{padding:20px 18px 16px;min-height:322px;display:flex;flex-direction:column}
+.qcard{padding:0;overflow:hidden}
 .qcard.done{border-color:var(--ac2)}
-.qko{font-size:24px;font-weight:800;line-height:1.42;letter-spacing:-.5px;margin:14px 0 6px}
-.qtip{font-size:12px;color:var(--sub);margin-top:auto;padding-top:12px}
+.chead{display:flex;align-items:center;gap:5px;padding:10px 10px 0}
+.chead .sp{flex:1}
+.qbody{padding:6px 18px 16px}
+.qcard.tapable .qbody{cursor:pointer}
+.qko{font-size:25px;font-weight:800;line-height:1.42;letter-spacing:-.6px;margin:16px 0 8px}
+.qtip{font-size:12.5px;color:var(--sub);display:flex;align-items:center;gap:6px}
+.qtip:after{content:"";flex:1;height:1px;background:var(--line)}
 .answer{margin-top:14px;border-top:1px dashed var(--line);padding-top:14px;animation:fade .2s}
 .ajp{font-size:23px;font-weight:700;line-height:2.05}
 .akana{font-size:12.5px;color:var(--sub);margin-top:6px}
@@ -103,22 +98,65 @@ main{padding:13px 14px 8px;max-width:640px;margin:0 auto}
 .ex{margin-top:10px;border-radius:12px;padding:10px 11px;background:color-mix(in srgb,var(--card) 92%,var(--line));border:1px solid var(--line)}
 .ex .ej{font-size:15px;font-weight:600;line-height:2.0}
 .ex .ek{font-size:11.5px;color:var(--sub);margin-top:3px}
-.acts{display:flex;gap:7px;flex-wrap:wrap;margin-top:14px;align-items:center}
-.btn{display:flex;align-items:center;gap:5px;padding:9px 13px;border-radius:12px;background:var(--bg);border:1px solid var(--line);font-size:13px;font-weight:700}
-.btn.pri{background:var(--ac);border-color:var(--ac);color:#fff}
-@media (prefers-color-scheme: dark){.btn.pri{color:#08110f}}
-.btn.ghost{background:none}
-.btn:disabled{opacity:.4}
-.btn.on{background:var(--acSoft);border-color:var(--ac);color:var(--ac)}
-.btn.rec.on{background:var(--pink);border-color:var(--pink);color:#fff;animation:pulse 1s infinite}
+.explay{margin-top:6px;font-size:11.5px;font-weight:800;color:var(--ac);padding:4px 0}
+.recbar{margin-top:9px;display:flex;align-items:center;gap:8px;font-size:11.5px;color:var(--sub);min-height:18px}
+.recbar button{font-size:11.5px;font-weight:800;color:var(--ac)}
+.reveal{margin-top:18px;width:100%;padding:15px;border-radius:14px;background:var(--ac);color:#fff;font-size:15px;font-weight:800;letter-spacing:-.2px}
+@media (prefers-color-scheme: dark){.reveal{color:#08110f}}
+.reveal small{display:block;font-size:10.5px;font-weight:600;opacity:.8;margin-top:2px}
+
+/* ── thumb remote ── */
+.remote{
+  position:fixed;left:0;right:0;bottom:calc(64px + env(safe-area-inset-bottom));z-index:35;
+  display:none;gap:7px;padding:8px 10px;
+  background:color-mix(in srgb,var(--bg) 92%,transparent);
+  -webkit-backdrop-filter:saturate(180%) blur(14px);backdrop-filter:saturate(180%) blur(14px);
+  border-top:1px solid var(--line);
+}
+body.tab-card .remote{display:flex}
+.rbtn{
+  flex:1;min-width:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:1px;
+  padding:9px 4px;border-radius:14px;background:var(--card);border:1px solid var(--line);
+  font-size:10.5px;font-weight:800;color:var(--sub);line-height:1.2;
+}
+.rbtn i{font-style:normal;font-size:19px;line-height:1.15}
+.rbtn.pri{background:var(--ac);border-color:var(--ac);color:#fff}
+@media (prefers-color-scheme: dark){.rbtn.pri{color:#08110f}}
+.rbtn.on{background:var(--acSoft);border-color:var(--ac);color:var(--ac)}
+.rbtn.rec.on{background:var(--pink);border-color:var(--pink);color:#fff;animation:pulse 1s infinite}
 @keyframes pulse{50%{opacity:.62}}
-.krow{display:flex;gap:7px;margin-top:12px}
-.krow .btn{flex:1;justify-content:center}
-.rate{display:flex;gap:4px;background:var(--bg);border:1px solid var(--line);border-radius:11px;padding:3px;margin-left:auto}
-.rate button{padding:5px 9px;border-radius:8px;font-size:11.5px;font-weight:800;color:var(--sub)}
-.rate button.on{background:var(--card);color:var(--ac);box-shadow:0 1px 3px rgba(0,0,0,.12)}
-.idx{font-size:11px;color:var(--sub);font-variant-numeric:tabular-nums}
-.star{font-size:17px;line-height:1}
+
+/* ── settings sheet ── */
+.sheetWrap{position:fixed;inset:0;z-index:70;display:none}
+.sheetWrap.on{display:block}
+.sheetBack{position:absolute;inset:0;background:rgba(8,18,16,.42)}
+.sheet{
+  position:absolute;left:0;right:0;bottom:0;background:var(--card);
+  border-radius:20px 20px 0 0;padding:14px 16px calc(18px + env(safe-area-inset-bottom));
+  max-height:88vh;overflow:auto;box-shadow:0 -8px 32px rgba(0,0,0,.22);animation:up .22s ease;
+}
+@keyframes up{from{transform:translateY(16px);opacity:.6}to{transform:none;opacity:1}}
+.sh{display:flex;align-items:center;margin-bottom:12px}
+.sh b{font-size:15px}
+.sh button{margin-left:auto;font-size:16px;color:var(--sub);padding:4px 8px}
+.search{display:flex;align-items:center;gap:6px;background:var(--bg);border:1px solid var(--line);border-radius:12px;padding:9px 11px}
+.search input{flex:1;border:0;background:none;font:inherit;font-size:14px;color:var(--ink);outline:none;min-width:0}
+.srow{display:flex;align-items:center;gap:10px;padding:11px 0;border-bottom:1px solid var(--line);font-size:13.5px;font-weight:600}
+.srow .sw{margin-left:auto}
+.sw{position:relative;width:44px;height:26px;border-radius:99px;background:var(--line);flex:0 0 auto;transition:background .18s;padding:0}
+.sw i{position:absolute;top:3px;left:3px;width:20px;height:20px;border-radius:50%;background:#fff;box-shadow:0 1px 2px rgba(0,0,0,.3);transition:left .18s}
+.sw.on{background:var(--ac2)}
+.sw.on i{left:21px}
+.slabel{font-size:11px;font-weight:800;color:var(--sub);letter-spacing:.04em;margin:16px 0 8px;text-transform:uppercase}
+.chips{display:flex;gap:6px;overflow-x:auto;scrollbar-width:none;padding-bottom:2px}
+.chips::-webkit-scrollbar{display:none}
+.chip{flex:0 0 auto;padding:8px 13px;border-radius:99px;background:var(--bg);border:1px solid var(--line);font-size:12.5px;font-weight:700;color:var(--sub)}
+.chip.on{background:var(--ac);border-color:var(--ac);color:#fff}
+@media (prefers-color-scheme: dark){.chip.on{color:#08110f}}
+.rate{display:flex;gap:6px}
+.rate button{flex:1;padding:11px 0;border-radius:12px;background:var(--bg);border:1px solid var(--line);font-size:13px;font-weight:800;color:var(--sub)}
+.rate button.on{background:var(--acSoft);border-color:var(--ac);color:var(--ac)}
+.sfoot{margin-top:16px;font-size:11.5px;color:var(--sub);line-height:1.7}
 
 /* ── roleplay ── */
 .dlist{display:flex;flex-direction:column;gap:9px}
@@ -142,7 +180,6 @@ main{padding:13px 14px 8px;max-width:640px;margin:0 auto}
 .bturn .hint{font-size:13px;font-weight:700;color:var(--ink)}
 .bturn .say{font-size:11px;color:var(--sub);margin-top:3px}
 .line.playing .bub{outline:2px solid var(--ac);outline-offset:1px}
-.line.hidden-b .bub .lj,.line.hidden-b .bub .lk{display:none}
 
 /* ── drill ── */
 .drilltop{display:flex;align-items:center;gap:8px;margin-bottom:10px}
@@ -150,6 +187,13 @@ main{padding:13px 14px 8px;max-width:640px;margin:0 auto}
 .pdots i{flex:1;height:5px;border-radius:99px;background:var(--line)}
 .pdots i.on{background:var(--ac)}
 .pdots i.cur{background:var(--ac2);opacity:.55}
+.btn{display:inline-flex;align-items:center;gap:5px;padding:9px 13px;border-radius:12px;background:var(--bg);border:1px solid var(--line);font-size:13px;font-weight:700}
+.btn.pri{background:var(--ac);border-color:var(--ac);color:#fff}
+@media (prefers-color-scheme: dark){.btn.pri{color:#08110f}}
+.btn.ghost{background:none}
+.btn.on{background:var(--acSoft);border-color:var(--ac);color:var(--ac)}
+.krow{display:flex;gap:7px;margin-top:12px}
+.krow .btn{flex:1;justify-content:center}
 
 /* ── tips ── */
 .tips h3{font-size:12px;color:var(--sub);font-weight:800;letter-spacing:.04em;margin:18px 0 7px;text-transform:uppercase}
@@ -165,97 +209,96 @@ main{padding:13px 14px 8px;max-width:640px;margin:0 auto}
 .tip a{font-size:11px;color:var(--ac);text-decoration:none;display:inline-block;margin-top:5px}
 .warn{font-size:12px;color:var(--sub);line-height:1.62;padding:11px 0;border-bottom:1px dashed var(--line)}
 .srcline{display:flex;gap:8px;font-size:11.5px;color:var(--sub);padding:7px 0;border-bottom:1px solid var(--line);align-items:baseline}
-.srcline b{color:var(--ink);font-weight:700;flex:0 0 auto;font-size:10.5px;background:var(--acSoft);color:var(--ac);padding:1px 6px;border-radius:6px}
+.srcline b{flex:0 0 auto;font-size:10.5px;background:var(--acSoft);color:var(--ac);padding:1px 6px;border-radius:6px}
 .srcline a{color:var(--sub);text-decoration:none;word-break:break-all}
 
 /* ── bottom nav ── */
 nav{
   position:fixed;left:0;right:0;bottom:0;z-index:40;display:flex;
-  padding:6px 6px calc(6px + env(safe-area-inset-bottom));
+  padding:5px 6px calc(5px + env(safe-area-inset-bottom));
   background:color-mix(in srgb,var(--bg) 92%,transparent);
   -webkit-backdrop-filter:saturate(180%) blur(14px);backdrop-filter:saturate(180%) blur(14px);
   border-top:1px solid var(--line);
 }
-nav button{flex:1;display:flex;flex-direction:column;align-items:center;gap:2px;padding:5px 2px;color:var(--sub);font-size:10px;font-weight:700}
-nav button i{font-style:normal;font-size:18px;line-height:1.15}
+nav button{flex:1;display:flex;flex-direction:column;align-items:center;gap:1px;padding:5px 2px;color:var(--sub);font-size:10px;font-weight:700}
+nav button i{font-style:normal;font-size:17px;line-height:1.15}
 nav button.on{color:var(--ac)}
 nav button.on i{transform:translateY(-1px)}
 
-.toast{position:fixed;left:50%;bottom:calc(88px + env(safe-area-inset-bottom));transform:translateX(-50%) translateY(10px);background:rgba(18,33,31,.94);color:#fff;font-size:12.5px;font-weight:600;padding:9px 14px;border-radius:99px;opacity:0;pointer-events:none;transition:.22s;z-index:60;max-width:86vw;text-align:center}
+.toast{position:fixed;left:50%;bottom:calc(150px + env(safe-area-inset-bottom));transform:translateX(-50%) translateY(10px);background:rgba(18,33,31,.94);color:#fff;font-size:12.5px;font-weight:600;padding:9px 14px;border-radius:99px;opacity:0;pointer-events:none;transition:.22s;z-index:80;max-width:86vw;text-align:center}
 .toast.on{opacity:1;transform:translateX(-50%) translateY(0)}
 .empty{text-align:center;color:var(--sub);font-size:13px;padding:38px 20px;line-height:1.7}
 h2.sec{font-size:14px;margin:2px 0 9px;display:flex;align-items:center;gap:7px}
 h2.sec small{font-size:11px;font-weight:600;color:var(--sub)}
 .linkback{font-size:12.5px;font-weight:700;color:var(--ac);padding:6px 0;display:inline-block}
-.recbar{margin-top:9px;display:flex;align-items:center;gap:8px;font-size:11.5px;color:var(--sub)}
 </style>
 </head>
-<body class="">
+<body class="tab-card">
 <header>
   <div class="hrow">
-    <div class="htitle">일본어 스피킹 <em>日本語スピーキング</em></div>
+    <div class="htitle">일본어 스피킹<em>日本語</em></div>
+    <span class="hlv" id="hlv">전체</span>
     <div class="hprog"><b id="doneN">0</b><span id="doneT">/141</span></div>
+    <button class="ico" id="setBtn" aria-label="설정">⚙️</button>
   </div>
   <div class="hbar"><i id="hbar"></i></div>
-  <div class="chips" id="lvchips">
-    <button class="chip on" data-lv="0">전체</button>
-    <button class="chip" data-lv="1">Lv.1 유행·SNS</button>
-    <button class="chip" data-lv="2">Lv.2 일상</button>
-    <button class="chip" data-lv="3">Lv.3 직장</button>
-    <button class="chip" data-lv="4">Lv.4 상담</button>
-    <button class="chip" data-lv="5">Lv.5 심화</button>
-  </div>
-  <div class="trow">
-    <div class="search"><span>🔍</span><input id="q" placeholder="한국어·일본어·태그 검색" autocomplete="off"></div>
-    <button class="tgl" id="furiBtn"><span class="sw on" id="furiSw"><i></i></span>후리가나</button>
-    <button class="tgl" id="polBtn"><span class="sw on" id="polSw"><i></i></span>반말/정중</button>
-  </div>
 </header>
 
 <main>
-  <!-- ══ 카드 ══ -->
-  <section class="tab on" id="tab-card">
-    <div class="deck" id="deck"></div>
-  </section>
-
-  <!-- ══ 롤플레이 ══ -->
-  <section class="tab" id="tab-role">
-    <div id="roleList"></div>
-    <div id="roleView" style="display:none"></div>
-  </section>
-
-  <!-- ══ 드릴 ══ -->
-  <section class="tab" id="tab-drill">
-    <div id="drillWrap"></div>
-  </section>
-
-  <!-- ══ 저장함 ══ -->
-  <section class="tab" id="tab-saved">
-    <div id="savedWrap"></div>
-  </section>
-
-  <!-- ══ 팁 ══ -->
-  <section class="tab" id="tab-tips">
-    <div class="tips" id="tipsWrap"></div>
-  </section>
+  <section class="tab on" id="tab-card"><div id="deck"></div></section>
+  <section class="tab" id="tab-role"><div id="roleList"></div><div id="roleView" style="display:none"></div></section>
+  <section class="tab" id="tab-drill"><div id="drillWrap"></div></section>
+  <section class="tab" id="tab-saved"><div id="savedWrap"></div></section>
+  <section class="tab" id="tab-tips"><div class="tips" id="tipsWrap"></div></section>
 </main>
 
+<div class="remote" id="remote">
+  <button class="rbtn" id="rListen"><i>🔊</i><span id="rListenLbl">1.2x 듣기</span></button>
+  <button class="rbtn" id="rLoop"><i>🔁</i><span id="rLoopLbl">따라말하기</span></button>
+  <button class="rbtn rec" id="rRec"><i>🎙️</i><span id="rRecLbl">녹음/비교</span></button>
+  <button class="rbtn pri" id="rNext"><i>→</i><span>다음</span></button>
+</div>
+
 <nav>
-  <button class="on" data-tab="card"><i>🎙️</i>스피킹 카드</button>
+  <button class="on" data-tab="card"><i>🎙️</i>카드</button>
   <button data-tab="role"><i>💬</i>롤플레이</button>
-  <button data-tab="drill"><i>⚡</i>오늘의 드릴</button>
+  <button data-tab="drill"><i>⚡</i>드릴</button>
   <button data-tab="saved"><i>⭐</i>저장함</button>
-  <button data-tab="tips"><i>💡</i>팁·출처</button>
+  <button data-tab="tips"><i>💡</i>팁</button>
 </nav>
+
+<div class="sheetWrap" id="sheetWrap">
+  <div class="sheetBack" id="sheetBack"></div>
+  <div class="sheet">
+    <div class="sh"><b>설정</b><button id="sheetClose">✕</button></div>
+    <div class="search"><span>🔍</span><input id="q" placeholder="한국어·일본어·태그 검색" autocomplete="off"></div>
+    <div class="srow"><span>후리가나 (ふりがな)</span><button class="sw on" id="furiSw"><i></i></button></div>
+    <div class="srow"><span>반말 / 정중체 배지</span><button class="sw on" id="polSw"><i></i></button></div>
+    <div class="slabel">레벨</div>
+    <div class="chips" id="lvchips"></div>
+    <div class="slabel">재생 속도</div>
+    <div class="rate" id="rateBox"></div>
+    <div class="sfoot" id="sfoot"></div>
+  </div>
+</div>
+
 <div class="toast" id="toast"></div>
 
 <script>
 var DATA = {"phrases":[{"id":"L1-01","lv":1,"tag":"공감","pol":"casual","v":"f","jp":"それな！","ruby":"それな！","kana":"それな！","ko":"그러니까! / 완전 내 말이야","note":"상대 말에 강하게 공감. 친구·동갑 사이 전용. 윗사람에게는 たしかに가 안전.","ex":"それな！本当にそう思う。","exRuby":"それな！<ruby>本当<rt>ほんとう</rt></ruby>にそう<ruby>思<rt>おも</rt></ruby>う。","exKana":"それな！ほんとうにそうおもう。","exKo":"그러니까! 진짜 그렇게 생각해."},{"id":"L1-02","lv":1,"tag":"공감","pol":"casual","v":"m","jp":"たしかに。","ruby":"たしかに。","kana":"たしかに。","ko":"그렇네. / 확실히 그래","note":"무난한 동의. 연상·직장에서도 쓸 수 있는 안전한 공감 표현.","ex":"たしかに。言われてみればそうだね。","exRuby":"たしかに。<ruby>言<rt>い</rt></ruby>われてみればそうだね。","exKana":"たしかに。いわれてみればそうだね。","exKo":"그렇네. 듣고 보니 그러네."},{"id":"L1-03","lv":1,"tag":"놀람","pol":"casual","v":"m","jp":"ガチで？","ruby":"ガチで？","kana":"ガチで？","ko":"진짜로? / 진심?","note":"信じられないときの驚き。マジで보다 조금 더 요즘 말투.","ex":"ガチで？それは初耳だ。","exRuby":"ガチで？それは<ruby>初耳<rt>はつみみ</rt></ruby>だ。","exKana":"ガチで？それははつみみだ。","exKo":"진짜로? 그건 처음 듣는데."},{"id":"L1-04","lv":1,"tag":"놀람","pol":"casual","v":"f","jp":"マジで？","ruby":"マジで？","kana":"マジで？","ko":"진짜? / 정말?","note":"가장 흔한 놀람·확인. 억양을 올리면 의심, 내리면 감탄.","ex":"マジで？信じられない。","exRuby":"マジで？<ruby>信<rt>しん</rt></ruby>じられない。","exKana":"マジで？しんじられない。","exKo":"진짜? 믿을 수가 없어."},{"id":"L1-05","lv":1,"tag":"웃음","pol":"casual","v":"f","jp":"草","ruby":"<ruby>草<rt>くさ</rt></ruby>","kana":"くさ","ko":"ㅋㅋㅋ / 웃기다","note":"www가 풀밭처럼 보인 데서 유래. 대폭소는 大草原. 메시지에서 특히 많이 씀.","ex":"その返しは草。面白すぎる。","exRuby":"その<ruby>返<rt>かえ</rt></ruby>しは<ruby>草<rt>くさ</rt></ruby>。<ruby>面白<rt>おもしろ</rt></ruby>すぎる。","exKana":"そのかえしはくさ。おもしろすぎる。","exKo":"그 대답은 ㅋㅋㅋ. 너무 웃겨."},{"id":"L1-06","lv":1,"tag":"감성","pol":"casual","v":"f","jp":"エモい","ruby":"エモい","kana":"エモい","ko":"감성적이다 / 뭉클하다","note":"emotional에서 유래. 추억·노을·음악에 가슴이 찡할 때. 대상은 분위기·체험.","ex":"この曲、夜に聴くとエモい。","exRuby":"この<ruby>曲<rt>きょく</rt></ruby>、<ruby>夜<rt>よる</rt></ruby>に<ruby>聴<rt>き</rt></ruby>くとエモい。","exKana":"このきょく、よるにきくとエモい。","exKo":"이 곡, 밤에 들으면 뭉클해."},{"id":"L1-07","lv":1,"tag":"감정","pol":"casual","v":"f","jp":"ぴえん","ruby":"ぴえん","kana":"ぴえん","ko":"슬퍼요… / 아쉬워요…","note":"가벼운 슬픔·아쉬움을 귀엽게. 진짜 심각할 때는 がちぴえん.","ex":"好きな店が閉店してぴえん。","exRuby":"<ruby>好<rt>す</rt></ruby>きな<ruby>店<rt>みせ</rt></ruby>が<ruby>閉店<rt>へいてん</rt></ruby>してぴえん。","exKana":"すきなみせがへいてんしてぴえん。","exKo":"좋아하는 가게가 문 닫아서 슬퍼요…"},{"id":"L1-08","lv":1,"tag":"상황","pol":"casual","v":"m","jp":"きまZ","ruby":"きまZ","kana":"きまZ","ko":"어색해 / 분위기 이상해","note":"気まずい(기마즈이)의 약자. 자음만 남긴 표기. 친한 사이에서만.","ex":"沈黙がきまZすぎる。","exRuby":"<ruby>沈黙<rt>ちんもく</rt></ruby>がきまZすぎる。","exKana":"ちんもくがきまZすぎる。","exKo":"정적이 너무 어색해."},{"id":"L1-09","lv":1,"tag":"맞장구","pol":"casual","v":"f","jp":"あーね","ruby":"あーね","kana":"あーね","ko":"아 그렇구나 / 이해했어","note":"ああ、なるほどね의 축약. 100% 공감은 아니어도 부드럽게 넘길 때.","ex":"あーね、じゃあまた今度ね。","exRuby":"あーね、じゃあまた<ruby>今度<rt>こんど</rt></ruby>ね。","exKana":"あーね、じゃあまたこんどね。","exKo":"아 그렇구나, 그럼 다음에 또 보자."},{"id":"L1-10","lv":1,"tag":"메시지","pol":"casual","v":"m","jp":"り","ruby":"り","kana":"り","ko":"ㅇㅋ / 알겠어","note":"了解를 한 글자로. 문자·메신저 전용, 말로는 안 씀.","ex":"り。駅前に十時ね。","exRuby":"り。<ruby>駅前<rt>えきまえ</rt></ruby>に<ruby>十時<rt>じゅうじ</rt></ruby>ね。","exKana":"り。えきまえにじゅうじね。","exKo":"ㅇㅋ. 역 앞에서 10시지."},{"id":"L1-11","lv":1,"tag":"가능성","pol":"casual","v":"m","jp":"ワンチャン","ruby":"ワンチャン","kana":"ワンチャン","ko":"혹시 몰라 / 한 번 노려볼 만","note":"one chance의 축약. 낮은 가능성에 기대를 걸 때.","ex":"今から行けばワンチャン間に合うかも。","exRuby":"<ruby>今<rt>いま</rt></ruby>から<ruby>行<rt>い</rt></ruby>けばワンチャン<ruby>間<rt>ま</rt></ruby>に<ruby>合<rt>あ</rt></ruby>うかも。","exKana":"いまからいけばワンチャンまにあうかも。","exKo":"지금 가면 혹시 시간 맞출 수 있을지도."},{"id":"L1-12","lv":1,"tag":"감정","pol":"casual","v":"f","jp":"しんどい","ruby":"しんどい","kana":"しんどい","ko":"힘들다 / 귀찮다","note":"육체적·정신적 피로 모두. 최근에는 '좀 부담스럽다'는 뜻으로도.","ex":"今日は朝からしんどい。","exRuby":"<ruby>今日<rt>きょう</rt></ruby>は<ruby>朝<rt>あさ</rt></ruby>からしんどい。","exKana":"きょうはあさからしんどい。","exKo":"오늘은 아침부터 힘들어."},{"id":"L1-13","lv":1,"tag":"강조","pol":"casual","v":"m","jp":"エグい","ruby":"エグい","kana":"エグい","ko":"장난 아니다 / 빡세다 / 대박","note":"やばい의 상위 호환. 좋은 쪽으로도 나쁜 쪽으로도 '보통을 넘음'.","ex":"あの量はエグいって。終わらない。","exRuby":"あの<ruby>量<rt>りょう</rt></ruby>はエグいって。<ruby>終<rt>お</rt></ruby>わらない。","exKana":"あのりょうはエグいって。おわらない。","exKo":"저 양은 장난 아냐. 못 끝내."},{"id":"L1-14","lv":1,"tag":"몰입","pol":"casual","v":"f","jp":"沼る","ruby":"<ruby>沼<rt>ぬま</rt></ruby>る","kana":"ぬまる","ko":"푹 빠지다 / 헤어 나올 수 없다","note":"はまる보다 강함. 빠져서 나올 수 없는 상태.","ex":"このゲーム、一度やったら沼るよ。","exRuby":"このゲーム、<ruby>一<rt>いち</rt></ruby><ruby>度<rt>ど</rt></ruby>やったら<ruby>沼<rt>ぬま</rt></ruby>るよ。","exKana":"このゲーム、いちどやったらぬまるよ。","exKo":"이 게임, 한 번 하면 푹 빠져."},{"id":"L1-15","lv":1,"tag":"감성","pol":"casual","v":"f","jp":"チルい","ruby":"チルい","kana":"チルい","ko":"힐링된다 / 여유롭다","note":"chill에서 유래. 카페·음악·휴일의 편안한 분위기.","ex":"このカフェ、雰囲気がチルくていいね。","exRuby":"このカフェ、<ruby>雰囲気<rt>ふんいき</rt></ruby>がチルくていいね。","exKana":"このカフェ、ふんいきがチルくていいね。","exKo":"이 카페, 분위기가 편안해서 좋다."},{"id":"L1-16","lv":1,"tag":"관계","pol":"casual","v":"m","jp":"界隈","ruby":"<ruby>界隈<rt>かいわい</rt></ruby>","kana":"かいわい","ko":"계(界) / 그쪽 커뮤니티","note":"원래는 '일대'라는 뜻. 요즘은 취미·문화로 묶인 느슨한 집단.","ex":"推し活界隈では有名な話だよ。","exRuby":"<ruby>推<rt>お</rt></ruby>し<ruby>活<rt>かつ</rt></ruby><ruby>界隈<rt>かいわい</rt></ruby>では<ruby>有名<rt>ゆうめい</rt></ruby>な<ruby>話<rt>はなし</rt></ruby>だよ。","exKana":"おしかつかいわいではゆうめいなはなしだよ。","exKo":"최애 활동 계에서는 유명한 얘기야."},{"id":"L1-17","lv":1,"tag":"관계","pol":"casual","v":"m","jp":"ガチ勢","ruby":"ガチ<ruby>勢<rt>ぜい</rt></ruby>","kana":"ガチぜい","ko":"진심파 / 덕후","note":"ガチで取り組む勢力. 반대는 가볍게 즐기는 エンジョイ勢.","ex":"彼はこのゲームのガチ勢だから知識がすごい。","exRuby":"<ruby>彼<rt>かれ</rt></ruby>はこのゲームのガチ<ruby>勢<rt>ぜい</rt></ruby>だから<ruby>知識<rt>ちしき</rt></ruby>がすごい。","exKana":"かれはこのゲームのガチぜいだからちしきがすごい。","exKo":"걔는 이 게임 진심파라서 지식이 대단해."},{"id":"L1-18","lv":1,"tag":"강조","pol":"casual","v":"f","jp":"激うま","ruby":"<ruby>激<rt>げき</rt></ruby>うま","kana":"げきうま","ko":"존맛 / 엄청 잘한다","note":"激(げき)+うまい. 2025년 전후로 爆(ばく)을 붙이는 말투도 유행.","ex":"このラーメン激うまだ。毎日食べたい。","exRuby":"このラーメン<ruby>激<rt>げき</rt></ruby>うまだ。<ruby>毎日<rt>まいにち</rt></ruby><ruby>食<rt>た</rt></ruby>べたい。","exKana":"このラーメンげきうまだ。まいにちたべたい。","exKo":"이 라멘 존맛. 매일 먹고 싶어."},{"id":"L1-19","lv":1,"tag":"놀람","pol":"casual","v":"m","jp":"ぱねぇ","ruby":"ぱねぇ","kana":"ぱねぇ","ko":"대박 / 말도 안 돼","note":"半端ない(하ンパない)가 줄어든 말. 놀람과 감탄을 함께 담음.","ex":"一人で全部やったの？ぱねぇな。","exRuby":"<ruby>一人<rt>ひとり</rt></ruby>で<ruby>全部<rt>ぜんぶ</rt></ruby>やったの？ぱねぇな。","exKana":"ひとりでぜんぶやったの？ぱねぇな。","exKo":"혼자 다 한 거야? 대박이다."},{"id":"L1-20","lv":1,"tag":"웃음","pol":"casual","v":"f","jp":"うける","ruby":"うける","kana":"うける","ko":"웃기다 / 빵 터진다","note":"상황 자체가 우스울 때. 笑う보다 가볍고 SNS에서 자주 씀.","ex":"その言い方、うける。","exRuby":"その<ruby>言<rt>い</rt></ruby>い<ruby>方<rt>かた</rt></ruby>、うける。","exKana":"そのいいかた、うける。","exKo":"그 말투 웃기다."},{"id":"L1-21","lv":1,"tag":"감성","pol":"casual","v":"f","jp":"てぇてぇ","ruby":"てぇてぇ","kana":"てぇてぇ","ko":"너무 소중해 / 훈훈하다","note":"尊い(とうとい)의 변형. 좋아하는 대상이 너무 귀하고 훌륭할 때.","ex":"二人の関係、てぇてぇな。","exRuby":"<ruby>二人<rt>ふたり</rt></ruby>の<ruby>関係<rt>かんけい</rt></ruby>、てぇてぇな。","exKana":"ふたりのかんけい、てぇてぇな。","exKo":"두 사람의 관계, 너무 훈훈하다."},{"id":"L1-22","lv":1,"tag":"관계","pol":"casual","v":"f","jp":"推し","ruby":"<ruby>推<rt>お</rt></ruby>し","kana":"おし","ko":"최애","note":"내가 응원하는 대상. 推し活(응원 활동), 推しカフェ 등으로 확장.","ex":"今の推しは誰？","exRuby":"<ruby>今<rt>いま</rt></ruby>の<ruby>推<rt>お</rt></ruby>しは<ruby>誰<rt>だれ</rt></ruby>？","exKana":"いまのおしはだれ？","exKo":"지금 최애는 누구야?"},{"id":"L1-23","lv":1,"tag":"상황","pol":"casual","v":"m","jp":"バグる","ruby":"バグる","kana":"バグる","ko":"오류 나다 / 정신이 뒤죽박죽","note":"원래는 프로그램 오류. 사람이 당황해 엉망이 될 때도 씀.","ex":"寝不足で頭がバグってる。","exRuby":"<ruby>寝不足<rt>ねぶそく</rt></ruby>で<ruby>頭<rt>あたま</rt></ruby>がバグってる。","exKana":"ねぶそくであたまがバグってる。","exKo":"잠이 부족해서 머리가 오류 났어."},{"id":"L1-24","lv":1,"tag":"최고","pol":"casual","v":"f","jp":"〇〇しか勝たん","ruby":"<ruby>〇〇<rt>まるまる</rt></ruby>しか<ruby>勝<rt>か</rt></ruby>たん","kana":"まるまるしかかたん","ko":"○○가 최고야","note":"'○○以外에 승자는 없다'. 최애·음식 찬양에 씀.","ex":"休日の朝は珈琲しか勝たん。","exRuby":"<ruby>休日<rt>きゅうじつ</rt></ruby>の<ruby>朝<rt>あさ</rt></ruby>は<ruby>珈琲<rt>こーひー</rt></ruby>しか<ruby>勝<rt>か</rt></ruby>たん。","exKana":"きゅうじつのあさはこーひーしかかたん。","exKo":"휴일 아침엔 커피가 최고지."},{"id":"L1-25","lv":1,"tag":"연애","pol":"casual","v":"f","jp":"蛙化現象","ruby":"<ruby>蛙化<rt>かえるか</rt></ruby><ruby>現象<rt>げんしょう</rt></ruby>","kana":"かえるかげんしょう","ko":"호감이 갑자기 식는 현상","note":"좋아하던 상대의 사소한 행동에 갑자기 정이 떨어지는 것.","ex":"好きだったのに、急に蛙化した。","exRuby":"<ruby>好<rt>す</rt></ruby>きだったのに、<ruby>急<rt>きゅう</rt></ruby>に<ruby>蛙化<rt>かえるか</rt></ruby>した。","exKana":"すきだったのに、きゅうにかえるかした。","exKo":"좋아했는데 갑자기 정이 확 식었어."},{"id":"L1-26","lv":1,"tag":"반전","pol":"casual","v":"m","jp":"逆にいい","ruby":"<ruby>逆<rt>ぎゃく</rt></ruby>にいい","kana":"ぎゃくにいい","ko":"오히려 좋아","note":"예상 밖의 결과를 긍정으로 바꾸는 말. 실패도 웃어넘길 때.","ex":"雨だけど、逆にいい。人が少ないから。","exRuby":"<ruby>雨<rt>あめ</rt></ruby>だけど、<ruby>逆<rt>ぎゃく</rt></ruby>にいい。<ruby>人<rt>ひと</rt></ruby>が<ruby>少<rt>すく</rt></ruby>ないから。","exKana":"あめだけど、ぎゃくにいい。ひとがすくないから。","exKo":"비 오지만 오히려 좋아. 사람이 적으니까."},{"id":"L2-01","lv":2,"tag":"인사","pol":"polite","v":"m","jp":"おはようございます。","ruby":"おはようございます。","kana":"おはようございます。","ko":"안녕하세요 (아침)","note":"직장·가게에서는 하루 종일 쓰기도 함. 친구끼리는 おはよう.","ex":"おはようございます。いい天気ですね。","exRuby":"おはようございます。いい<ruby>天気<rt>てんき</rt></ruby>ですね。","exKana":"おはようございます。いいてんきですね。","exKo":"안녕하세요. 날씨 좋네요."},{"id":"L2-02","lv":2,"tag":"말걸기","pol":"polite","v":"f","jp":"すみません、ちょっといいですか。","ruby":"すみません、ちょっといいですか。","kana":"すみません、ちょっといいですか。","ko":"저기요, 잠깐 괜찮으세요?","note":"모르는 사람에게 말을 걸 때의 기본. すみませんが最も無難.","ex":"すみません、ちょっといいですか。駅への道を伺いたいんですが。","exRuby":"すみません、ちょっといいですか。<ruby>駅<rt>えき</rt></ruby>への<ruby>道<rt>みち</rt></ruby>を<ruby>伺<rt>うかが</rt></ruby>いたいんですが。","exKana":"すみません、ちょっといいですか。えきへのみちをうかがいたいんですが。","exKo":"저기요, 잠깐 괜찮으세요? 역 가는 길을 여쭙고 싶은데요."},{"id":"L2-03","lv":2,"tag":"부탁","pol":"polite","v":"f","jp":"お願いします。","ruby":"お<ruby>願<rt>ねが</rt></ruby>いします。","kana":"おねがいします。","ko":"부탁합니다 / 잘 부탁드립니다","note":"주문·요청·인사 어디에나. これお願いします처럼 대상을 붙임.","ex":"水を一つお願いします。","exRuby":"<ruby>水<rt>みず</rt></ruby>を<ruby>一<rt>ひと</rt></ruby>つお<ruby>願<rt>ねが</rt></ruby>いします。","exKana":"みずをひとつおねがいします。","exKo":"물 하나 부탁합니다."},{"id":"L2-04","lv":2,"tag":"부탁","pol":"polite","v":"f","jp":"少し待っていただけますか。","ruby":"<ruby>少<rt>すこ</rt></ruby>し<ruby>待<rt>ま</rt></ruby>っていただけますか。","kana":"すこしまっていただけますか。","ko":"조금 기다려 주시겠어요?","note":"ていただけますか는 가장 정중한 부탁. てもらえますか는 조금 가벼움.","ex":"少し待っていただけますか。今、確認します。","exRuby":"<ruby>少<rt>すこ</rt></ruby>し<ruby>待<rt>ま</rt></ruby>っていただけますか。<ruby>今<rt>いま</rt></ruby>、<ruby>確認<rt>かくにん</rt></ruby>します。","exKana":"すこしまっていただけますか。いま、かくにんします。","exKo":"조금 기다려 주시겠어요? 지금 확인하겠습니다."},{"id":"L2-05","lv":2,"tag":"대답","pol":"polite","v":"m","jp":"大丈夫です。","ruby":"<ruby>大丈夫<rt>だいじょうぶ</rt></ruby>です。","kana":"だいじょうぶです。","ko":"괜찮습니다","note":"거절·양해·안심 모두. 억양에 따라 '사양합니다'가 되니 주의.","ex":"荷物は持ちますので、大丈夫です。","exRuby":"<ruby>荷物<rt>にもつ</rt></ruby>は<ruby>持<rt>も</rt></ruby>ちますので、<ruby>大丈夫<rt>だいじょうぶ</rt></ruby>です。","exKana":"にもつはもちますので、だいじょうぶです。","exKo":"짐은 제가 들 테니 괜찮습니다."},{"id":"L2-06","lv":2,"tag":"카페","pol":"polite","v":"f","jp":"店内でお願いします。","ruby":"<ruby>店内<rt>てんない</rt></ruby>でお<ruby>願<rt>ねが</rt></ruby>いします。","kana":"てんないでおねがいします。","ko":"매장에서 먹고 갈게요","note":"'드실 건가요, 포장인가요?' 질문의 정답. 포장은 お持ち帰りで.","ex":"店内でお願いします。窓際の席は空いていますか。","exRuby":"<ruby>店内<rt>てんない</rt></ruby>でお<ruby>願<rt>ねが</rt></ruby>いします。<ruby>窓際<rt>まどぎわ</rt></ruby>の<ruby>席<rt>せき</rt></ruby>は<ruby>空<rt>あ</rt></ruby>いていますか。","exKana":"てんないでおねがいします。まどぎわのせきはあいていますか。","exKo":"매장에서 먹을게요. 창가 자리 비었나요?"},{"id":"L2-07","lv":2,"tag":"카페","pol":"polite","v":"m","jp":"ホットのラテをテイクアウトでお願いします。","ruby":"ホットのラテをテイクアウトでお<ruby>願<rt>ねが</rt></ruby>いします。","kana":"ホットのラテをテイクアウトでおねがいします。","ko":"핫라테 포장으로 부탁합니다","note":"사이즈는 S/M/L이 아니라 トール·グランデ 등 매장 표기를 따름.","ex":"ホットのラテをテイクアウトでお願いします。サイズは普通で。","exRuby":"ホットのラテをテイクアウトでお<ruby>願<rt>ねが</rt></ruby>いします。サイズは<ruby>普通<rt>ふつう</rt></ruby>で。","exKana":"ホットのラテをテイクアウトでおねがいします。サイズはふつうで。","exKo":"핫라테 포장으로 부탁합니다. 사이즈는 보통으로요."},{"id":"L2-08","lv":2,"tag":"식당","pol":"polite","v":"f","jp":"ごちそうさまでした。","ruby":"ごちそうさまでした。","kana":"ごちそうさまでした。","ko":"잘 먹었습니다","note":"나올 때 반드시. 주인에게 인사를 건네면 인상이 크게 달라짐.","ex":"ごちそうさまでした。美味しかったです。","exRuby":"ごちそうさまでした。<ruby>美味<rt>おい</rt></ruby>しかったです。","exKana":"ごちそうさまでした。おいしかったです。","exKo":"잘 먹었습니다. 맛있었어요."},{"id":"L2-09","lv":2,"tag":"식당","pol":"polite","v":"m","jp":"お会計をお願いします。","ruby":"お<ruby>会計<rt>かいけい</rt></ruby>をお<ruby>願<rt>ねが</rt></ruby>いします。","kana":"おかいけいをおねがいします。","ko":"계산 부탁합니다","note":"レジで/席で. 각자 계산은 [別々|べつべつ]でお願いします.","ex":"すみません、お会計をお願いします。別々でいいですか。","exRuby":"すみません、お<ruby>会計<rt>かいけい</rt></ruby>をお<ruby>願<rt>ねが</rt></ruby>いします。<ruby>別々<rt>べつべつ</rt></ruby>でいいですか。","exKana":"すみません、おかいけいをおねがいします。べつべつでいいですか。","exKo":"저기요, 계산 부탁합니다. 따로따로 해도 될까요?"},{"id":"L2-10","lv":2,"tag":"쇼핑","pol":"polite","v":"f","jp":"これ、試着してもいいですか。","ruby":"これ、<ruby>試着<rt>しちゃく</rt></ruby>してもいいですか。","kana":"これ、しちゃくしてもいいですか。","ko":"이거 입어봐도 될까요?","note":"의류점 기본. 試着室는 試着室(しちゃくしつ).","ex":"これ、試着してもいいですか。少し大きいかもしれません。","exRuby":"これ、<ruby>試着<rt>しちゃく</rt></ruby>してもいいですか。<ruby>少<rt>すこ</rt></ruby>し<ruby>大<rt>おお</rt></ruby>きいかもしれません。","exKana":"これ、しちゃくしてもいいですか。すこしおおきいかもしれません。","exKo":"이거 입어봐도 될까요? 조금 클지도 몰라서요."},{"id":"L2-11","lv":2,"tag":"쇼핑","pol":"polite","v":"m","jp":"もう少し安くなりませんか。","ruby":"もう<ruby>少<rt>すこ</rt></ruby>し<ruby>安<rt>やす</rt></ruby>くなりませんか。","kana":"もうすこしやすくなりませんか。","ko":"조금 더 깎아 주실 수 없나요?","note":"시장·소품점에서만. 체인점·백화점에서는 실례.","ex":"もう少し安くなりませんか。二つ買いますので。","exRuby":"もう<ruby>少<rt>すこ</rt></ruby>し<ruby>安<rt>やす</rt></ruby>くなりませんか。<ruby>二<rt>ふた</rt></ruby>つ<ruby>買<rt>か</rt></ruby>いますので。","exKana":"もうすこしやすくなりませんか。ふたつかいますので。","exKo":"조금 더 깎아 주실 수 없나요? 두 개 살 테니까요."},{"id":"L2-12","lv":2,"tag":"길찾기","pol":"polite","v":"f","jp":"トイレはどこにありますか。","ruby":"トイレはどこにありますか。","kana":"トイレはどこにありますか。","ko":"화장실이 어디에 있나요?","note":"ありますか는 건물 안, どこですか는 더 직접적.","ex":"すみません、トイレはどこにありますか。","exRuby":"すみません、トイレはどこにありますか。","exKana":"すみません、トイレはどこにありますか。","exKo":"저기요, 화장실이 어디에 있나요?"},{"id":"L2-13","lv":2,"tag":"길찾기","pol":"polite","v":"m","jp":"駅まで行きたいのですが、道を教えていただけますか。","ruby":"<ruby>駅<rt>えき</rt></ruby>まで<ruby>行<rt>い</rt></ruby>きたいのですが、<ruby>道<rt>みち</rt></ruby>を<ruby>教<rt>おし</rt></ruby>えていただけますか。","kana":"えきまでいきたいのですが、みちをおしえていただけますか。","ko":"역까지 가고 싶은데 길을 알려 주시겠어요?","note":"が로 끝을 흐리면 '상황 설명 + 부탁'의 부드러운 형태.","ex":"駅まで行きたいのですが、道を教えていただけますか。","exRuby":"<ruby>駅<rt>えき</rt></ruby>まで<ruby>行<rt>い</rt></ruby>きたいのですが、<ruby>道<rt>みち</rt></ruby>を<ruby>教<rt>おし</rt></ruby>えていただけますか。","exKana":"えきまでいきたいのですが、みちをおしえていただけますか。","exKo":"역까지 가고 싶은데 길을 알려 주시겠어요?"},{"id":"L2-14","lv":2,"tag":"약속","pol":"polite","v":"f","jp":"今、お時間大丈夫ですか。","ruby":"<ruby>今<rt>いま</rt></ruby>、お<ruby>時間<rt>じかん</rt></ruby><ruby>大丈夫<rt>だいじょうぶ</rt></ruby>ですか。","kana":"いま、おじかんだいじょうぶですか。","ko":"지금 시간 괜찮으세요?","note":"전화·메시지로 용건 꺼내기 전의 기본 예절.","ex":"今、お時間大丈夫ですか。相談したいことがあって。","exRuby":"<ruby>今<rt>いま</rt></ruby>、お<ruby>時間<rt>じかん</rt></ruby><ruby>大丈夫<rt>だいじょうぶ</rt></ruby>ですか。<ruby>相談<rt>そうだん</rt></ruby>したいことがあって。","exKana":"いま、おじかんだいじょうぶですか。そうだんしたいことがあって。","exKo":"지금 시간 괜찮으세요? 상담하고 싶은 게 있어서요."},{"id":"L2-15","lv":2,"tag":"약속","pol":"casual","v":"m","jp":"来週の金曜、空いてる？","ruby":"<ruby>来週<rt>らいしゅう</rt></ruby>の<ruby>金曜<rt>きんよう</rt></ruby>、<ruby>空<rt>あ</rt></ruby>いてる？","kana":"らいしゅうのきんよう、あいてる？","ko":"다음 주 금요일 비어 있어?","note":"タメ口. 정중체는 空いていますか. 空いてる는 '비어 있다'.","ex":"来週の金曜、空いてる？一緒に食べ行こうよ。","exRuby":"<ruby>来週<rt>らいしゅう</rt></ruby>の<ruby>金曜<rt>きんよう</rt></ruby>、<ruby>空<rt>あ</rt></ruby>いてる？<ruby>一緒<rt>いっしょ</rt></ruby>に<ruby>食<rt>た</rt></ruby>べ<ruby>行<rt>い</rt></ruby>こうよ。","exKana":"らいしゅうのきんよう、あいてる？いっしょにたべいこうよ。","exKo":"다음 주 금요일 비어 있어? 같이 먹으러 가자."},{"id":"L2-16","lv":2,"tag":"거절","pol":"casual","v":"f","jp":"土曜はちょっと…","ruby":"<ruby>土曜<rt>どよう</rt></ruby>はちょっと…","kana":"どようはちょっと…","ko":"토요일은 좀…","note":"끝을 흐리는 가장 부드러운 거절. ちょっと 뒤에 이유를 붙이면 더 자연스러움.","ex":"土曜はちょっと…予定があって。","exRuby":"<ruby>土曜<rt>どよう</rt></ruby>はちょっと…<ruby>予定<rt>よてい</rt></ruby>があって。","exKana":"どようはちょっと…よていがあって。","exKo":"토요일은 좀… 약속이 있어서."},{"id":"L2-17","lv":2,"tag":"거절","pol":"polite","v":"f","jp":"また今度お願いします。","ruby":"また<ruby>今度<rt>こんど</rt></ruby>お<ruby>願<rt>ねが</rt></ruby>いします。","kana":"またこんどおねがいします。","ko":"다음에 다시 부탁드릴게요","note":"'이번엔 어렵다'는 완곡한 거절. 진짜 다음을 기약할 때도 씀.","ex":"今日は難しいので、また今度お願いします。","exRuby":"<ruby>今日<rt>きょう</rt></ruby>は<ruby>難<rt>むずか</rt></ruby>しいので、また<ruby>今度<rt>こんど</rt></ruby>お<ruby>願<rt>ねが</rt></ruby>いします。","exKana":"きょうはむずかしいので、またこんどおねがいします。","exKo":"오늘은 어려우니 다음에 다시 부탁드릴게요."},{"id":"L2-18","lv":2,"tag":"허락","pol":"casual","v":"m","jp":"写真、撮ってもいい？","ruby":"<ruby>写真<rt>しゃしん</rt></ruby>、<ruby>撮<rt>と</rt></ruby>ってもいい？","kana":"しゃしん、とってもいい？","ko":"사진 찍어도 돼?","note":"てもいい？는 가벼운 허락 요청. 정중체는 てもよろしいですか.","ex":"ここで写真、撮ってもいい？","exRuby":"ここで<ruby>写真<rt>しゃしん</rt></ruby>、<ruby>撮<rt>と</rt></ruby>ってもいい？","exKana":"ここでしゃしん、とってもいい？","exKo":"여기서 사진 찍어도 돼?"},{"id":"L2-19","lv":2,"tag":"권유","pol":"casual","v":"f","jp":"一緒に行かない？","ruby":"<ruby>一緒<rt>いっしょ</rt></ruby>に<ruby>行<rt>い</rt></ruby>かない？","kana":"いっしょにいかない？","ko":"같이 갈래?","note":"ない？형 권유. 정중체는 行きませんか. 行こうよ는 더 적극적.","ex":"駅前に新しいカフェができたんだ。一緒に行かない？","exRuby":"<ruby>駅前<rt>えきまえ</rt></ruby>に<ruby>新<rt>あたら</rt></ruby>しいカフェができたんだ。<ruby>一緒<rt>いっしょ</rt></ruby>に<ruby>行<rt>い</rt></ruby>かない？","exKana":"えきまえにあたらしいカフェができたんだ。いっしょにいかない？","exKo":"역 앞에 새 카페가 생겼어. 같이 갈래?"},{"id":"L2-20","lv":2,"tag":"권유","pol":"polite","v":"m","jp":"一緒に行きませんか。","ruby":"<ruby>一緒<rt>いっしょ</rt></ruby>に<ruby>行<rt>い</rt></ruby>きませんか。","kana":"いっしょにいきませんか。","ko":"같이 가시지 않겠어요?","note":"정중한 권유. 부담을 주지 않는 형태라 직장 동료에게도 무난.","ex":"来週、一緒に行きませんか。","exRuby":"<ruby>来週<rt>らいしゅう</rt></ruby>、<ruby>一緒<rt>いっしょ</rt></ruby>に<ruby>行<rt>い</rt></ruby>きませんか。","exKana":"らいしゅう、いっしょにいきませんか。","exKo":"다음 주, 같이 가시지 않겠어요?"},{"id":"L2-21","lv":2,"tag":"직장","pol":"polite","v":"m","jp":"お疲れさまです。","ruby":"お<ruby>疲<rt>つか</rt></ruby>れさまです。","kana":"おつかれさまです。","ko":"수고하십니다","note":"직장에서 하루 종일 쓰는 인사. 퇴근 인사는 お疲れさまでした.","ex":"お疲れさまです。資料、確認しておきました。","exRuby":"お<ruby>疲<rt>つか</rt></ruby>れさまです。<ruby>資料<rt>しりょう</rt></ruby>、<ruby>確認<rt>かくにん</rt></ruby>しておきました。","exKana":"おつかれさまです。しりょう、かくにんしておきました。","exKo":"수고하십니다. 자료 확인해 두었습니다."},{"id":"L2-22","lv":2,"tag":"직장","pol":"polite","v":"f","jp":"お先に失礼します。","ruby":"お<ruby>先<rt>さき</rt></ruby>に<ruby>失礼<rt>しつれい</rt></ruby>します。","kana":"おさきにしつれいします。","ko":"먼저 들어가겠습니다","note":"퇴근 인사. 아무 말 없이 나가는 게 가장 실례.","ex":"お先に失礼します。お疲れさまでした。","exRuby":"お<ruby>先<rt>さき</rt></ruby>に<ruby>失礼<rt>しつれい</rt></ruby>します。お<ruby>疲<rt>つか</rt></ruby>れさまでした。","exKana":"おさきにしつれいします。おつかれさまでした。","exKo":"먼저 들어가겠습니다. 수고하셨습니다."},{"id":"L2-23","lv":2,"tag":"비즈니스","pol":"polite","v":"f","jp":"お世話になっております。","ruby":"お<ruby>世話<rt>せわ</rt></ruby>になっております。","kana":"おせわになっております。","ko":"신세 많이 지고 있습니다","note":"전화·메일 첫인사. 처음 연락하는 상대에게도 관례적으로 씀.","ex":"株式会社〇〇の山田です。いつもお世話になっております。","exRuby":"<ruby>株式会社<rt>かぶしきがいしゃ</rt></ruby>〇〇の<ruby>山田<rt>やまだ</rt></ruby>です。いつもお<ruby>世話<rt>せわ</rt></ruby>になっております。","exKana":"かぶしきがいしゃ〇〇のやまだです。いつもおせわになっております。","exKo":"주식회사 ○○의 야마다입니다. 항상 신세 지고 있습니다."},{"id":"L2-24","lv":2,"tag":"인사","pol":"polite","v":"m","jp":"よろしくお願いします。","ruby":"よろしくお<ruby>願<rt>ねが</rt></ruby>いします。","kana":"よろしくおねがいします。","ko":"잘 부탁드립니다","note":"첫 만남·부탁·마무리 모두. こちらこそよろしく로 받으면 자연스러움.","ex":"今日から一緒に働きます。よろしくお願いします。","exRuby":"<ruby>今日<rt>きょう</rt></ruby>から<ruby>一緒<rt>いっしょ</rt></ruby>に<ruby>働<rt>はたら</rt></ruby>きます。よろしくお<ruby>願<rt>ねが</rt></ruby>いします。","exKana":"きょうからいっしょにはたらきます。よろしくおねがいします。","exKo":"오늘부터 함께 일합니다. 잘 부탁드립니다."},{"id":"L2-25","lv":2,"tag":"인사","pol":"polite","v":"f","jp":"こちらこそ。","ruby":"こちらこそ。","kana":"こちらこそ。","ko":"저야말로","note":"감사·사과·인사를 받을 때. こちらこそありがとうございます로 확장.","ex":"こちらこそ、ありがとうございます。助かりました。","exRuby":"こちらこそ、ありがとうございます。<ruby>助<rt>たす</rt></ruby>かりました。","exKana":"こちらこそ、ありがとうございます。たすかりました。","exKo":"도움됐습니다. → 저야말로 감사합니다."},{"id":"L2-26","lv":2,"tag":"인사","pol":"polite","v":"m","jp":"おかげさまで。","ruby":"おかげさまで。","kana":"おかげさまで。","ko":"덕분에요","note":"안부·성과 질문에 대한 겸손한 답. 그 자체로 한 문장이 됨.","ex":"おかげさまで、無事に終わりました。","exRuby":"おかげさまで、<ruby>無事<rt>ぶじ</rt></ruby>に<ruby>終<rt>お</rt></ruby>わりました。","exKana":"おかげさまで、ぶじにおわりました。","exKo":"덕분에 무사히 끝났습니다."},{"id":"L2-27","lv":2,"tag":"재회","pol":"casual","v":"f","jp":"久しぶり！元気だった？","ruby":"<ruby>久<rt>ひさ</rt></ruby>しぶり！<ruby>元気<rt>げんき</rt></ruby>だった？","kana":"ひさしぶり！げんきだった？","ko":"오랜만이야! 잘 지냈어?","note":"친구에게. 정중체는 お久しぶりです・お元気でしたか.","ex":"久しぶり！元気だった？変わらないね。","exRuby":"<ruby>久<rt>ひさ</rt></ruby>しぶり！<ruby>元気<rt>げんき</rt></ruby>だった？<ruby>変<rt>か</rt></ruby>わらないね。","exKana":"ひさしぶり！げんきだった？かわらないね。","exKo":"오랜만이야! 잘 지냈어? 안 변했네."},{"id":"L2-28","lv":2,"tag":"약속","pol":"casual","v":"m","jp":"また連絡するね。","ruby":"また<ruby>連絡<rt>れんらく</rt></ruby>するね。","kana":"またれんらくするね。","ko":"또 연락할게","note":"대화를 자연스럽게 닫는 말. 상대에게 부담을 주지 않음.","ex":"今日はありがとう。また連絡するね。","exRuby":"<ruby>今日<rt>きょう</rt></ruby>はありがとう。また<ruby>連絡<rt>れんらく</rt></ruby>するね。","exKana":"きょうはありがとう。またれんらくするね。","exKo":"오늘 고마워. 또 연락할게."},{"id":"L2-29","lv":2,"tag":"배려","pol":"casual","v":"f","jp":"気をつけて帰ってね。","ruby":"<ruby>気<rt>き</rt></ruby>をつけて<ruby>帰<rt>かえ</rt></ruby>ってね。","kana":"きをつけてかえってね。","ko":"조심히 들어가","note":"헤어질 때의 기본 배려. 정중체는 お気をつけてお帰りください.","ex":"暗くなってきたから、気をつけて帰ってね。","exRuby":"<ruby>暗<rt>くら</rt></ruby>くなってきたから、<ruby>気<rt>き</rt></ruby>をつけて<ruby>帰<rt>かえ</rt></ruby>ってね。","exKana":"くらくなってきたから、きをつけてかえってね。","exKo":"어두워졌으니 조심히 들어가."},{"id":"L2-30","lv":2,"tag":"응대","pol":"polite","v":"m","jp":"お待たせしました。","ruby":"お<ruby>待<rt>ま</rt></ruby>たせしました。","kana":"おまたせしました。","ko":"기다리게 해서 죄송합니다","note":"늦었을 때·손님을 맞을 때. お待たせいたしました는 더 정중.","ex":"お待たせしました。こちらへどうぞ。","exRuby":"お<ruby>待<rt>ま</rt></ruby>たせしました。こちらへどうぞ。","exKana":"おまたせしました。こちらへどうぞ。","exKo":"기다리게 해서 죄송합니다. 이쪽으로 오세요."},{"id":"L2-31","lv":2,"tag":"부탁","pol":"polite","v":"f","jp":"〜してもらえると助かります。","ruby":"〜してもらえると<ruby>助<rt>たす</rt></ruby>かります。","kana":"〜してもらえるとたすかります。","ko":"~해 주시면 도움이 됩니다","note":"'부탁'을 '나의 사정'으로 바꿔 부담을 낮추는 표현.","ex":"少し早めに送ってもらえると助かります。","exRuby":"<ruby>少<rt>すこ</rt></ruby>し<ruby>早<rt>はや</rt></ruby>めに<ruby>送<rt>おく</rt></ruby>ってもらえると<ruby>助<rt>たす</rt></ruby>かります。","exKana":"すこしはやめにおくってもらえるとたすかります。","exKo":"조금 일찍 보내 주시면 도움이 됩니다."},{"id":"L3-01","lv":3,"tag":"쿠션어","pol":"polite","v":"f","jp":"恐れ入りますが、確認していただけますでしょうか。","ruby":"<ruby>恐<rt>おそ</rt></ruby>れ<ruby>入<rt>い</rt></ruby>りますが、<ruby>確認<rt>かくにん</rt></ruby>していただけますでしょうか。","kana":"おそれいりますが、かくにんしていただけますでしょうか。","ko":"송구하지만, 확인해 주시겠습니까?","note":"가장 범용적인 쿠션어. 거래처·상사 모두에게 무난.","ex":"恐れ入りますが、見積書を送っていただけますでしょうか。","exRuby":"<ruby>恐<rt>おそ</rt></ruby>れ<ruby>入<rt>い</rt></ruby>りますが、<ruby>見積書<rt>みつもりしょ</rt></ruby>を<ruby>送<rt>おく</rt></ruby>っていただけますでしょうか。","exKana":"おそれいりますが、みつもりしょをおくっていただけますでしょうか。","exKo":"송구하지만, 견적서를 보내 주시겠습니까?"},{"id":"L3-02","lv":3,"tag":"쿠션어","pol":"polite","v":"m","jp":"お手数をおかけしますが、よろしくお願いいたします。","ruby":"お<ruby>手数<rt>てすう</rt></ruby>をおかけしますが、よろしくお<ruby>願<rt>ねが</rt></ruby>いいたします。","kana":"おてすうをおかけしますが、よろしくおねがいいたします。","ko":"번거롭게 해 드려 죄송하지만, 잘 부탁드립니다","note":"상대의 '수고'에 초점. 같은 편(사내)에게 자주 씀.","ex":"お手数をおかけしますが、こちらの書類にご記入をお願いいたします。","exRuby":"お<ruby>手数<rt>てすう</rt></ruby>をおかけしますが、こちらの<ruby>書類<rt>しょるい</rt></ruby>にご<ruby>記入<rt>きにゅう</rt></ruby>をお<ruby>願<rt>ねが</rt></ruby>いいたします。","exKana":"おてすうをおかけしますが、こちらのしょるいにごきにゅうをおねがいいたします。","exKo":"번거롭게 해 드려 죄송하지만, 이 서류에 기입 부탁드립니다."},{"id":"L3-03","lv":3,"tag":"쿠션어","pol":"polite","v":"f","jp":"お忙しいところ恐縮ですが。","ruby":"お<ruby>忙<rt>いそが</rt></ruby>しいところ<ruby>恐縮<rt>きょうしゅく</rt></ruby>ですが。","kana":"おいそがしいところきょうしゅくですが。","ko":"바쁘신 중에 죄송하지만","note":"상대의 '시간'을 빌린다는 배려. 뒤에 반드시 구체적 용건을 붙임.","ex":"お忙しいところ恐縮ですが、十分ほどお時間をいただけますか。","exRuby":"お<ruby>忙<rt>いそが</rt></ruby>しいところ<ruby>恐縮<rt>きょうしゅく</rt></ruby>ですが、<ruby>十分<rt>じゅっぷん</rt></ruby>ほどお<ruby>時間<rt>じかん</rt></ruby>をいただけますか。","exKana":"おいそがしいところきょうしゅくですが、じゅっぷんほどおじかんをいただけますか。","exKo":"바쁘신 중에 죄송하지만, 10분 정도 시간을 받을 수 있을까요?"},{"id":"L3-04","lv":3,"tag":"질문","pol":"polite","v":"f","jp":"差し支えなければ、伺ってもよろしいでしょうか。","ruby":"<ruby>差<rt>さ</rt></ruby>し<ruby>支<rt>つか</rt></ruby>えなければ、<ruby>伺<rt>うかが</rt></ruby>ってもよろしいでしょうか。","kana":"さしつかえなければ、うかがってもよろしいでしょうか。","ko":"실례가 되지 않는다면, 여쭤봐도 될까요?","note":"사적인 영역·민감한 질문 앞에. 답하지 않아도 된다는 여지를 남김.","ex":"差し支えなければ、前職でのご経験を伺ってもよろしいでしょうか。","exRuby":"<ruby>差<rt>さ</rt></ruby>し<ruby>支<rt>つか</rt></ruby>えなければ、<ruby>前職<rt>ぜんしょく</rt></ruby>でのご<ruby>経験<rt>けいけん</rt></ruby>を<ruby>伺<rt>うかが</rt></ruby>ってもよろしいでしょうか。","exKana":"さしつかえなければ、ぜんしょくでのごけいけんをうかがってもよろしいでしょうか。","exKo":"실례가 되지 않는다면, 전 직장에서의 경험을 여쭤봐도 될까요?"},{"id":"L3-05","lv":3,"tag":"거절","pol":"polite","v":"m","jp":"あいにくですが、その日は予定が入っておりまして。","ruby":"あいにくですが、その<ruby>日<rt>ひ</rt></ruby>は<ruby>予定<rt>よてい</rt></ruby>が<ruby>入<rt>はい</rt></ruby>っておりまして。","kana":"あいにくですが、そのひはよていがはいっておりまして。","ko":"공교롭게도 그날은 일정이 잡혀 있어서요","note":"あいにく는 '내 사정'이 아니라 '때가 안 좋다'로 돌리는 표현.","ex":"あいにくですが、その日は予定が入っておりまして。別の日ではいかがでしょうか。","exRuby":"あいにくですが、その<ruby>日<rt>ひ</rt></ruby>は<ruby>予定<rt>よてい</rt></ruby>が<ruby>入<rt>はい</rt></ruby>っておりまして。<ruby>別<rt>べつ</rt></ruby>の<ruby>日<rt>ひ</rt></ruby>ではいかがでしょうか。","exKana":"あいにくですが、そのひはよていがはいっておりまして。べつのひではいかがでしょうか。","exKo":"공교롭게도 그날은 일정이 잡혀 있어서요. 다른 날은 어떠실까요?"},{"id":"L3-06","lv":3,"tag":"거절","pol":"polite","v":"f","jp":"せっかくのお話ですが、今回は見送らせていただきます。","ruby":"せっかくのお<ruby>話<rt>はなし</rt></ruby>ですが、<ruby>今回<rt>こんかい</rt></ruby>は<ruby>見送<rt>みおく</rt></ruby>らせていただきます。","kana":"せっかくのおはなしですが、こんかいはみおくらせていただきます。","ko":"좋은 말씀 감사하지만, 이번에는 사양하겠습니다","note":"거절 3단 구조: 감사 → 사정 → 결론. 가장 정중한 거절 틀.","ex":"せっかくのお話ですが、予算の関係もあり、今回は見送らせていただきます。","exRuby":"せっかくのお<ruby>話<rt>はなし</rt></ruby>ですが、<ruby>予算<rt>よさん</rt></ruby>の<ruby>関係<rt>かんけい</rt></ruby>もあり、<ruby>今回<rt>こんかい</rt></ruby>は<ruby>見送<rt>みおく</rt></ruby>らせていただきます。","exKana":"せっかくのおはなしですが、よさんのかんけいもあり、こんかいはみおくらせていただきます。","exKo":"좋은 말씀 감사하지만, 예산 관계도 있어 이번에는 사양하겠습니다."},{"id":"L3-07","lv":3,"tag":"거절","pol":"polite","v":"f","jp":"前向きに検討させていただきます。","ruby":"<ruby>前向<rt>まえむ</rt></ruby>きに<ruby>検討<rt>けんとう</rt></ruby>させていただきます。","kana":"まえむきにけんとうさせていただきます。","ko":"전향적으로 검토하겠습니다","note":"실제로는 '지금은 안 한다'는 신호일 때가 많음. 남용은 신뢰를 잃음.","ex":"ご提案ありがとうございます。社内で前向きに検討させていただきます。","exRuby":"ご<ruby>提案<rt>ていあん</rt></ruby>ありがとうございます。<ruby>社内<rt>しゃない</rt></ruby>で<ruby>前向<rt>まえむ</rt></ruby>きに<ruby>検討<rt>けんとう</rt></ruby>させていただきます。","exKana":"ごていあんありがとうございます。しゃないでまえむきにけんとうさせていただきます。","exKo":"제안 감사합니다. 사내에서 전향적으로 검토하겠습니다."},{"id":"L3-08","lv":3,"tag":"완곡","pol":"polite","v":"m","jp":"申し上げにくいのですが。","ruby":"<ruby>申<rt>もう</rt></ruby>し<ruby>上<rt>あ</rt></ruby>げにくいのですが。","kana":"もうしあげにくいのですが。","ko":"말씀드리기 어렵지만","note":"반대·지적·부정적 소식을 꺼낼 때의 완충. 뒤에 핵심을 짧게.","ex":"申し上げにくいのですが、納期に少し懸念がございます。","exRuby":"<ruby>申<rt>もう</rt></ruby>し<ruby>上<rt>あ</rt></ruby>げにくいのですが、<ruby>納期<rt>のうき</rt></ruby>に<ruby>少<rt>すこ</rt></ruby>し<ruby>懸念<rt>けねん</rt></ruby>がございます。","exKana":"もうしあげにくいのですが、のうきにすこしけねんがございます。","exKo":"말씀드리기 어렵지만, 납기에 조금 우려가 있습니다."},{"id":"L3-09","lv":3,"tag":"확인","pol":"polite","v":"f","jp":"念のため確認させていただきたいのですが。","ruby":"<ruby>念<rt>ねん</rt></ruby>のため<ruby>確認<rt>かくにん</rt></ruby>させていただきたいのですが。","kana":"ねんのためかくにんさせていただきたいのですが。","ko":"혹시 몰라 확인차 여쭙고 싶은데요","note":"'추궁'이 아니라 '재확인'으로 들리게 하는 장치.","ex":"念のため確認させていただきたいのですが、納品は来週月曜でお間違いないでしょうか。","exRuby":"<ruby>念<rt>ねん</rt></ruby>のため<ruby>確認<rt>かくにん</rt></ruby>させていただきたいのですが、<ruby>納品<rt>のうひん</rt></ruby>は<ruby>来週<rt>らいしゅう</rt></ruby><ruby>月曜<rt>げつよう</rt></ruby>でお<ruby>間違<rt>まちが</rt></ruby>いないでしょうか。","exKana":"ねんのためかくにんさせていただきたいのですが、のうひんはらいしゅうげつようでおまちがいないでしょうか。","exKo":"혹시 몰라 확인차 여쭙고 싶은데요, 납품은 다음 주 월요일이 맞으실까요?"},{"id":"L3-10","lv":3,"tag":"보고","pol":"polite","v":"m","jp":"共有させていただきます。","ruby":"<ruby>共有<rt>きょうゆう</rt></ruby>させていただきます。","kana":"きょうゆうさせていただきます。","ko":"공유드리겠습니다","note":"'보고'를 '공유'로 낮춰 상대의 판단 부담을 줄임. 사내 표준어.","ex":"資料を共有させていただきます。ご確認をお願いします。","exRuby":"<ruby>資料<rt>しりょう</rt></ruby>を<ruby>共有<rt>きょうゆう</rt></ruby>させていただきます。ご<ruby>確認<rt>かくにん</rt></ruby>をお<ruby>願<rt>ねが</rt></ruby>いします。","exKana":"しりょうをきょうゆうさせていただきます。ごかくにんをおねがいします。","exKo":"자료를 공유드리겠습니다. 확인 부탁드립니다."},{"id":"L3-11","lv":3,"tag":"상담","pol":"polite","v":"f","jp":"お先に相談させていただいてもいいですか。","ruby":"お<ruby>先<rt>さき</rt></ruby>に<ruby>相談<rt>そうだん</rt></ruby>させていただいてもいいですか。","kana":"おさきにそうだんさせていただいてもいいですか。","ko":"먼저 상담드려도 될까요?","note":"결재 전에 '먼저 말했다'는 신뢰를 만드는 표현.","ex":"進め方について、お先に相談させていただいてもいいですか。","exRuby":"<ruby>進<rt>すす</rt></ruby>め<ruby>方<rt>かた</rt></ruby>について、お<ruby>先<rt>さき</rt></ruby>に<ruby>相談<rt>そうだん</rt></ruby>させていただいてもいいですか。","exKana":"すすめかたについて、おさきにそうだんさせていただいてもいいですか。","exKo":"진행 방식에 대해 먼저 상담드려도 될까요?"},{"id":"L3-12","lv":3,"tag":"담당","pol":"polite","v":"m","jp":"この件、私が対応いたします。","ruby":"この<ruby>件<rt>けん</rt></ruby>、<ruby>私<rt>わたし</rt></ruby>が<ruby>対応<rt>たいおう</rt></ruby>いたします。","kana":"このけん、わたしがたいおういたします。","ko":"이 건, 제가 대응하겠습니다","note":"자발적으로 나서는 표현. 対応いたします가 やります보다 압도적으로 좋음.","ex":"この件、私が対応いたします。なにかあればご連絡ください。","exRuby":"この<ruby>件<rt>けん</rt></ruby>、<ruby>私<rt>わたし</rt></ruby>が<ruby>対応<rt>たいおう</rt></ruby>いたします。なにかあればご<ruby>連絡<rt>れんらく</rt></ruby>ください。","exKana":"このけん、わたしがたいおういたします。なにかあればごれんらくください。","exKo":"이 건, 제가 대응하겠습니다. 뭐 있으면 연락 주세요."},{"id":"L3-13","lv":3,"tag":"보고","pol":"polite","v":"f","jp":"確認のうえ、折り返しご連絡いたします。","ruby":"<ruby>確認<rt>かくにん</rt></ruby>のうえ、<ruby>折<rt>お</rt></ruby>り<ruby>返<rt>かえ</rt></ruby>しご<ruby>連絡<rt>れんらく</rt></ruby>いたします。","kana":"かくにんのうえ、おりかえしごれんらくいたします。","ko":"확인 후 다시 연락드리겠습니다","note":"전화·문의 응대의 정답. '지금 모른다'를 신뢰로 바꾸는 말.","ex":"担当の者に確認のうえ、折り返しご連絡いたします。","exRuby":"<ruby>担当<rt>たんとう</rt></ruby>の<ruby>者<rt>もの</rt></ruby>に<ruby>確認<rt>かくにん</rt></ruby>のうえ、<ruby>折<rt>お</rt></ruby>り<ruby>返<rt>かえ</rt></ruby>しご<ruby>連絡<rt>れんらく</rt></ruby>いたします。","exKana":"たんとうのものにかくにんのうえ、おりかえしごれんらくいたします。","exKo":"담당자에게 확인 후 다시 연락드리겠습니다."},{"id":"L3-14","lv":3,"tag":"사과","pol":"polite","v":"m","jp":"大変申し訳ございません。私の確認不足でした。","ruby":"<ruby>大変<rt>たいへん</rt></ruby><ruby>申<rt>もう</rt></ruby>し<ruby>訳<rt>わけ</rt></ruby>ございません。<ruby>私<rt>わたし</rt></ruby>の<ruby>確認不足<rt>かくにんぶそく</rt></ruby>でした。","kana":"たいへんもうしわけございません。わたしのかくにんぶそくでした。","ko":"정말 죄송합니다. 제 확인 부족이었습니다","note":"사과는 변명보다 '원인 인정'이 먼저. 大変을 붙여 진심도를 표시.","ex":"大変申し訳ございません。私の確認不足でした。すぐに修正いたします。","exRuby":"<ruby>大変<rt>たいへん</rt></ruby><ruby>申<rt>もう</rt></ruby>し<ruby>訳<rt>わけ</rt></ruby>ございません。<ruby>私<rt>わたし</rt></ruby>の<ruby>確認不足<rt>かくにんぶそく</rt></ruby>でした。すぐに<ruby>修正<rt>しゅうせい</rt></ruby>いたします。","exKana":"たいへんもうしわけございません。わたしのかくにんぶそくでした。すぐにしゅうせいいたします。","exKo":"정말 죄송합니다. 제 확인 부족이었습니다. 바로 수정하겠습니다."},{"id":"L3-15","lv":3,"tag":"사과","pol":"polite","v":"f","jp":"今後、再発防止に努めてまいります。","ruby":"<ruby>今後<rt>こんご</rt></ruby>、<ruby>再発<rt>さいはつ</rt></ruby><ruby>防止<rt>ぼうし</rt></ruby>に<ruby>努<rt>つと</rt></ruby>めてまいります。","kana":"こんご、さいはつぼうしにつとめてまいります。","ko":"앞으로 재발 방지에 힘쓰겠습니다","note":"사과 마무리의 정형구. 気をつけます보다 격식 있고 신뢰감이 큼.","ex":"今後、このようなことがないよう再発防止に努めてまいります。","exRuby":"<ruby>今後<rt>こんご</rt></ruby>、このようなことがないよう<ruby>再発<rt>さいはつ</rt></ruby><ruby>防止<rt>ぼうし</rt></ruby>に<ruby>努<rt>つと</rt></ruby>めてまいります。","exKana":"こんご、このようなことがないようさいはつぼうしにつとめてまいります。","exKo":"앞으로 이런 일이 없도록 재발 방지에 힘쓰겠습니다."},{"id":"L3-16","lv":3,"tag":"감사","pol":"polite","v":"m","jp":"おかげさまで、無事に終わりました。","ruby":"おかげさまで、<ruby>無事<rt>ぶじ</rt></ruby>に<ruby>終<rt>お</rt></ruby>わりました。","kana":"おかげさまで、ぶじにおわりました。","ko":"덕분에 무사히 끝났습니다","note":"'내 공'이 아니라 '당신 덕'으로 돌리는 일본식 감사.","ex":"おかげさまで、発表は無事に終わりました。ありがとうございました。","exRuby":"おかげさまで、<ruby>発表<rt>はっぴょう</rt></ruby>は<ruby>無事<rt>ぶじ</rt></ruby>に<ruby>終<rt>お</rt></ruby>わりました。ありがとうございました。","exKana":"おかげさまで、はっぴょうはぶじにおわりました。ありがとうございました。","exKo":"덕분에 발표는 무사히 끝났습니다. 감사합니다."},{"id":"L3-17","lv":3,"tag":"사과","pol":"polite","v":"f","jp":"ご迷惑をおかけして、申し訳ございません。","ruby":"ご<ruby>迷惑<rt>めいわく</rt></ruby>をおかけして、<ruby>申<rt>もう</rt></ruby>し<ruby>訳<rt>わけ</rt></ruby>ございません。","kana":"ごめいわくをおかけして、もうしわけございません。","ko":"폐를 끼쳐 죄송합니다","note":"시간·절차를 빼앗았을 때. 가벼운 지연에도 먼저 이 한마디.","ex":"お待たせしてご迷惑をおかけして、申し訳ございません。","exRuby":"お<ruby>待<rt>ま</rt></ruby>たせしてご<ruby>迷惑<rt>めいわく</rt></ruby>をおかけして、<ruby>申<rt>もう</rt></ruby>し<ruby>訳<rt>わけ</rt></ruby>ございません。","exKana":"おまたせしてごめいわくをおかけして、もうしわけございません。","exKo":"기다리게 해 폐를 끼쳐 죄송합니다."},{"id":"L3-18","lv":3,"tag":"제안","pol":"polite","v":"m","jp":"いかがでしょうか。","ruby":"いかがでしょうか。","kana":"いかがでしょうか。","ko":"어떠실까요?","note":"제안·확인의 마무리. どうですか보다 부드럽고 격식 있음.","ex":"別の進め方も考えてみましたが、いかがでしょうか。","exRuby":"<ruby>別<rt>べつ</rt></ruby>の<ruby>進<rt>すす</rt></ruby>め<ruby>方<rt>かた</rt></ruby>も<ruby>考<rt>かんが</rt></ruby>えてみましたが、いかがでしょうか。","exKana":"べつのすすめかたもかんがえてみましたが、いかがでしょうか。","exKo":"다른 진행 방식도 생각해 봤는데, 어떠실까요?"},{"id":"L3-19","lv":3,"tag":"일정","pol":"polite","v":"f","jp":"ご都合はいかがですか。","ruby":"ご<ruby>都合<rt>つごう</rt></ruby>はいかがですか。","kana":"ごつごうはいかがですか。","ko":"일정은 어떠신가요?","note":"상대의 형편을 먼저 묻는 형태. 날짜를 밀어붙이지 않음.","ex":"来週の火曜か水曜で、ご都合はいかがですか。","exRuby":"<ruby>来週<rt>らいしゅう</rt></ruby>の<ruby>火曜<rt>かよう</rt></ruby>か<ruby>水曜<rt>すいよう</rt></ruby>で、ご<ruby>都合<rt>つごう</rt></ruby>はいかがですか。","exKana":"らいしゅうのかようかすいようで、ごつごうはいかがですか。","exKo":"다음 주 화요일이나 수요일로, 일정 어떠신가요?"},{"id":"L3-20","lv":3,"tag":"합의","pol":"polite","v":"m","jp":"その方向で進めさせていただきます。","ruby":"その<ruby>方向<rt>ほうこう</rt></ruby>で<ruby>進<rt>すす</rt></ruby>めさせていただきます。","kana":"そのほうこうですすめさせていただきます。","ko":"그 방향으로 진행하겠습니다","note":"결론을 확인·고정하는 말. 회의 마무리에 반드시 필요.","ex":"了解しました。その方向で進めさせていただきます。","exRuby":"<ruby>了解<rt>りょうかい</rt></ruby>しました。その<ruby>方向<rt>ほうこう</rt></ruby>で<ruby>進<rt>すす</rt></ruby>めさせていただきます。","exKana":"りょうかいしました。そのほうこうですすめさせていただきます。","exKo":"알겠습니다. 그 방향으로 진행하겠습니다."},{"id":"L3-21","lv":3,"tag":"보류","pol":"polite","v":"f","jp":"一度持ち帰って検討させてください。","ruby":"<ruby>一度<rt>いちど</rt></ruby><ruby>持<rt>も</rt></ruby>ち<ruby>帰<rt>かえ</rt></ruby>って<ruby>検討<rt>けんとう</rt></ruby>させてください。","kana":"いちどもちかえってけんとうさせてください。","ko":"한 번 가지고 돌아가 검토하게 해 주세요","note":"즉답을 피하되 '회피'로 보이지 않게 하는 표현.","ex":"社内で一度持ち帰って検討させてください。","exRuby":"<ruby>社内<rt>しゃない</rt></ruby>で<ruby>一度<rt>いちど</rt></ruby><ruby>持<rt>も</rt></ruby>ち<ruby>帰<rt>かえ</rt></ruby>って<ruby>検討<rt>けんとう</rt></ruby>させてください。","exKana":"しゃないでいちどもちかえってけんとうさせてください。","exKo":"사내에서 한 번 가지고 돌아가 검토하게 해 주세요."},{"id":"L3-22","lv":3,"tag":"감사","pol":"polite","v":"f","jp":"助かりました。ありがとうございます。","ruby":"<ruby>助<rt>たす</rt></ruby>かりました。ありがとうございます。","kana":"たすかりました。ありがとうございます。","ko":"많이 도움됐습니다. 감사합니다","note":"'고맙다'보다 '살았다'에 가까운 실감. 짧은 감사로 자연스러움.","ex":"資料のおかげで助かりました。ありがとうございます。","exRuby":"<ruby>資料<rt>しりょう</rt></ruby>のおかげで<ruby>助<rt>たす</rt></ruby>かりました。ありがとうございます。","exKana":"しりょうのおかげでたすかりました。ありがとうございます。","exKo":"자료 덕분에 많이 도움됐습니다. 감사합니다."},{"id":"L3-23","lv":3,"tag":"배려","pol":"polite","v":"m","jp":"お気遣いありがとうございます。","ruby":"お<ruby>気遣<rt>きづか</rt></ruby>いありがとうございます。","kana":"おきづかいありがとうございます。","ko":"배려해 주셔서 감사합니다","note":"상대가 굳이 신경 써 준 것을 알아봤다는 표시.","ex":"お気遣いありがとうございます。お言葉だけで十分です。","exRuby":"お<ruby>気遣<rt>きづか</rt></ruby>いありがとうございます。お<ruby>言葉<rt>ことば</rt></ruby>だけで<ruby>十分<rt>じゅうぶん</rt></ruby>です。","exKana":"おきづかいありがとうございます。おことばだけでじゅうぶんです。","exKo":"배려해 주셔서 감사합니다. 말씀만으로 충분합니다."},{"id":"L3-24","lv":3,"tag":"부탁","pol":"polite","v":"f","jp":"無理のない範囲でお願いします。","ruby":"<ruby>無理<rt>むり</rt></ruby>のない<ruby>範囲<rt>はんい</rt></ruby>でお<ruby>願<rt>ねが</rt></ruby>いします。","kana":"むりのないはんいでおねがいします。","ko":"무리하지 않으시는 선에서 부탁드립니다","note":"상대가 거절하기 쉬운 여지를 주는 부탁. 재촉과 정반대.","ex":"お忙しいと思いますので、無理のない範囲でお願いします。","exRuby":"お<ruby>忙<rt>いそが</rt></ruby>しいと<ruby>思<rt>おも</rt></ruby>いますので、<ruby>無理<rt>むり</rt></ruby>のない<ruby>範囲<rt>はんい</rt></ruby>でお<ruby>願<rt>ねが</rt></ruby>いします。","exKana":"おいそがしいとおもいますので、むりのないはんいでおねがいします。","exKo":"바쁘실 테니 무리하지 않으시는 선에서 부탁드립니다."},{"id":"L3-25","lv":3,"tag":"확인","pol":"polite","v":"m","jp":"認識に相違がないか確認させてください。","ruby":"<ruby>認識<rt>にんしき</rt></ruby>に<ruby>相違<rt>そうい</rt></ruby>がないか<ruby>確認<rt>かくにん</rt></ruby>させてください。","kana":"にんしきにそういがないかかくにんさせてください。","ko":"인식 차이가 없는지 확인하겠습니다","note":"회의 후 '서로 다르게 이해했다'를 막는 실무 표현.","ex":"念のため、認識に相違がないか確認させてください。","exRuby":"<ruby>念<rt>ねん</rt></ruby>のため、<ruby>認識<rt>にんしき</rt></ruby>に<ruby>相違<rt>そうい</rt></ruby>がないか<ruby>確認<rt>かくにん</rt></ruby>させてください。","exKana":"ねんのため、にんしきにそういがないかかくにんさせてください。","exKo":"혹시 몰라, 인식 차이가 없는지 확인하게 해 주세요."},{"id":"L3-26","lv":3,"tag":"완곡","pol":"polite","v":"f","jp":"私の感覚かもしれませんが。","ruby":"<ruby>私<rt>わたし</rt></ruby>の<ruby>感覚<rt>かんかく</rt></ruby>かもしれませんが。","kana":"わたしのかんかくかもしれませんが。","ko":"제 느낌일지도 모르지만","note":"단정을 피하며 의견을 내는 틀. 반대 의견을 부드럽게 꺼냄.","ex":"私の感覚かもしれませんが、今の進め方は少し急かもしれません。","exRuby":"<ruby>私<rt>わたし</rt></ruby>の<ruby>感覚<rt>かんかく</rt></ruby>かもしれませんが、<ruby>今<rt>いま</rt></ruby>の<ruby>進<rt>すす</rt></ruby>め<ruby>方<rt>かた</rt></ruby>は<ruby>少<rt>すこ</rt></ruby>し<ruby>急<rt>きゅう</rt></ruby>かもしれません。","exKana":"わたしのかんかくかもしれませんが、いまのすすめかたはすこしきゅうかもしれません。","exKo":"제 느낌일지도 모르지만, 지금 진행 방식은 조금 급할지도 모르겠습니다."},{"id":"L3-27","lv":3,"tag":"거절","pol":"polite","v":"m","jp":"お役に立てず申し訳ございませんが。","ruby":"お<ruby>役<rt>やく</rt></ruby>に<ruby>立<rt>た</rt></ruby>てず<ruby>申<rt>もう</rt></ruby>し<ruby>訳<rt>わけ</rt></ruby>ございませんが。","kana":"おやくにたてずもうしわけございませんが。","ko":"도움이 되지 못해 죄송하지만","note":"'안 된다'를 '역할을 못 해서 미안'으로 감싸는 표현.","ex":"お役に立てず申し訳ございませんが、本件は専門部署にご相談いただけますでしょうか。","exRuby":"お<ruby>役<rt>やく</rt></ruby>に<ruby>立<rt>た</rt></ruby>てず<ruby>申<rt>もう</rt></ruby>し<ruby>訳<rt>わけ</rt></ruby>ございませんが、<ruby>本件<rt>ほんけん</rt></ruby>は<ruby>専門<rt>せんもん</rt></ruby><ruby>部署<rt>ぶしょ</rt></ruby>にご<ruby>相談<rt>そうだん</rt></ruby>いただけますでしょうか。","exKana":"おやくにたてずもうしわけございませんが、ほんけんはせんもんぶしょにごそうだんいただけますでしょうか。","exKo":"도움이 되지 못해 죄송하지만, 본 건은 전문 부서에 상담해 주시겠습니까?"},{"id":"L3-28","lv":3,"tag":"보고","pol":"polite","v":"f","jp":"結論から申し上げますと。","ruby":"<ruby>結論<rt>けつろん</rt></ruby>から<ruby>申<rt>もう</rt></ruby>し<ruby>上<rt>あ</rt></ruby>げますと。","kana":"けつろんからもうしあげますと。","ko":"결론부터 말씀드리면","note":"일본 비즈니스 회화의 핵심 구조. 바쁜 상대의 시간을 아끼는 말.","ex":"結論から申し上げますと、予定通り完了できそうです。","exRuby":"<ruby>結論<rt>けつろん</rt></ruby>から<ruby>申<rt>もう</rt></ruby>し<ruby>上<rt>あ</rt></ruby>げますと、<ruby>予定<rt>よてい</rt></ruby><ruby>通<rt>どお</rt></ruby>り<ruby>完了<rt>かんりょう</rt></ruby>できそうです。","exKana":"けつろんからもうしあげますと、よていどおりかんりょうできそうです。","exKo":"결론부터 말씀드리면 예정대로 완료할 수 있을 것 같습니다."},{"id":"L4-01","lv":4,"tag":"상담","pol":"casual","v":"f","jp":"ちょっと聞いてもいい？","ruby":"ちょっと<ruby>聞<rt>き</rt></ruby>いてもいい？","kana":"ちょっときいてもいい？","ko":"잠깐 얘기 들어줄 수 있어?","note":"고민을 꺼내는 첫 문장. 상대에게 마음의 준비를 주는 말.","ex":"ちょっと聞いてもいい？実は最近、ちょっと落ち込んでて。","exRuby":"ちょっと<ruby>聞<rt>き</rt></ruby>いてもいい？<ruby>実<rt>じつ</rt></ruby>は<ruby>最近<rt>さいきん</rt></ruby>、ちょっと<ruby>落<rt>お</rt></ruby>ち<ruby>込<rt>こ</rt></ruby>んでて。","exKana":"ちょっときいてもいい？じつはさいきん、ちょっとおちこんでて。","exKo":"잠깐 얘기 들어줄 수 있어? 실은 요즘 좀 우울해서."},{"id":"L4-02","lv":4,"tag":"상담","pol":"casual","v":"m","jp":"相談してもいい？","ruby":"<ruby>相談<rt>そうだん</rt></ruby>してもいい？","kana":"そうだんしてもいい？","ko":"상담해도 될까?","note":"聞いてもいい보다 '조언도 원한다'는 뉘앙스가 조금 더 강함.","ex":"相談してもいい？仕事のことで決められなくて。","exRuby":"<ruby>相談<rt>そうだん</rt></ruby>してもいい？<ruby>仕事<rt>しごと</rt></ruby>のことで<ruby>決<rt>き</rt></ruby>められなくて。","exKana":"そうだんしてもいい？しごとのことできめられなくて。","exKo":"상담해도 될까? 일 때문에 결정을 못 내리겠어."},{"id":"L4-03","lv":4,"tag":"고백","pol":"casual","v":"f","jp":"話しにくいんだけど…","ruby":"<ruby>話<rt>はな</rt></ruby>しにくいんだけど…","kana":"はなしにくいんだけど…","ko":"말하기 좀 그렇지만…","note":"무거운 이야기 앞의 완충. 상대가 각오할 시간을 줌.","ex":"話しにくいんだけど、前から引っ掛かってることがあって。","exRuby":"<ruby>話<rt>はな</rt></ruby>しにくいんだけど、<ruby>前<rt>まえ</rt></ruby>から<ruby>引<rt>ひ</rt></ruby>っ<ruby>掛<rt>か</rt></ruby>かってることがあって。","exKana":"はなしにくいんだけど、まえからひっかかってることがあって。","exKo":"말하기 좀 그렇지만, 전부터 걸리는 게 있어서."},{"id":"L4-04","lv":4,"tag":"고백","pol":"casual","v":"m","jp":"うまく言葉にできないんだけど。","ruby":"うまく<ruby>言葉<rt>ことば</rt></ruby>にできないんだけど。","kana":"うまくことばにできないんだけど。","ko":"말로 잘 표현이 안 되는데","note":"정리되지 않은 감정을 그대로 인정. 듣는 쪽이 기다려 주게 됨.","ex":"うまく言葉にできないんだけど、今のもやもやを聞いてほしい。","exRuby":"うまく<ruby>言葉<rt>ことば</rt></ruby>にできないんだけど、<ruby>今<rt>いま</rt></ruby>のもやもやを<ruby>聞<rt>き</rt></ruby>いてほしい。","exKana":"うまくことばにできないんだけど、いまのもやもやをきいてほしい。","exKo":"말로 잘 표현이 안 되는데, 지금 이 답답함을 들어줬으면 해."},{"id":"L4-05","lv":4,"tag":"공감","pol":"casual","v":"f","jp":"そっか…それは辛かったね。","ruby":"そっか…それは<ruby>辛<rt>つら</rt></ruby>かったね。","kana":"そっか…それはつらかったね。","ko":"그렇구나… 그것 참 힘들었겠다","note":"해결책보다 감정 인정이 먼저. そっか로 받아주고 감정을 이름 붙임.","ex":"そっか…それは辛かったね。よく我慢したね。","exRuby":"そっか…それは<ruby>辛<rt>つら</rt></ruby>かったね。よく<ruby>我慢<rt>がまん</rt></ruby>したね。","exKana":"そっか…それはつらかったね。よくがまんしたね。","exKo":"그렇구나… 그것 참 힘들었겠다. 많이 참았네."},{"id":"L4-06","lv":4,"tag":"공감","pol":"casual","v":"m","jp":"話してくれてありがとう。","ruby":"<ruby>話<rt>はな</rt></ruby>してくれてありがとう。","kana":"はなしてくれてありがとう。","ko":"얘기해 줘서 고마워","note":"'털어놓은 용기'에 대한 감사. 상담 후 마무리에 특히 중요.","ex":"話してくれてありがとう。楽になったなら良かった。","exRuby":"<ruby>話<rt>はな</rt></ruby>してくれてありがとう。<ruby>楽<rt>らく</rt></ruby>になったなら<ruby>良<rt>よ</rt></ruby>かった。","exKana":"はなしてくれてありがとう。らくになったならよかった。","exKo":"얘기해 줘서 고마워. 좀 편해졌다면 다행이야."},{"id":"L4-07","lv":4,"tag":"공감","pol":"casual","v":"f","jp":"その気持ち、わかる気がする。","ruby":"その<ruby>気持<rt>きも</rt></ruby>ち、わかる<ruby>気<rt>き</rt></ruby>がする。","kana":"そのきもち、わかるきがする。","ko":"그 마음, 알 것 같아","note":"'완전히 안다'고 단정하지 않는 안전한 공감. わかる보다 정확함.","ex":"その気持ち、わかる気がする。先が見えないと不安だよね。","exRuby":"その<ruby>気持<rt>きも</rt></ruby>ち、わかる<ruby>気<rt>き</rt></ruby>がする。<ruby>先<rt>さき</rt></ruby>が<ruby>見<rt>み</rt></ruby>えないと<ruby>不安<rt>ふあん</rt></ruby>だよね。","exKana":"そのきもち、わかるきがする。さきがみえないとふあんだよね。","exKo":"그 마음, 알 것 같아. 앞이 안 보이면 불안하지."},{"id":"L4-08","lv":4,"tag":"위로","pol":"casual","v":"m","jp":"無理しなくていいと思うよ。","ruby":"<ruby>無理<rt>むり</rt></ruby>しなくていいと<ruby>思<rt>おも</rt></ruby>うよ。","kana":"むりしなくていいとおもうよ。","ko":"무리 안 해도 된다고 생각해","note":"'힘내'보다 안도감을 주는 위로. 일본에서는 격려보다 허용이 위로가 됨.","ex":"無理しなくていいと思うよ。今は休むときだよ。","exRuby":"<ruby>無理<rt>むり</rt></ruby>しなくていいと<ruby>思<rt>おも</rt></ruby>うよ。<ruby>今<rt>いま</rt></ruby>は<ruby>休<rt>やす</rt></ruby>むときだよ。","exKana":"むりしなくていいとおもうよ。いまはやすむときだよ。","exKo":"무리 안 해도 된다고 생각해. 지금은 쉴 때야."},{"id":"L4-09","lv":4,"tag":"위로","pol":"casual","v":"f","jp":"一人で抱えなくていいからね。","ruby":"<ruby>一人<rt>ひとり</rt></ruby>で<ruby>抱<rt>かか</rt></ruby>えなくていいからね。","kana":"ひとりでかかえなくていいからね。","ko":"혼자 다 짊어지지 않아도 돼","note":"일본식 배려: '내가 있다'를 직접 말하지 않고 '혼자가 아니다'로 전함.","ex":"一人で抱えなくていいからね。いつでも聞くよ。","exRuby":"<ruby>一人<rt>ひとり</rt></ruby>で<ruby>抱<rt>かか</rt></ruby>えなくていいからね。いつでも<ruby>聞<rt>き</rt></ruby>くよ。","exKana":"ひとりでかかえなくていいからね。いつでもきくよ。","exKo":"혼자 다 짊어지지 않아도 돼. 언제든 들을게."},{"id":"L4-10","lv":4,"tag":"공감","pol":"casual","v":"m","jp":"私も同じようなことがあってね。","ruby":"<ruby>私<rt>わたし</rt></ruby>も<ruby>同<rt>おな</rt></ruby>じようなことがあってね。","kana":"わたしもおなじようなことがあってね。","ko":"나도 비슷한 일이 있었어","note":"자기 이야기를 조금 꺼내 상대를 혼자가 아니게 함. 단, 말을 빼앗지 않게 짧게.","ex":"私も同じようなことがあってね。少しだけわかるんだ。","exRuby":"<ruby>私<rt>わたし</rt></ruby>も<ruby>同<rt>おな</rt></ruby>じようなことがあってね。<ruby>少<rt>すこ</rt></ruby>しだけわかるんだ。","exKana":"わたしもおなじようなことがあってね。すこしだけわかるんだ。","exKo":"나도 비슷한 일이 있었어. 조금은 알 것 같아."},{"id":"L4-11","lv":4,"tag":"경청","pol":"casual","v":"f","jp":"話を聞くだけでいい？アドバイスがほしい？","ruby":"<ruby>話<rt>はな</rt></ruby>を<ruby>聞<rt>き</rt></ruby>くだけでいい？アドバイスがほしい？","kana":"はなをきくだけでいい？アドバイスがほしい？","ko":"그냥 들어주면 돼? 아니면 조언이 필요해?","note":"상담에서 가장 실용적인 질문. 엇나간 조언을 막아 줌.","ex":"話を聞くだけでいい？それともアドバイスがほしい？","exRuby":"<ruby>話<rt>はな</rt></ruby>を<ruby>聞<rt>き</rt></ruby>くだけでいい？それともアドバイスがほしい？","exKana":"はなをきくだけでいい？それともアドバイスがほしい？","exKo":"그냥 들어주면 돼? 아니면 조언이 필요해?"},{"id":"L4-12","lv":4,"tag":"경청","pol":"casual","v":"m","jp":"今、どんな気持ち？","ruby":"<ruby>今<rt>いま</rt></ruby>、どんな<ruby>気持<rt>きも</rt></ruby>ち？","kana":"いま、どんなきもち？","ko":"지금 기분이 어때?","note":"감정을 언어화하게 돕는 열린 질문. why보다 how.","ex":"今、どんな気持ち？怒ってる？それとも悲しい？","exRuby":"<ruby>今<rt>いま</rt></ruby>、どんな<ruby>気持<rt>きも</rt></ruby>ち？<ruby>怒<rt>おこ</rt></ruby>ってる？それとも<ruby>悲<rt>かな</rt></ruby>しい？","exKana":"いま、どんなきもち？おこってる？それともかなしい？","exKo":"지금 기분이 어때? 화난 거야? 아니면 슬픈 거야?"},{"id":"L4-13","lv":4,"tag":"공감","pol":"casual","v":"f","jp":"それはショックだったよね。","ruby":"それはショックだったよね。","kana":"それはショックだったよね。","ko":"그건 충격이었겠다","note":"감정을 '이름 붙여' 돌려주는 반영. 상대가 정리하는 데 도움.","ex":"大事にしてたものを言われたんだ。それはショックだったよね。","exRuby":"<ruby>大事<rt>だいじ</rt></ruby>にしてたものを<ruby>言<rt>い</rt></ruby>われたんだ。それはショックだったよね。","exKana":"だいじにしてたものをいわれたんだ。それはショックだったよね。","exKo":"소중히 여기던 걸 들은 거구나. 그건 충격이었겠다."},{"id":"L4-14","lv":4,"tag":"공감","pol":"casual","v":"m","jp":"向こうが悪いよ、それは。","ruby":"<ruby>向<rt>む</rt></ruby>こうが<ruby>悪<rt>わる</rt></ruby>いよ、それは。","kana":"むこうがわるいよ、それは。","ko":"상대가 잘못한 거야, 그건","note":"일본인은 좀처럼 편을 들지 않음. 그래서 이 한마디는 큰 위로가 됨.","ex":"向こうが悪いよ、それは。謝ってほしいよね。","exRuby":"<ruby>向<rt>む</rt></ruby>こうが<ruby>悪<rt>わる</rt></ruby>いよ、それは。<ruby>謝<rt>あやま</rt></ruby>ってほしいよね。","exKana":"むこうがわるいよ、それは。あやまってほしいよね。","exKo":"상대가 잘못한 거야, 그건. 사과받고 싶지."},{"id":"L4-15","lv":4,"tag":"불만","pol":"casual","v":"f","jp":"少し傷ついた、というか…","ruby":"<ruby>少<rt>すこ</rt></ruby>し<ruby>傷<rt>きず</rt></ruby>ついた、というか…","kana":"すこしきずついた、というか…","ko":"조금 상처받았다고 할까…","note":"강한 말을 피하면서도 감정을 전달. というか로 끝을 부드럽게.","ex":"昨日の言い方、少し傷ついた、というか…","exRuby":"<ruby>昨日<rt>きのう</rt></ruby>の<ruby>言<rt>い</rt></ruby>い<ruby>方<rt>かた</rt></ruby>、<ruby>少<rt>すこ</rt></ruby>し<ruby>傷<rt>きず</rt></ruby>ついた、というか…","exKana":"きのうのいいかた、すこしきずついた、というか…","exKo":"어제 말투, 조금 상처받았다고 할까…"},{"id":"L4-16","lv":4,"tag":"불만","pol":"casual","v":"m","jp":"そういう言い方をされると、ちょっと悲しくなる。","ruby":"そういう<ruby>言<rt>い</rt></ruby>い<ruby>方<rt>かた</rt></ruby>をされると、ちょっと<ruby>悲<rt>かな</rt></ruby>しくなる。","kana":"そういういいかたをされると、ちょっとかなしくなる。","ko":"그런 말투로 들으면 조금 슬퍼져","note":"행동이 아니라 '내 감정'을 주어로. 비난 없이 경계를 세움.","ex":"そういう言い方をされると、ちょっと悲しくなるんだ。気をつけてほしい。","exRuby":"そういう<ruby>言<rt>い</rt></ruby>い<ruby>方<rt>かた</rt></ruby>をされると、ちょっと<ruby>悲<rt>かな</rt></ruby>しくなるんだ。<ruby>気<rt>き</rt></ruby>をつけてほしい。","exKana":"そういういいかたをされると、ちょっとかなしくなるんだ。きをつけてほしい。","exKo":"그런 말투로 들으면 조금 슬퍼져. 조심해 줬으면 해."},{"id":"L4-17","lv":4,"tag":"불만","pol":"casual","v":"f","jp":"私の感じ方かもしれないけど…","ruby":"<ruby>私<rt>わたし</rt></ruby>の<ruby>感<rt>かん</rt></ruby>じ<ruby>方<rt>かた</rt></ruby>かもしれないけど…","kana":"わたしのかんじかたかもしれないけど…","ko":"내가 예민한 걸 수도 있지만…","note":"단정을 피해 상대의 반론 여지를 남김. 갈등을 키우지 않는 틀.","ex":"私の感じ方かもしれないけど、最近連絡が少なくて寂しかった。","exRuby":"<ruby>私<rt>わたし</rt></ruby>の<ruby>感<rt>かん</rt></ruby>じ<ruby>方<rt>かた</rt></ruby>かもしれないけど、<ruby>最近<rt>さいきん</rt></ruby><ruby>連絡<rt>れんらく</rt></ruby>が<ruby>少<rt>すく</rt></ruby>なくて<ruby>寂<rt>さび</rt></ruby>しかった。","exKana":"わたしのかんじかたかもしれないけど、さいきんれんらくがすくなくてさびしかった。","exKo":"내가 예민한 걸 수도 있지만, 요즘 연락이 적어서 외로웠어."},{"id":"L4-18","lv":4,"tag":"의견","pol":"casual","v":"m","jp":"私はこう思うんだけど、どうかな。","ruby":"<ruby>私<rt>わたし</rt></ruby>はこう<ruby>思<rt>おも</rt></ruby>うんだけど、どうかな。","kana":"わたしはこうおもうんだけど、どうかな。","ko":"나는 이렇게 생각하는데, 어때?","note":"의견을 '정답'이 아니라 '제안'으로 놓는 말. 판단을 상대에게 돌려줌.","ex":"私はこう思うんだけど、どうかな。一旦休んでもいいかも。","exRuby":"<ruby>私<rt>わたし</rt></ruby>はこう<ruby>思<rt>おも</rt></ruby>うんだけど、どうかな。<ruby>一旦<rt>いったん</rt></ruby><ruby>休<rt>やす</rt></ruby>んでもいいかも。","exKana":"わたしはこうおもうんだけど、どうかな。いったんやすんでもいいかも。","exKo":"나는 이렇게 생각하는데, 어때? 일단 쉬어도 좋을 것 같아."},{"id":"L4-19","lv":4,"tag":"불만","pol":"casual","v":"f","jp":"責めるつもりはないんだけど。","ruby":"<ruby>責<rt>せ</rt></ruby>める<ruby>つもり<rt>つもり</rt></ruby>はないんだけど。","kana":"せめるつもりはないんだけど。","ko":"탓할 생각은 아닌데","note":"지적 앞에 반드시 붙이는 안전장치. 없으면 공격으로 들림.","ex":"責めるつもりはないんだけど、次は先に言ってほしいな。","exRuby":"<ruby>責<rt>せ</rt></ruby>める<ruby>つもり<rt>つもり</rt></ruby>はないんだけど、<ruby>次<rt>つぎ</rt></ruby>は<ruby>先<rt>さき</rt></ruby>に<ruby>言<rt>い</rt></ruby>ってほしいな。","exKana":"せめるつもりはないんだけど、つぎはさきにいってほしいな。","exKo":"탓할 생각은 아닌데, 다음엔 먼저 말해 줬으면 해."},{"id":"L4-20","lv":4,"tag":"지지","pol":"casual","v":"m","jp":"一緒に考えよう。","ruby":"<ruby>一緒<rt>いっしょ</rt></ruby>に<ruby>考<rt>かんが</rt></ruby>えよう。","kana":"いっしょにかんがえよう。","ko":"같이 생각해 보자","note":"해결을 대신하지 않고 동행을 제안. 부담과 고립을 동시에 줄임.","ex":"一人で決めなくていいよ。一緒に考えよう。","exRuby":"<ruby>一人<rt>ひとり</rt></ruby>で<ruby>決<rt>き</rt></ruby>めなくていいよ。<ruby>一緒<rt>いっしょ</rt></ruby>に<ruby>考<rt>かんが</rt></ruby>えよう。","exKana":"ひとりできめなくていいよ。いっしょにかんがえよう。","exKo":"혼자 정하지 않아도 돼. 같이 생각해 보자."},{"id":"L4-21","lv":4,"tag":"위로","pol":"casual","v":"f","jp":"焦らなくていいよ。","ruby":"<ruby>焦<rt>あせ</rt></ruby>らなくていいよ。","kana":"あせらなくていいよ。","ko":"조급해하지 않아도 돼","note":"일본 상담에서 자주 쓰는 '허용'의 말. 속도를 상대에게 돌려줌.","ex":"焦らなくていいよ。ゆっくりで大丈夫。","exRuby":"<ruby>焦<rt>あせ</rt></ruby>らなくていいよ。ゆっくりで<ruby>大丈夫<rt>だいじょうぶ</rt></ruby>。","exKana":"あせらなくていいよ。ゆっくりでだいじょうぶ。","exKo":"조급해하지 않아도 돼. 천천히 해도 괜찮아."},{"id":"L4-22","lv":4,"tag":"위로","pol":"casual","v":"m","jp":"頑張ってるの、ちゃんと見てるよ。","ruby":"<ruby>頑張<rt>がんば</rt></ruby>ってるの、ちゃんと<ruby>見<rt>み</rt></ruby>てるよ。","kana":"がんばってるの、ちゃんとみてるよ。","ko":"노력하고 있는 거, 제대로 보고 있어","note":"결과가 아니라 과정을 인정. 일본인이 가장 듣고 싶어 하는 말 중 하나.","ex":"結果はどうあれ、頑張ってるの、ちゃんと見てるよ。","exRuby":"<ruby>結果<rt>けっか</rt></ruby>はどうあれ、<ruby>頑張<rt>がんば</rt></ruby>ってるの、ちゃんと<ruby>見<rt>み</rt></ruby>てるよ。","exKana":"けっかはどうあれ、がんばってるの、ちゃんとみてるよ。","exKo":"결과가 어떻든, 노력하고 있는 거 제대로 보고 있어."},{"id":"L4-23","lv":4,"tag":"감사","pol":"casual","v":"f","jp":"ありがとう、救われた。","ruby":"ありがとう、<ruby>救<rt>すく</rt></ruby>われた。","kana":"ありがとう、すくわれた。","ko":"고마워, 살았어","note":"'구원받았다'는 실감 표현. 진심이 전해지는 짧은 감사.","ex":"話を聞いてくれてありがとう、救われた。","exRuby":"<ruby>話<rt>はな</rt></ruby>を<ruby>聞<rt>き</rt></ruby>いてくれてありがとう、<ruby>救<rt>すく</rt></ruby>われた。","exKana":"はなをきいてくれてありがとう、すくわれた。","exKo":"얘기 들어줘서 고마워, 살았어."},{"id":"L4-24","lv":4,"tag":"마무리","pol":"casual","v":"m","jp":"話せてよかった。","ruby":"<ruby>話<rt>はな</rt></ruby>せてよかった。","kana":"はなせてよかった。","ko":"얘기하길 잘했어","note":"상담을 받은 쪽이 건네는 마무리. 상대에게 보상이 되는 말.","ex":"話せてよかった。少し楽になったよ。","exRuby":"<ruby>話<rt>はな</rt></ruby>せてよかった。<ruby>少<rt>すこ</rt></ruby>し<ruby>楽<rt>らく</rt></ruby>になったよ。","exKana":"はなせてよかった。すこしらくになったよ。","exKo":"얘기하길 잘했어. 조금 편해졌어."},{"id":"L4-25","lv":4,"tag":"배려","pol":"casual","v":"f","jp":"なんかあったら、いつでも連絡してね。","ruby":"なんかあったら、いつでも<ruby>連絡<rt>れんらく</rt></ruby>してね。","kana":"なんかあったら、いつでもれんらくしてね。","ko":"뭐 있으면 언제든 연락해","note":"문을 열어 두는 말. 강요하지 않으면서 관계를 유지.","ex":"夜でも大丈夫だから、なんかあったら、いつでも連絡してね。","exRuby":"<ruby>夜<rt>よる</rt></ruby>でも<ruby>大丈夫<rt>だいじょうぶ</rt></ruby>だから、なんかあったら、いつでも<ruby>連絡<rt>れんらく</rt></ruby>してね。","exKana":"よるでもだいじょうぶだから、なんかあったら、いつでもれんらくしてね。","exKo":"밤이라도 괜찮으니까, 뭐 있으면 언제든 연락해."},{"id":"L4-26","lv":4,"tag":"관계","pol":"casual","v":"m","jp":"距離を置きたいわけじゃないんだ。","ruby":"<ruby>距離<rt>きょり</rt></ruby>を<ruby>置<rt>お</rt></ruby>きたいわけじゃないんだ。","kana":"きょりをおきたいわけじゃないんだ。","ko":"거리를 두고 싶은 건 아니야","note":"연락이 뜸해진 이유를 오해받지 않게 먼저 밝히는 말.","ex":"忙しくて連絡できなかっただけ。距離を置きたいわけじゃないんだ。","exRuby":"<ruby>忙<rt>いそが</rt></ruby>しくて<ruby>連絡<rt>れんらく</rt></ruby>できなかっただけ。<ruby>距離<rt>きょり</rt></ruby>を<ruby>置<rt>お</rt></ruby>きたいわけじゃないんだ。","exKana":"いそがしくてれんらくできなかっただけ。きょりをおきたいわけじゃないんだ。","exKo":"바빠서 연락 못 했을 뿐이야. 거리를 두고 싶은 건 아니야."},{"id":"L4-27","lv":4,"tag":"경청","pol":"casual","v":"f","jp":"言葉を返さなくても大丈夫だよ。","ruby":"<ruby>言葉<rt>ことば</rt></ruby>を<ruby>返<rt>かえ</rt></ruby>さなくても<ruby>大丈夫<rt>だいじょうぶ</rt></ruby>だよ。","kana":"ことばをかえさなくてもだいじょうぶだよ。","ko":"뭐라고 답하지 않아도 괜찮아","note":"返事을 강요하지 않는 경청. 조용한 상대에게 특히 유효.","ex":"言葉を返さなくても大丈夫だよ。ここにいるから。","exRuby":"<ruby>言葉<rt>ことば</rt></ruby>を<ruby>返<rt>かえ</rt></ruby>さなくても<ruby>大丈夫<rt>だいじょうぶ</rt></ruby>だよ。ここにいるから。","exKana":"ことばをかえさなくてもだいじょうぶだよ。ここにいるから。","exKo":"뭐라고 답하지 않아도 괜찮아. 여기 있을게."},{"id":"L4-28","lv":4,"tag":"공감","pol":"casual","v":"m","jp":"一緒にいると楽だな。","ruby":"<ruby>一緒<rt>いっしょ</rt></ruby>にいると<ruby>楽<rt>らく</rt></ruby>だな。","kana":"いっしょにいるとらくだな。","ko":"너랑 있으면 편해","note":"관계의 안도감을 언어화. 깊은 신뢰를 전하는 짧은 말.","ex":"無理しなくていいから、一緒にいると楽だな。","exRuby":"<ruby>無理<rt>むり</rt></ruby>しなくていいから、<ruby>一緒<rt>いっしょ</rt></ruby>にいると<ruby>楽<rt>らく</rt></ruby>だな。","exKana":"むりしなくていいから、いっしょにいるとらくだな。","exKo":"무리 안 해도 되니까, 너랑 있으면 편해."},{"id":"L5-01","lv":5,"tag":"내면","pol":"casual","v":"f","jp":"最近、自分が何をしたいのか、わからなくなって。","ruby":"<ruby>最近<rt>さいきん</rt></ruby>、<ruby>自分<rt>じぶん</rt></ruby>が<ruby>何<rt>なに</rt></ruby>をしたいのか、わからなくなって。","kana":"さいきん、じぶんがなにをしたいのか、わからなくなって。","ko":"요즘 내가 뭘 하고 싶은지 모르겠어","note":"방향 상실을 인정하는 문장. わからなくなって로 끝을 열어 둠.","ex":"最近、自分が何をしたいのか、わからなくなって。正解を探すのに疲れた。","exRuby":"<ruby>最近<rt>さいきん</rt></ruby>、<ruby>自分<rt>じぶん</rt></ruby>が<ruby>何<rt>なに</rt></ruby>をしたいのか、わからなくなって。<ruby>正解<rt>せいかい</rt></ruby>を<ruby>探<rt>さが</rt></ruby>すのに<ruby>疲<rt>つか</rt></ruby>れた。","exKana":"さいきん、じぶんがなにをしたいのか、わからなくなって。せいかいをさがすのにつかれた。","exKo":"요즘 내가 뭘 하고 싶은지 모르겠어. 정답을 찾는 데 지쳤어."},{"id":"L5-02","lv":5,"tag":"내면","pol":"casual","v":"m","jp":"ずっと心のどこかに引っ掛かってるんだ。","ruby":"ずっと<ruby>心<rt>こころ</rt></ruby>のどこかに<ruby>引<rt>ひ</rt></ruby>っ<ruby>掛<rt>か</rt></ruby>かってるんだ。","kana":"ずっとこころのどこかにひっかかってるんだ。","ko":"계속 마음 한구석에 걸려 있어","note":"해결되지 않은 감정의 지속을 표현. 引っかかる＝걸리다.","ex":"言われた一言が、ずっと心のどこかに引っ掛かってるんだ。","exRuby":"<ruby>言<rt>い</rt></ruby>われた<ruby>一言<rt>ひとこと</rt></ruby>が、ずっと<ruby>心<rt>こころ</rt></ruby>のどこかに<ruby>引<rt>ひ</rt></ruby>っ<ruby>掛<rt>か</rt></ruby>かってるんだ。","exKana":"いわれたひとことが、ずっとこころのどこかにひっかかってるんだ。","exKo":"들은 한마디가 계속 마음 한구석에 걸려 있어."},{"id":"L5-03","lv":5,"tag":"후회","pol":"casual","v":"f","jp":"後悔してるわけじゃないんだけど、たまに考えるんだ。","ruby":"<ruby>後悔<rt>こうかい</rt></ruby>してるわけじゃないんだけど、たまに<ruby>考<rt>かんが</rt></ruby>えるんだ。","kana":"こうかいしてるわけじゃないんだけど、たまにかんがえるんだ。","ko":"후회하는 건 아닌데, 가끔 생각해","note":"후회를 부정하면서도 미련을 인정하는 섬세한 틀.","ex":"後悔してるわけじゃないんだけど、たまに考えるんだ。あの頃の選択のこと。","exRuby":"<ruby>後悔<rt>こうかい</rt></ruby>してるわけじゃないんだけど、たまに<ruby>考<rt>かんが</rt></ruby>えるんだ。<ruby>あの<rt>あの</rt></ruby><ruby>頃<rt>ごろ</rt></ruby>の<ruby>選択<rt>せんたく</rt></ruby>のこと。","exKana":"こうかいしてるわけじゃないんだけど、たまにかんがえるんだ。あのごろのせんたくのこと。","exKo":"후회하는 건 아닌데, 가끔 생각해. 그 시절 선택에 대해."},{"id":"L5-04","lv":5,"tag":"후회","pol":"casual","v":"m","jp":"あのとき、違う選択をしていたらどうなってたんだろうね。","ruby":"あのとき、<ruby>違<rt>ちが</rt></ruby>う<ruby>選択<rt>せんたく</rt></ruby>をしていたらどうなってたんだろうね。","kana":"あのとき、ちがうせんたくをしていたらどうなってたんだろうね。","ko":"그때 다른 선택을 했더라면 어땠을까","note":"가정법 ていたら. 답 없는 질문을 함께 여는 방식.","ex":"あのとき、違う選択をしていたらどうなってたんだろうね。","exRuby":"あのとき、<ruby>違<rt>ちが</rt></ruby>う<ruby>選択<rt>せんたく</rt></ruby>をしていたらどうなってたんだろうね。","exKana":"あのとき、ちがうせんたくをしていたらどうなってたんだろうね。","exKo":"그때 다른 선택을 했더라면 어땠을까."},{"id":"L5-05","lv":5,"tag":"내면","pol":"casual","v":"f","jp":"人に言うと重いかなと思って、言えなかった。","ruby":"<ruby>人<rt>ひと</rt></ruby>に<ruby>言<rt>い</rt></ruby>うと<ruby>重<rt>おも</rt></ruby>いかなと<ruby>思<rt>おも</rt></ruby>って、<ruby>言<rt>い</rt></ruby>えなかった。","kana":"ひとにいうとおもいかなとおもって、いえなかった。","ko":"남한테 말하면 무거울까 봐 말 못 했어","note":"'무겁다'는 일본 특유의 관계 부담.これを言える相手は特別.","ex":"人に言うと重いかなと思って、言えなかったんだ。","exRuby":"<ruby>人<rt>ひと</rt></ruby>に<ruby>言<rt>い</rt></ruby>うと<ruby>重<rt>おも</rt></ruby>いかなと<ruby>思<rt>お</rt></ruby>って、<ruby>言<rt>い</rt></ruby>えなかったんだ。","exKana":"ひとにいうとおもいかなとおって、いえなかったんだ。","exKo":"남한테 말하면 무거울까 봐 말 못 했어."},{"id":"L5-06","lv":5,"tag":"내면","pol":"casual","v":"m","jp":"弱さを見せるのが怖いんだと思う。","ruby":"<ruby>弱<rt>よわ</rt></ruby>さを<ruby>見<rt>み</rt></ruby>せるのが<ruby>怖<rt>こわ</rt></ruby>いんだと<ruby>思<rt>おも</rt></ruby>う。","kana":"よわさをみせるのがこわいんだとおもう。","ko":"약한 모습을 보이는 게 무서운 것 같아","note":"감정의 원인을 스스로 언어화. ～んだと思う로 단정을 피함.","ex":"弱さを見せるのが怖いんだと思う。嫌われるのが怖くて。","exRuby":"<ruby>弱<rt>よわ</rt></ruby>さを<ruby>見<rt>み</rt></ruby>せるのが<ruby>怖<rt>こわ</rt></ruby>いんだと<ruby>思<rt>おも</rt></ruby>う。<ruby>嫌<rt>きら</rt></ruby>われるのが<ruby>怖<rt>こわ</rt></ruby>くて。","exKana":"よわさをみせるのがこわいんだとおもう。きらわれるのがこわくて。","exKo":"약한 모습을 보이는 게 무서운 것 같아. 미움받는 게 무서워서."},{"id":"L5-07","lv":5,"tag":"내면","pol":"casual","v":"f","jp":"期待されることに疲れてしまって。","ruby":"<ruby>期待<rt>きたい</rt></ruby>されることに<ruby>疲<rt>つか</rt></ruby>れてしまって。","kana":"きたいされることにつかれてしまって。","ko":"기대받는 것에 지쳐 버려서","note":"기대=부담. 받는 쪽의 피로를 정확히 표현.","ex":"期待されることに疲れてしまって。少し休みたい。","exRuby":"<ruby>期待<rt>きたい</rt></ruby>されることに<ruby>疲<rt>つか</rt></ruby>れてしまって。<ruby>少<rt>すこ</rt></ruby>し<ruby>休<rt>やす</rt></ruby>みたい。","exKana":"きたいされることにつかれてしまって。すこしやすみたい。","exKo":"기대받는 것에 지쳐 버려서. 조금 쉬고 싶어."},{"id":"L5-08","lv":5,"tag":"경청","pol":"casual","v":"m","jp":"本当のところ、どう感じてる？","ruby":"<ruby>本当<rt>ほんとう</rt></ruby>のところ、どう<ruby>感<rt>かん</rt></ruby>じてる？","kana":"ほんとうのところ、どうかんじてる？","ko":"솔직히, 어떻게 느끼고 있어?","note":"표면의 말 아래 감정을 묻는 질문. 本当のところ가 핵심.","ex":"強がらなくていいよ。本当のところ、どう感じてる？","exRuby":"<ruby>強<rt>つよ</rt></ruby>がらなくていいよ。<ruby>本当<rt>ほんとう</rt></ruby>のところ、どう<ruby>感<rt>かん</rt></ruby>じてる？","exKana":"つよがらなくていいよ。ほんとうのところ、どうかんじてる？","exKo":"센 척 안 해도 돼. 솔직히, 어떻게 느끼고 있어?"},{"id":"L5-09","lv":5,"tag":"경청","pol":"casual","v":"f","jp":"それはなぜだと思う？","ruby":"それはなぜだと<ruby>思<rt>おも</rt></ruby>う？","kana":"それはなぜだとおもう？","ko":"그건 왜 그런 것 같아?","note":"해석을 주지 않고 상대가 스스로 답하게 하는 질문.","ex":"それはなぜだと思う？自分ではどう説明できる？","exRuby":"それはなぜだと思う？<ruby>自分<rt>じぶん</rt></ruby>ではどう<ruby>説明<rt>せつめい</rt></ruby>できる？","exKana":"それはなぜだと思う？じぶんではどうせつめいできる？","exKo":"그건 왜 그런 것 같아? 스스로는 어떻게 설명할 수 있어?"},{"id":"L5-10","lv":5,"tag":"경청","pol":"casual","v":"m","jp":"その気持ち、どこから来てるんだろうね。","ruby":"その<ruby>気持<rt>きも</rt></ruby>ち、どこから<ruby>来<rt>き</rt></ruby>てるんだろうね。","kana":"そのきもち、どこからきてるんだろうね。","ko":"그 마음은 어디서 오는 걸까","note":"함께 탐색하는 '같은 편'의 질문. 추궁이 아님을 어미로 표시.","ex":"その気持ち、どこから来てるんだろうね。昔の経験と関係あるのかな。","exRuby":"その<ruby>気持<rt>きも</rt></ruby>ち、どこから<ruby>来<rt>き</rt></ruby>てるんだろうね。<ruby>昔<rt>むかし</rt></ruby>の<ruby>経験<rt>けいけん</rt></ruby>と<ruby>関係<rt>かんけい</rt></ruby>あるのかな。","exKana":"そのきもち、どこからきてるんだろうね。むかしのけいけんとかんけいあるのかな。","exKo":"그 마음은 어디서 오는 걸까. 옛날 경험과 관계있을까."},{"id":"L5-11","lv":5,"tag":"경청","pol":"casual","v":"f","jp":"いつからそう感じるようになった？","ruby":"いつからそう<ruby>感<rt>かん</rt></ruby>じるようになった？","kana":"いつからそうかんじるようになった？","ko":"언제부터 그렇게 느끼게 됐어?","note":"감정의 시작점을 묻는 질문. いつから는 시간 축을 열어 줌.","ex":"いつからそう感じるようになった？きっかけはあった？","exRuby":"いつからそう<ruby>感<rt>かん</rt></ruby>じるようになった？きっかけはあった？","exKana":"いつからそうかんじるようになった？きっかけはあった？","exKo":"언제부터 그렇게 느끼게 됐어? 계기가 있었어?"},{"id":"L5-12","lv":5,"tag":"가치관","pol":"casual","v":"m","jp":"自分にとって、何が一番大事だと思う？","ruby":"<ruby>自分<rt>じぶん</rt></ruby>にとって、<ruby>何<rt>なに</rt></ruby>が<ruby>一番<rt>いちばん</rt></ruby><ruby>大事<rt>だいじ</rt></ruby>だと<ruby>思<rt>おも</rt></ruby>う？","kana":"じぶんにとって、なにがいちばんだいじだとおもう？","ko":"자기한테 가장 중요한 게 뭐라고 생각해?","note":"가치관을 꺼내는 질문. '무엇을 원해'보다 근본적.","ex":"自分にとって、何が一番大事だと思う？仕事？人との時間？","exRuby":"<ruby>自分<rt>じぶん</rt></ruby>にとって、<ruby>何<rt>なに</rt></ruby>が<ruby>一番<rt>いちばん</rt></ruby><ruby>大事<rt>だいじ</rt></ruby>だと<ruby>思<rt>おも</rt></ruby>う？<ruby>仕事<rt>しごと</rt></ruby>？<ruby>人<rt>ひと</rt></ruby>との<ruby>時間<rt>じかん</rt></ruby>？","exKana":"じぶんにとって、なにがいちばんだいじだとおもう？しごと？ひととのじかん？","exKo":"자기한테 가장 중요한 게 뭐라고 생각해? 일? 사람과의 시간?"},{"id":"L5-13","lv":5,"tag":"내면","pol":"casual","v":"f","jp":"理想と現実のギャップに苦しんでる。","ruby":"<ruby>理想<rt>りそう</rt></ruby>と<ruby>現実<rt>げんじつ</rt></ruby>のギャップに<ruby>苦<rt>くる</rt></ruby>しんでる。","kana":"りそうとげんじつのギャップにくるしんでる。","ko":"이상과 현실의 격차에 괴로워하고 있어","note":"抽象語 ギャップ・苦しむ로 ‘단어로 붙잡는’ 훈련.","ex":"理想と現実のギャップに苦しんでる。どっちが正しいのかもわからない。","exRuby":"<ruby>理想<rt>りそう</rt></ruby>と<ruby>現実<rt>げんじつ</rt></ruby>のギャップに<ruby>苦<rt>くる</rt></ruby>しんでる。<ruby>どっち<rt>どっち</rt></ruby>が<ruby>正<rt>ただ</rt></ruby>しいのかもわからない。","exKana":"りそうとげんじつのギャップにくるしんでる。どっちがただしいのかもわからない。","exKo":"이상과 현실의 격차에 괴로워하고 있어. 어느 쪽이 맞는지도 모르겠어."},{"id":"L5-14","lv":5,"tag":"가치관","pol":"casual","v":"m","jp":"誰かのためじゃなく、自分のために選びたい。","ruby":"<ruby>誰<rt>だれ</rt></ruby>かのためじゃなく、<ruby>自分<rt>じぶん</rt></ruby>のために<ruby>選<rt>えら</rt></ruby>びたい。","kana":"だれかのためじゃなく、じぶんのためにえらびたい。","ko":"누군가를 위해서가 아니라, 나를 위해 선택하고 싶어","note":"자기결정의 선언. 誰かのためじゃなく로 대비 구조를 만듦.","ex":"もう誰かのためじゃなく、自分のために選びたい。それが我儘だとしても。","exRuby":"もう<ruby>誰<rt>だれ</rt></ruby>かのためじゃなく、<ruby>自分<rt>じぶん</rt></ruby>のために<ruby>選<rt>えら</rt></ruby>びたい。<ruby>それ<rt>それ</rt></ruby>が<ruby>我儘<rt>わがまま</rt></ruby>だとしても。","exKana":"もうだれかのためじゃなく、じぶんのためにえらびたい。それがわがままだとしても。","exKo":"이제 누군가를 위해서가 아니라, 나를 위해 선택하고 싶어. 그게 이기적이라 해도."},{"id":"L5-15","lv":5,"tag":"내면","pol":"casual","v":"f","jp":"正直に言うと、自信がない。","ruby":"<ruby>正直<rt>しょうじき</rt></ruby>に<ruby>言<rt>い</rt></ruby>うと、<ruby>自信<rt>じしん</rt></ruby>がない。","kana":"しょうじきにいうと、じしんがない。","ko":"솔직히 말하면, 자신이 없어","note":"[正直|しょうじき]に言うと는 약함을 꺼내는 정식 입구.","ex":"正直に言うと、自信がないんだ。やったことのない分野だから。","exRuby":"<ruby>正直<rt>しょうじき</rt></ruby>に<ruby>言<rt>い</rt></ruby>うと、<ruby>自信<rt>じしん</rt></ruby>がないんだ。<ruby>やった<rt>やった</rt></ruby>ことのない<ruby>分野<rt>ぶんや</rt></ruby>だから。","exKana":"しょうじきにいうと、じしんがないんだ。やったことのないぶんやだから。","exKo":"솔직히 말하면, 자신이 없어. 해본 적 없는 분야라서."},{"id":"L5-16","lv":5,"tag":"감사","pol":"casual","v":"m","jp":"うまく言えないけど、感謝してる。","ruby":"うまく<ruby>言<rt>い</rt></ruby>えないけど、<ruby>感謝<rt>かんしゃ</rt></ruby>してる。","kana":"うまくいえないけど、かんしゃしてる。","ko":"잘 말할 수 없지만, 고마워하고 있어","note":"서툰 감사의 인정. 오히려 진심으로 들림.","ex":"うまく言えないけど、感謝してる。本当にありがとう。","exRuby":"うまく<ruby>言<rt>い</rt></ruby>えないけど、<ruby>感謝<rt>かんしゃ</rt></ruby>してる。<ruby>本当<rt>ほんとう</rt></ruby>にありがとう。","exKana":"うまくいえないけど、かんしゃしてる。ほんとうにありがとう。","exKo":"잘 말할 수 없지만, 고마워하고 있어. 정말 고마워."},{"id":"L5-17","lv":5,"tag":"치유","pol":"casual","v":"f","jp":"言葉にすると、軽くなる気がする。","ruby":"<ruby>言葉<rt>ことば</rt></ruby>にすると、<ruby>軽<rt>かる</rt></ruby>くなる<ruby>気<rt>き</rt></ruby>がする。","kana":"ことばにすると、かるくなるきがする。","ko":"말로 하면 조금 가벼워지는 것 같아","note":"언어화의 효과를 스스로 발견한 말. 상담 대화의 전환점.","ex":"言葉にすると、軽くなる気がするね。言ってよかった。","exRuby":"<ruby>言葉<rt>ことば</rt></ruby>にすると、<ruby>軽<rt>かる</rt></ruby>くなる<ruby>気<rt>き</rt></ruby>がするね。言ってよかった。","exKana":"ことばにすると、かるくなるきがするね。言ってよかった。","exKo":"말로 하면 조금 가벼워지는 것 같아. 말하길 잘했네."},{"id":"L5-18","lv":5,"tag":"여유","pol":"casual","v":"m","jp":"答えを出さなくてもいいのかもしれない。","ruby":"<ruby>答<rt>こた</rt></ruby>えを<ruby>出<rt>だ</rt></ruby>さなくてもいいのかもしれない。","kana":"こたえをださなくてもいいのかもしれない。","ko":"답을 내지 않아도 되는 걸지도","note":"해결 강박을 풀어 주는 말. 일본식 '둔 채로 두기'의 지혜.","ex":"今すぐ答えを出さなくてもいいのかもしれないね。","exRuby":"<ruby>今<rt>いま</rt></ruby>すぐ<ruby>答<rt>こた</rt></ruby>えを<ruby>出<rt>だ</rt></ruby>さなくてもいいのかもしれないね。","exKana":"いますぐこたえをださなくてもいいのかもしれないね。","exKo":"지금 당장 답을 내지 않아도 되는 걸지도."},{"id":"L5-19","lv":5,"tag":"수용","pol":"casual","v":"f","jp":"そのままでいいんじゃないかな。","ruby":"そのままでいいんじゃないかな。","kana":"そのままでいいんじゃないかな。","ko":"그대로도 괜찮지 않을까","note":"변화를 요구하지 않는 수용. ～んじゃないかな로 부드럽게.","ex":"無理に変わらなくても、そのままでいいんじゃないかな。","exRuby":"<ruby>無理<rt>むり</rt></ruby>に<ruby>変<rt>か</rt></ruby>わらなくても、そのままでいいんじゃないかな。","exKana":"むりにかわらなくても、そのままでいいんじゃないかな。","exKo":"억지로 변하지 않아도, 그대로도 괜찮지 않을까."},{"id":"L5-20","lv":5,"tag":"경청","pol":"casual","v":"m","jp":"あなたはどうしたい？","ruby":"あなたはどうしたい？","kana":"あなたはどうしたい？","ko":"너는 어떻게 하고 싶어?","note":"조언 대신 주권을 돌려주는 질문. 상담의 마지막에 놓임.","ex":"周りのことは一旦おいて、あなたはどうしたい？","exRuby":"<ruby>周<rt>まわ</rt></ruby>りのことは<ruby>一旦<rt>いったん</rt></ruby>おいて、あなたはどうしたい？","exKana":"まわりのことはいったんおいて、あなたはどうしたい？","exKo":"주변 일은 잠깐 두고, 너는 어떻게 하고 싶어?"},{"id":"L5-21","lv":5,"tag":"여유","pol":"casual","v":"f","jp":"少し立ち止まってもいいと思う。","ruby":"<ruby>少<rt>すこ</rt></ruby>し<ruby>立<rt>た</rt></ruby>ち<ruby>止<rt>ど</rt></ruby>まってもいいと<ruby>思<rt>おも</rt></ruby>う。","kana":"すこしたちどまってもいいとおもう。","ko":"조금 멈춰 서도 된다고 생각해","note":"'전진' 강요를 멈추는 허용. 立ち止まる는 멈춰 서다.","ex":"走り続けなくていい。少し立ち止まってもいいと思う。","exRuby":"<ruby>走<rt>はし</rt></ruby>り<ruby>続<rt>つづ</rt></ruby>けなくていい。<ruby>少<rt>すこ</rt></ruby>し<ruby>立<rt>た</rt></ruby>ち<ruby>止<rt>ど</rt></ruby>まってもいいと<ruby>思<rt>おも</rt></ruby>う。","exKana":"はしりつづけなくていい。すこしたちどまってもいいとおもう。","exKo":"계속 달리지 않아도 돼. 조금 멈춰 서도 된다고 생각해."},{"id":"L5-22","lv":5,"tag":"수용","pol":"casual","v":"m","jp":"完璧じゃなくても大丈夫。","ruby":"<ruby>完璧<rt>かんぺき</rt></ruby>じゃなくても<ruby>大丈夫<rt>だいじょうぶ</rt></ruby>。","kana":"かんぺきじゃなくてもだいじょうぶ。","ko":"완벽하지 않아도 괜찮아","note":"자기비판이 강한 상대에게. 짧을수록 강하게 남음.","ex":"完璧じゃなくても大丈夫。できてる部分もちゃんとあるよ。","exRuby":"<ruby>完璧<rt>かんぺき</rt></ruby>じゃなくても<ruby>大丈夫<rt>だいじょうぶ</rt></ruby>。できてる<ruby>部分<rt>ぶぶん</rt></ruby>もちゃんとあるよ。","exKana":"かんぺきじゃなくてもだいじょうぶ。できてるぶぶんもちゃんとあるよ。","exKo":"완벽하지 않아도 괜찮아. 하고 있는 부분도 분명히 있어."},{"id":"L5-23","lv":5,"tag":"가치관","pol":"casual","v":"f","jp":"生き方って、正解がないよね。","ruby":"<ruby>生<rt>い</rt></ruby>き<ruby>方<rt>かた</rt></ruby>って、<ruby>正解<rt>せいかい</rt></ruby>がないよね。","kana":"いきかたって、せいかいがないよね。","ko":"사는 방식엔 정답이 없지","note":"정답 없는 영역을 함께 인정. って로 인용해 가볍게.","ex":"生き方って、正解がないよね。だから比べなくていい。","exRuby":"<ruby>生<rt>い</rt></ruby>き<ruby>方<rt>かた</rt></ruby>って、<ruby>正解<rt>せいかい</rt></ruby>がないよね。<ruby>だから<rt>だから</rt></ruby><ruby>比<rt>くら</rt></ruby>べなくていい。","exKana":"いきかたって、せいかいがないよね。だからくらべなくていい。","exKo":"사는 방식엔 정답이 없지. 그러니까 비교하지 않아도 돼."},{"id":"L5-24","lv":5,"tag":"지지","pol":"casual","v":"m","jp":"そういうふうに考えられるの、すごくいいと思う。","ruby":"そういうふうに<ruby>考<rt>かんが</rt></ruby>えられるの、すごくいいと<ruby>思<rt>おも</rt></ruby>う。","kana":"そういうふうにかんがえられるの、すごくいいとおもう。","ko":"그렇게 생각할 수 있는 거, 정말 좋다고 생각해","note":"내용이 아니라 '사고방식'을 인정. 자기효능감을 높이는 칭찬.","ex":"苦しいのにそういうふうに考えられるの、すごくいいと思う。","exRuby":"<ruby>苦<rt>くる</rt></ruby>しいのにそういうふうに<ruby>考<rt>かんが</rt></ruby>えられるの、すごくいいと<ruby>思<rt>お</rt></ruby>う。","exKana":"くるしいのにそういうふうにかんがえられるの、すごくいいとおう。","exKo":"힘든데도 그렇게 생각할 수 있는 거, 정말 좋다고 생각해."},{"id":"L5-25","lv":5,"tag":"지지","pol":"casual","v":"f","jp":"私はあなたの味方だよ。","ruby":"<ruby>私<rt>わたし</rt></ruby>はあなたの<ruby>味方<rt>みかた</rt></ruby>だよ。","kana":"わたしはあなたのみかただよ。","ko":"나는 네 편이야","note":"일본에서는 좀처럼 직접 말하지 않는 문장. 그래서 무게가 큼.","ex":"何があっても、私はあなたの味方だよ。","exRuby":"<ruby>何<rt>なに</rt></ruby>があっても、<ruby>私<rt>わたし</rt></ruby>はあなたの<ruby>味方<rt>みかた</rt></ruby>だよ。","exKana":"なにがあっても、わたしはあなたのみかただよ。","exKo":"무슨 일이 있어도, 나는 네 편이야."},{"id":"L5-26","lv":5,"tag":"관계","pol":"casual","v":"m","jp":"またこうやって話せたら嬉しい。","ruby":"またこうやって<ruby>話<rt>はな</rt></ruby>せたら<ruby>嬉<rt>うれ</rt></ruby>しい。","kana":"またこうやってはなせたらうれしい。","ko":"또 이렇게 이야기할 수 있으면 좋겠어","note":"관계의 지속을 청하는 완곡한 표현. 부담 없는 초대.","ex":"今夜みたいに、またこうやって話せたら嬉しい。","exRuby":"<ruby>今夜<rt>こんや</rt></ruby>みたいに、またこうやって<ruby>話<rt>はな</rt></ruby>せたら<ruby>嬉<rt>うれ</rt></ruby>しい。","exKana":"こんやみたいに、またこうやってはなせたらうれしい。","exKo":"오늘 밤처럼, 또 이렇게 이야기할 수 있으면 좋겠어."},{"id":"L5-27","lv":5,"tag":"공명","pol":"casual","v":"f","jp":"今の話、すごく響いた。","ruby":"<ruby>今<rt>いま</rt></ruby>の<ruby>話<rt>はなし</rt></ruby>、すごく<ruby>響<rt>ひび</rt></ruby>いた。","kana":"いまのはなし、すごくひびいた。","ko":"방금 그 얘기, 정말 와닿았어","note":"響く＝울리다/와닿다. 감동을 '마음에 울림'으로 표현.","ex":"今の話、すごく響いた。少し考えさせられた。","exRuby":"<ruby>今<rt>いま</rt></ruby>の<ruby>話<rt>はなし</rt></ruby>、すごく<ruby>響<rt>ひび</rt></ruby>いた。<ruby>少<rt>すこ</rt></ruby>し<ruby>考<rt>かんが</rt></ruby>えさせられた。","exKana":"いまのはなし、すごくひびいた。すこしかんがえさせられた。","exKo":"방금 그 얘기, 정말 와닿았어. 조금 생각하게 됐어."},{"id":"L5-28","lv":5,"tag":"수용","pol":"casual","v":"m","jp":"そういうところも含めて、あなたなんだと思う。","ruby":"そういうところも<ruby>含<rt>ふく</rt></ruby>めて、あなたなんだと<ruby>思<rt>おも</rt></ruby>う。","kana":"そういうところもふくめて、あなたなんだとおもう。","ko":"그런 부분까지 포함해서 네가 아닐까 싶어","note":"결점까지 포함한 전체 수용. 含めて가 핵심어.","ex":"弱いところも、そういうところも含めて、あなたなんだと思う。","exRuby":"<ruby>弱<rt>よわ</rt></ruby>いところも、そういうところも<ruby>含<rt>ふく</rt></ruby>めて、あなたなんだと<ruby>思<rt>おも</rt></ruby>う。","exKana":"よわいところも、そういうところもふくめて、あなたなんだとおもう。","exKo":"약한 부분도, 그런 부분까지 포함해서 네가 아닐까 싶어."}],"dialogues":[{"id":"D1","lv":2,"title":"初対面・自己紹介","titleRuby":"<ruby>初対面<rt>はつたいめん</rt></ruby>・<ruby>自己紹介<rt>じこしょうかい</rt></ruby>","titleKana":"はつたいめん・じこしょうかい","situation":"新しい職場で同じチームになった人と初めて話す","a":"f","b":"m","lines":[{"r":"A","jp":"初めまして。企画部の佐藤です。","ruby":"<ruby>初<rt>はじ</rt></ruby>めまして。<ruby>企画部<rt>きかくぶ</rt></ruby>の<ruby>佐藤<rt>さとう</rt></ruby>です。","kana":"はじめまして。きかくぶのさとうです。","ko":"처음 뵙겠습니다. 기획부의 사토입니다.","note":"회사명보다 부서·이름이 먼저. です로 끝맺으면 충분히 정중."},{"r":"B","jp":"初めまして。山田と申します。お世話になっております。","ruby":"<ruby>初<rt>はじ</rt></ruby>めまして。<ruby>山田<rt>やまだ</rt></ruby>と<ruby>申<rt>もう</rt></ruby>します。お<ruby>世話<rt>せわ</rt></ruby>になっております。","kana":"はじめまして。やまだともうします。おせわになっております。","ko":"처음 뵙겠습니다. 야마다라고 합니다. 신세 지고 있습니다.","note":"初対面でも お世話になっております를 붙이는 것이 관례."},{"r":"A","jp":"こちらこそ。お仕事は長いんですか。","ruby":"こちらこそ。お<ruby>仕事<rt>しごと</rt></ruby>は<ruby>長<rt>なが</rt></ruby>いんですか。","kana":"こちらこそ。おしごとはながいんですか。","ko":"저야말로. 일하신 지 오래되셨어요?","note":"質問に こちらこそ를 먼저. 長いんですか는 '경력이 긴가'."},{"r":"B","jp":"まだ三年目です。分からないことばかりなので、色々教えていただけると助かります。","ruby":"まだ<ruby>三年目<rt>さんねんめ</rt></ruby>です。<ruby>分<rt>わ</rt></ruby>からないことばかりなので、<ruby>色々<rt>いろいろ</rt></ruby><ruby>教<rt>おし</rt></ruby>えていただけると<ruby>助<rt>たす</rt></ruby>かります。","kana":"まださんねんめです。わからないことばかりなので、いろいろおしえていただけるとたすかります。","ko":"이제 3년 차입니다. 모르는 것투성이니 여러모로 알려 주시면 도움이 되겠습니다.","note":"겸손 + 구체적 부탁. 教えていただけると助かります가 핵심."},{"r":"A","jp":"もちろんです。わからないことがあったら、いつでも声をかけてくださいね。","ruby":"もちろんです。わからないことがあったら、いつでも<ruby>声<rt>こえ</rt></ruby>をかけてくださいね。","kana":"もちろんです。わからないことがあったら、いつでもこえをかけてくださいね。","ko":"물론이죠. 모르는 게 있으면 언제든 말 걸어 주세요.","note":"声をかける＝말을 걸다. 부담 없이 열어 두는 표현."},{"r":"B","jp":"ありがとうございます。今日からよろしくお願いいたします。","ruby":"ありがとうございます。<ruby>今日<rt>きょう</rt></ruby>からよろしくお<ruby>願<rt>ねが</rt></ruby>いいたします。","kana":"ありがとうございます。きょうからよろしくおねがいいたします。","ko":"감사합니다. 오늘부터 잘 부탁드리겠습니다.","note":"마무리 인사. いたします가 します보다 격식."}]},{"id":"D2","lv":2,"title":"カフェで注文","titleRuby":"カフェで<ruby>注文<rt>ちゅうもん</rt></ruby>","titleKana":"カフェでちゅうもん","situation":"카페에서 음료를 주문하고 자리를 찾는 상황","a":"f","b":"m","lines":[{"r":"A","jp":"店内でお召し上がりですか、お持ち帰りですか。","ruby":"<ruby>店内<rt>てんない</rt></ruby>でお<ruby>召<rt>め</rt></ruby>し<ruby>上<rt>あ</rt></ruby>がりですか、お<ruby>持<rt>も</rt></ruby>ち<ruby>帰<rt>かえ</rt></ruby>りですか。","kana":"てんないでおめしあがりですか、おもちかえりですか。","ko":"매장에서 드시나요, 포장인가요?","note":"일본 카페의 정형 질문. 召し上がる는 '드시다'의 존경어."},{"r":"B","jp":"店内でお願いします。ホットのカフェラテをMサイズで。","ruby":"<ruby>店内<rt>てんない</rt></ruby>でお<ruby>願<rt>ねが</rt></ruby>いします。ホットのカフェラテを<ruby>Mサイズ<rt>えむさいず</rt></ruby>で。","kana":"てんないでおねがいします。ホットのカフェラテをえむさいずで。","ko":"매장에서 마실게요. 핫 카페라테 M 사이즈로.","note":"サイズ 표기는 매장마다 다름(トール/グランデ 등). 화면 표기를 따르면 됨."},{"r":"A","jp":"かしこまりました。何かお召し上がりますか。","ruby":"かしこまりました。<ruby>何<rt>なに</rt></ruby>かお<ruby>召<rt>め</rt></ruby>し<ruby>上<rt>あ</rt></ruby>がりますか。","kana":"かしこまりました。なにかおめしあがりますか。","ko":"알겠습니다. 뭐 드실 것도 필요하신가요?","note":"かしこまりました는 わかりました보다 정중한 응대."},{"r":"B","jp":"一緒に食べられる軽いものをお願いします。","ruby":"<ruby>一緒<rt>いっしょ</rt></ruby>に<ruby>食<rt>た</rt></ruby>べられる<ruby>軽<rt>かる</rt></ruby>いものをお<ruby>願<rt>ねが</rt></ruby>いします。","kana":"いっしょにたべられるかるいものをおねがいします。","ko":"같이 먹을 수 있는 가벼운 걸로 부탁합니다.","note":"메뉴를 모를 때 '조건'으로 부탁하는 회화 기술."},{"r":"A","jp":"少々お待ちくださいませ。お席は窓際が空いております。","ruby":"<ruby>少々<rt>しょうしょう</rt></ruby>お<ruby>待<rt>ま</rt></ruby>ちくださいませ。お<ruby>席<rt>せき</rt></ruby>は<ruby>窓際<rt>まどぎわ</rt></ruby>が<ruby>空<rt>あ</rt></ruby>いております。","kana":"しょうしょうおまちくださいませ。おせきはまどぎわがあいております。","ko":"잠시만 기다려 주세요. 자리는 창가가 비어 있습니다.","note":"お待ちくださいませ는 서비스업의 최상급 정중형."},{"r":"B","jp":"ありがとうございます。じゃあ、窓際でお願いします。","ruby":"ありがとうございます。じゃあ、<ruby>窓際<rt>まどぎわ</rt></ruby>でお<ruby>願<rt>ねが</rt></ruby>いします。","kana":"ありがとうございます。じゃあ、まどぎわでおねがいします。","ko":"감사합니다. 그럼 창가 자리로 부탁합니다.","note":"じゃあ를 넣으면 딱딱함이 풀림. 손님도 です체를 유지."}]},{"id":"D3","lv":2,"title":"友達と約束","titleRuby":"<ruby>友達<rt>ともだち</rt></ruby>と<ruby>約束<rt>やくそく</rt></ruby>","titleKana":"ともだちとやくそく","situation":"친구와 주말 약속을 잡는 가벼운 대화(タメ口)","a":"m","b":"f","lines":[{"r":"A","jp":"ねえ、今週の土曜、空いてる？","ruby":"ねえ、<ruby>今週<rt>こんしゅう</rt></ruby>の<ruby>土曜<rt>どよう</rt></ruby>、<ruby>空<rt>あ</rt></ruby>いてる？","kana":"ねえ、こんしゅうのどよう、あいてる？","ko":"저기, 이번 주 토요일 비어 있어?","note":"친구 사이 タメ口. 空いてる＝비어 있다."},{"r":"B","jp":"土曜はちょっと…日曜だったら大丈夫だよ。","ruby":"<ruby>土曜<rt>どよう</rt></ruby>はちょっと…<ruby>日曜<rt>にちよう</rt></ruby>だったら<ruby>大丈夫<rt>だいじょうぶ</rt></ruby>だよ。","kana":"どようはちょっと…にちようだったらだいじょうぶだよ。","ko":"토요일은 좀… 일요일이면 괜찮아.","note":"거절 후 즉시 대안 제시가 일본식 배려. ちょっと…로 부드럽게."},{"r":"A","jp":"日曜でも全然いいよ。何時ごろがいい？","ruby":"<ruby>日曜<rt>にちよう</rt></ruby>でも<ruby>全然<rt>ぜんぜん</rt></ruby>いいよ。<ruby>何時<rt>なんじ</rt></ruby>ごろがいい？","kana":"にちようでもぜんぜんいいよ。なんじごろがいい？","ko":"일요일도 전혀 괜찮아. 몇 시쯤이 좋아?","note":"전혀いいよ＝전혀 문제없어. 全然을 긍정에 쓰는 요즘 용법."},{"r":"B","jp":"お昼ごろどう？駅前の新しいカフェが気になってるんだ。","ruby":"お<ruby>昼<rt>ひる</rt></ruby>ごろどう？<ruby>駅前<rt>えきまえ</rt></ruby>の<ruby>新<rt>あたら</rt></ruby>しいカフェが<ruby>気<rt>き</rt></ruby>になってるんだ。","kana":"おひるごろどう？えきまえのあたらしいカフェがきになってるんだ。","ko":"점심쯤 어때? 역 앞 새 카페가 궁금해.","note":"気になってる＝궁금하다. 誘いの理由を添えると自然."},{"r":"A","jp":"いいね、そこ行ってみたかったんだ。十一時に駅前で待ち合わせで大丈夫？","ruby":"いいね、そこ<ruby>行<rt>い</rt></ruby>ってみたかったんだ。<ruby>十一時<rt>じゅういちじ</rt></ruby>に<ruby>駅前<rt>えきまえ</rt></ruby>で<ruby>待<rt>ま</rt></ruby>ち<ruby>合<rt>あ</rt></ruby>わせで<ruby>大丈夫<rt>だいじょうぶ</rt></ruby>？","kana":"いいね、そこいってみたかったんだ。じゅういちじにえきまえでまちあわせでだいじょうぶ？","ko":"좋네, 거기 가보고 싶었어. 11시에 역 앞에서 만나도 돼?","note":"待ち合わせ＝만남 장소·약속. で大丈夫？로 부드럽게 확인."},{"r":"B","jp":"大丈夫！じゃあ土曜の夜に連絡するね。","ruby":"<ruby>大丈夫<rt>だいじょうぶ</rt></ruby>！じゃあ<ruby>土曜<rt>どよう</rt></ruby>の<ruby>夜<rt>よる</rt></ruby>に<ruby>連絡<rt>れんらく</rt></ruby>するね。","kana":"だいじょうぶ！じゃあどようのよるにれんらくするね。","ko":"좋아! 그럼 토요일 밤에 연락할게.","note":"약속의 마무리는 '연락한다'로 책임을 명확히."}]},{"id":"D4","lv":2,"title":"買い物と返品","titleRuby":"<ruby>買<rt>か</rt></ruby>い<ruby>物<rt>もの</rt></ruby>と<ruby>返品<rt>へんぴん</rt></ruby>","titleKana":"かいものとへんぴん","situation":"옷 가게에서 사이즈를 확인하고 교환을 부탁하는 상황","a":"f","b":"f","lines":[{"r":"A","jp":"いらっしゃいませ。何かお探しですか。","ruby":"いらっしゃいませ。<ruby>何<rt>なに</rt></ruby>かお<ruby>探<rt>さが</rt></ruby>しですか。","kana":"いらっしゃいませ。なにかおさがしですか。","ko":"어서 오세요. 뭘 찾으시나요?","note":"いらっしゃいませ는 점원의 첫 인사. 답하지 않아도 실례는 아님."},{"r":"B","jp":"試着したいんですが、少し大きいかもしれません。ワンサイズ下はありますか。","ruby":"<ruby>試着<rt>しちゃく</rt></ruby>したいんですが、<ruby>少<rt>すこ</rt></ruby>し<ruby>大<rt>おお</rt></ruby>きいかもしれません。<ruby>ワンサイズ<rt>わんさいず</rt></ruby><ruby>下<rt>した</rt></ruby>はありますか。","kana":"しちゃくしたいんですが、すこしおおきいかもしれません。わんさいずしたはありますか。","ko":"입어보고 싶은데, 조금 클지도 몰라요. 한 사이즈 작은 건 있나요?","note":"んですが로 '상황 설명'을 만들면 요청이 자연스러워짐."},{"r":"A","jp":"少々お待ちください。こちら、在庫がございます。","ruby":"<ruby>少々<rt>しょうしょう</rt></ruby>お<ruby>待<rt>ま</rt></ruby>ちください。こちら、<ruby>在庫<rt>ざいこ</rt></ruby>がございます。","kana":"しょうしょうおまちください。こちら、ざいこがございます。","ko":"잠시만 기다려 주세요. 이쪽에 재고가 있습니다.","note":"ございます는 상품·재고에 쓰는 겸양."},{"r":"B","jp":"ありがとうございます。あ、前に買ったものなんですが、返品は可能ですか。","ruby":"ありがとうございます。あ、<ruby>前<rt>まえ</rt></ruby>に<ruby>買<rt>か</rt></ruby>ったものなんですが、<ruby>返品<rt>へんぴん</rt></ruby>は<ruby>可能<rt>かのう</rt></ruby>ですか。","kana":"ありがとうございます。あ、まえにかったものなんですが、へんぴんはかのうですか。","ko":"감사합니다. 아, 전에 산 건데 반품이 가능한가요?","note":"返品＝반품, 交換＝교환. 可能ですか가 できますか보다 정중."},{"r":"A","jp":"領収書をお持ちでしたら、一週間以内でしたら承ります。","ruby":"<ruby>領収書<rt>りょうしゅうしょ</rt></ruby>をお<ruby>持<rt>も</rt></ruby>ちでしたら、<ruby>一週間以内<rt>いっしゅうかんいない</rt></ruby>でしたら<ruby>承<rt>うけたまわ</rt></ruby>ります。","kana":"りょうしゅうしょをおもちでしたら、いっしゅうかんいないでしたらうけたまわります。","ko":"영수증을 가지고 계시고 1주일 이내라면 접수 가능합니다.","note":"承る＝'접수하다'의 겸양어. でしたら를 두 번 겹친 완곡형."},{"r":"B","jp":"助かります。明日にでも持って来ますね。","ruby":"<ruby>助<rt>たす</rt></ruby>かります。<ruby>明日<rt>あした</rt></ruby>にでも<ruby>持<rt>も</rt></ruby>って<ruby>来<rt>き</rt></ruby>ますね。","kana":"たすかります。あしたにでももってきますね。","ko":"다행이네요. 내일쯤 가져올게요.","note":"助かります＝살았어요. 짧지만 감사가 진하게 전해짐."}]},{"id":"D5","lv":3,"title":"同僚への依頼","titleRuby":"<ruby>同僚<rt>どうりょう</rt></ruby>への<ruby>依頼<rt>いらい</rt></ruby>","titleKana":"どうりょうへのいらい","situation":"바쁜 동료에게 급한 자료 확인을 부탁하는 상황","a":"m","b":"f","lines":[{"r":"A","jp":"田中さん、お忙しいところ恐縮ですが、少しお時間よろしいですか。","ruby":"<ruby>田中<rt>たなか</rt></ruby>さん、お<ruby>忙<rt>いそが</rt></ruby>しいところ<ruby>恐縮<rt>きょうしゅく</rt></ruby>ですが、<ruby>少<rt>すこ</rt></ruby>しお<ruby>時間<rt>じかん</rt></ruby>よろしいですか。","kana":"たなかさん、おいそがしいところきょうしゅくですが、すこしおじかんよろしいですか。","ko":"다나카 씨, 바쁘신 중에 죄송하지만 잠깐 시간 괜찮으세요?","note":"쿠션어 + 시간 요청으로 시작. 바로 본론을 꺼내지 않음."},{"r":"B","jp":"はい、大丈夫ですよ。何でしょうか。","ruby":"はい、<ruby>大丈夫<rt>だいじょうぶ</rt></ruby>ですよ。<ruby>何<rt>なに</rt></ruby>でしょうか。","kana":"はい、だいじょうぶですよ。なにでしょうか。","ko":"네, 괜찮아요. 무슨 일이세요?","note":"상대가 시간을 내 주었으니 곧바로 본론으로."},{"r":"A","jp":"明日の会議で使う資料なんですが、数字の確認をお願いできますでしょうか。","ruby":"<ruby>明日<rt>あした</rt></ruby>の<ruby>会議<rt>かいぎ</rt></ruby>で<ruby>使<rt>つか</rt></ruby>う<ruby>資料<rt>しりょう</rt></ruby>なんですが、<ruby>数字<rt>すうじ</rt></ruby>の<ruby>確認<rt>かくにん</rt></ruby>をお<ruby>願<rt>ねが</rt></ruby>いできますでしょうか。","kana":"あしたのかいぎでつかうしりょうなんですが、すうじのかくにんをおねがいできますでしょうか。","ko":"내일 회의에 쓸 자료인데, 숫자 확인을 부탁드려도 될까요?","note":"件名 → 依頼 → 理由의 순서. できますでしょうか가 정중."},{"r":"B","jp":"承知しました。ただ、今日は別の案件が立ち込んでいて…明日の朝でもいいですか。","ruby":"<ruby>承知<rt>しょうち</rt></ruby>しました。ただ、<ruby>今日<rt>きょう</rt></ruby>は<ruby>別<rt>べつ</rt></ruby>の<ruby>案件<rt>あんけん</rt></ruby>が<ruby>立<rt>た</rt></ruby>ち<ruby>込<rt>こ</rt></ruby>んでいて…<ruby>明日<rt>あした</rt></ruby>の<ruby>朝<rt>あさ</rt></ruby>でもいいですか。","kana":"しょうちしました。ただ、きょうはべつのあんけんがたちこんでいて…あしたのあさでもいいですか。","ko":"알겠습니다. 다만 오늘은 다른 건이 몰려 있어서… 내일 아침이어도 될까요?","note":"거절이 아니라 일정 조정. ただ・でもいいですか로 부드럽게."},{"r":"A","jp":"もちろんです。お手数をおかけしますが、九時までに見ていただけると助かります。","ruby":"もちろんです。お<ruby>手数<rt>てすう</rt></ruby>をおかけしますが、<ruby>九時<rt>くじ</rt></ruby>までに<ruby>見<rt>み</rt></ruby>ていただけると<ruby>助<rt>たす</rt></ruby>かります。","kana":"もちろんです。おてすうをおかけしますが、くじまでにみていただけるとたすかります。","ko":"물론입니다. 번거롭게 해 드려 죄송하지만, 9시까지 봐 주시면 도움이 되겠습니다.","note":"기한을 '도움'으로 돌려 압박을 줄이는 표현."},{"r":"B","jp":"九時ですね、間に合わせます。念のため、確認してほしい箇所を共有していただけますか。","ruby":"<ruby>九時<rt>くじ</rt></ruby>ですね、<ruby>間<rt>ま</rt></ruby>に<ruby>合<rt>あ</rt></ruby>わせます。<ruby>念<rt>ねん</rt></ruby>のため、<ruby>確認<rt>かくにん</rt></ruby>してほしい<ruby>箇所<rt>かしょ</rt></ruby>を<ruby>共有<rt>きょうゆう</rt></ruby>していただけますか。","kana":"くじですね、まにあわせます。ねんのため、かくにんしてほしいかしょをきょうゆうしていただけますか。","ko":"9시ですね, 맞추겠습니다. 혹시 몰라 확인 바라는 부분을 공유해 주시겠어요?","note":"引き受け＋범위 확인. 받는 쪽의 전문성을 드러내는 마무리."}]},{"id":"D6","lv":3,"title":"上司への報告とお詫び","titleRuby":"<ruby>上司<rt>じょうし</rt></ruby>への<ruby>報告<rt>ほうこく</rt></ruby>とお<ruby>詫<rt>わ</rt></ruby>び","titleKana":"じょうしへのほうこくとおわび","situation":"업무 실수를 발견하고 상사에게 보고·사과하는 상황","a":"m","b":"m","lines":[{"r":"A","jp":"部長、今お時間よろしいでしょうか。報告したいことがございます。","ruby":"<ruby>部長<rt>ぶちょう</rt></ruby>、<ruby>今<rt>いま</rt></ruby>お<ruby>時間<rt>じかん</rt></ruby>よろしいでしょうか。<ruby>報告<rt>ほうこく</rt></ruby>したいことがございます。","kana":"ぶちょう、いまおじかんよろしいでしょうか。ほうこくしたいことがございます。","ko":"부장님, 지금 시간 괜찮으실까요? 보고드릴 것이 있습니다.","note":"悪い報告ほど先に時間を取る。ございます가 격식."},{"r":"B","jp":"ああ、大丈夫だよ。どうした？","ruby":"ああ、<ruby>大丈夫<rt>だいじょうぶ</rt></ruby>だよ。どうした？","kana":"ああ、だいじょうぶだよ。どうした？","ko":"아, 괜찮아. 무슨 일이야?","note":"상사는 タメ口로 응답. 이 비대칭이 일본 직장의 기본."},{"r":"A","jp":"結論から申し上げますと、先方への送付が一日遅れてしまいました。","ruby":"<ruby>結論<rt>けつろん</rt></ruby>から<ruby>申<rt>もう</rt></ruby>し<ruby>上<rt>あ</rt></ruby>げますと、<ruby>先方<rt>せんぽう</rt></ruby>への<ruby>送付<rt>そうふ</rt></ruby>が<ruby>一日<rt>いちにち</rt></ruby>遅れてしまいました。","kana":"けつろんからもうしあげますと、せんぽうへのそうふがいちにち遅れてしまいました。","ko":"결론부터 말씀드리면, 상대방에게 발송이 하루 늦었습니다.","note":"결론 먼저. 遅れてしまいました로 책임을 인정."},{"r":"B","jp":"そうか。で、原因は？先方には連絡したのか。","ruby":"そうか。で、<ruby>原因<rt>げんいん</rt></ruby>は？<ruby>先方<rt>せんぽう</rt></ruby>には<ruby>連絡<rt>れんらく</rt></ruby>したのか。","kana":"そうか。で、げんいんは？せんぽうにはれんらくしたのか。","ko":"그렇군. 그래서 원인은? 상대방에는 연락했나?","note":"상사는 원인·대응을 확인. 여기서 변명하면 신뢰를 잃음."},{"r":"A","jp":"私の確認不足でした。先方には既にお詫びし、新しい日程で合意しております。","ruby":"<ruby>私<rt>わたし</rt></ruby>の<ruby>確認不足<rt>かくにんぶそく</rt></ruby>でした。<ruby>先方<rt>せんぽう</rt></ruby>には<ruby>既<rt>すで</rt></ruby>にお<ruby>詫<rt>わ</rt></ruby>びし、<ruby>新<rt>あたら</rt></ruby>しい<ruby>日程<rt>にってい</rt></ruby>で<ruby>合意<rt>ごうい</rt></ruby>しております。","kana":"わたしのかくにんぶそくでした。せんぽうにはすでにおわびし、あたらしいにっていでごういしております。","ko":"제 확인 부족이었습니다. 상대방에는 이미 사과드렸고, 새 일정으로 합의했습니다.","note":"원인 + 이미 한 대응. '지시를 기다리는' 사람이 아니라는 증명."},{"r":"B","jp":"分かった。今後は早めの共有を頼むよ。","ruby":"<ruby>分<rt>わ</rt></ruby>かった。<ruby>今後<rt>こんご</rt></ruby>は<ruby>早<rt>はや</rt></ruby>めの<ruby>共有<rt>きょうゆう</rt></ruby>を<ruby>頼<rt>たの</rt></ruby>むよ。","kana":"わかった。こんごははやめのきょうゆうをたのむよ。","ko":"알겠다. 앞으로는 좀 더 이른 공유를 부탁해.","note":"마무리 지시. 頼むよ는 부드러운 명령."}]},{"id":"D7","lv":3,"title":"取引先との日程調整","titleRuby":"<ruby>取引先<rt>とりひきさき</rt></ruby>との<ruby>日程調整<rt>にっていちょうせい</rt></ruby>","titleKana":"とりひきさきとのにっていちょうせい","situation":"거래처의 제안을 정중히 거절하고 대안을 제시하는 전화","a":"f","b":"m","lines":[{"r":"A","jp":"いつもお世話になっております。来週の打ち合わせの件でお電話しました。","ruby":"いつもお<ruby>世話<rt>せわ</rt></ruby>になっております。<ruby>来週<rt>らいしゅう</rt></ruby>の<ruby>打<rt>う</rt></ruby>ち<ruby>合<rt>あ</rt></ruby>わせの<ruby>件<rt>けん</rt></ruby>でお<ruby>電話<rt>でんわ</rt></ruby>しました。","kana":"いつもおせわになっております。らいしゅうのうちあわせのけんでおでんわしました。","ko":"항상 신세 지고 있습니다. 다음 주 미팅 건으로 전화드렸습니다.","note":"전화 첫 문장은 お世話になっております + 용건."},{"r":"B","jp":"お世話になっております。ご連絡ありがとうございます。","ruby":"お<ruby>世話<rt>せわ</rt></ruby>になっております。ご<ruby>連絡<rt>れんらく</rt></ruby>ありがとうございます。","kana":"おせわになっております。ごれんらくありがとうございます。","ko":"신세 지고 있습니다. 연락 감사합니다.","note":"こちらも同じ挨拶을 돌려줌. 전화 예절의 대칭."},{"r":"A","jp":"水曜の午後はいかがでしょうか。","ruby":"<ruby>水曜<rt>すいよう</rt></ruby>の<ruby>午後<rt>ごご</rt></ruby>はいかがでしょうか。","kana":"すいようのごごはいかがでしょうか。","ko":"수요일 오후는 어떠실까요?","note":"날짜를 하나만 제시하면 거절 시 부담이 커짐. 보통 두 개 제시."},{"r":"B","jp":"あいにくですが、水曜は終日外勤しておりまして。木曜の午前でしたら伺えます。","ruby":"あいにくですが、<ruby>水曜<rt>すいよう</rt></ruby>は<ruby>終日<rt>しゅうじつ</rt></ruby><ruby>外<rt>がい</rt></ruby><ruby>勤<rt>きん</rt></ruby>しておりまして。<ruby>木曜<rt>もくよう</rt></ruby>の<ruby>午前<rt>ごぜん</rt></ruby>でしたら<ruby>伺<rt>うかが</rt></ruby>えます。","kana":"あいにくですが、すいようはしゅうじつがいきんしておりまして。もくようのごぜんでしたらうかがえます。","ko":"공교롭게도 수요일은 종일 외근이라서요. 목요일 오전이면 방문 가능합니다.","note":"あいにく + 사정 + 대안. 완곡 거절의 3단 구조."},{"r":"A","jp":"かしこまりました。木曜の午前十時で調整いたします。","ruby":"かしこまりました。<ruby>木曜<rt>もくよう</rt></ruby>の<ruby>午前十時<rt>ごぜんじゅうじ</rt></ruby>で<ruby>調整<rt>ちょうせい</rt></ruby>いたします。","kana":"かしこまりました。もくようのごぜんじゅうじでちょうせいいたします。","ko":"알겠습니다. 목요일 오전 10시로 조정하겠습니다.","note":"調整いたします＝제가 맞추겠습니다. 상대 부담을 덜어 줌."},{"r":"B","jp":"助かります。では、当日は私が受付までお迎えにあがります。","ruby":"<ruby>助<rt>たす</rt></ruby>かります。では、<ruby>当日<rt>とうじつ</rt></ruby>は<ruby>私<rt>わたし</rt></ruby>が<ruby>受付<rt>うけつけ</rt></ruby>までお<ruby>迎<rt>むか</rt></ruby>えにあがります。","kana":"たすかります。では、とうじつはわたしがうけつけまでおむかえにあがります。","ko":"도움이 됩니다. 그럼 당일에는 제가 접수처까지 마중 나가겠습니다.","note":"お迎えにあがる＝마중 나가다의 겸양. 관계를 굳히는 한마디."}]},{"id":"D8","lv":4,"title":"友人の悩みを聞く","titleRuby":"<ruby>友人<rt>ゆうじん</rt></ruby>の<ruby>悩<rt>なや</rt></ruby>みを<ruby>聞<rt>き</rt></ruby>く","titleKana":"ゆうじんのなやみをきく","situation":"친구가 일 이야기를 꺼내고, 들어주는 대화","a":"f","b":"f","lines":[{"r":"A","jp":"ねえ、ちょっと聞いてもいい？実は最近、仕事で落ち込んでて。","ruby":"ねえ、ちょっと<ruby>聞<rt>き</rt></ruby>いてもいい？<ruby>実<rt>じつ</rt></ruby>は<ruby>最近<rt>さいきん</rt></ruby>、<ruby>仕事<rt>しごと</rt></ruby>で<ruby>落<rt>お</rt></ruby>ち<ruby>込<rt>こ</rt></ruby>んでて。","kana":"ねえ、ちょっときいてもいい？じつはさいきん、しごとでおちこんでて。","ko":"저기, 잠깐 들어줄 수 있어? 실은 요즘 일 때문에 우울해서.","note":"고민을 꺼내는 입구. 聞いてもいい？가 부담을 낮춤."},{"r":"B","jp":"うん、もちろん。どうしたの？","ruby":"うん、もちろん。どうしたの？","kana":"うん、もちろん。どうしたの？","ko":"응, 물론이지. 무슨 일이야?","note":"열린 질문. 바로 조언하지 않고 문을 열어 줌."},{"r":"A","jp":"頑張ってるのに、認めてもらえない気がして。自分が足りないのかなって。","ruby":"<ruby>頑張<rt>がんば</rt></ruby>ってるのに、<ruby>認<rt>みと</rt></ruby>めてもらえない<ruby>気<rt>き</rt></ruby>がして。<ruby>自分<rt>じぶん</rt></ruby>が<ruby>足<rt>た</rt></ruby>りないのかなって。","kana":"がんばってるのに、みとめてもらえないきがして。じぶんがたりないのかなって。","ko":"열심히 하는데 인정받지 못하는 느낌이 들어. 내가 부족한 건가 싶고.","note":"감정 + 자기 의심. 해결책보다 인정이 먼저 필요한 지점."},{"r":"B","jp":"そっか…それは辛かったね。頑張ってるの、ちゃんと見てるよ。","ruby":"そっか…それは<ruby>辛<rt>つら</rt></ruby>かったね。<ruby>頑張<rt>がんば</rt></ruby>ってるの、ちゃんと<ruby>見<rt>み</rt></ruby>てるよ。","kana":"そっか…それはつらかったね。がんばってるの、ちゃんとみてるよ。","ko":"그렇구나… 힘들었겠다. 노력하고 있는 거 제대로 보고 있어.","note":"감정 반영 + 과정 인정. 일본에서 가장 효과적인 위로."},{"r":"A","jp":"…ありがとう。そう言ってもらえるだけで少し楽になる。","ruby":"…ありがとう。そう<ruby>言<rt>い</rt></ruby>ってもらえるだけで<ruby>少<rt>すこ</rt></ruby>し<ruby>楽<rt>らく</rt></ruby>になる。","kana":"…ありがとう。そういってもらえるだけですこしらくになる。","ko":"…고마워. 그렇게 말해 주는 것만으로 조금 편해져.","note":"해결 없이도 위로가 된다는 신호. 여기서 조언을 서두르면 역효과."},{"r":"B","jp":"焦らなくていいよ。話したくなったら、いつでも聞くから。","ruby":"<ruby>焦<rt>あせ</rt></ruby>らなくていいよ。<ruby>話<rt>はな</rt></ruby>したくなったら、いつでも<ruby>聞<rt>き</rt></ruby>くから。","kana":"あせらなくていいよ。はなしたくなったら、いつでもきくから。","ko":"조급해하지 않아도 돼. 얘기하고 싶어지면 언제든 들어줄게.","note":"문을 열어 두는 마무리. 焦らなくていいが 허용의 말."}]},{"id":"D9","lv":4,"title":"不満を伝える・関係の修復","titleRuby":"<ruby>不満<rt>ふまん</rt></ruby>を<ruby>伝<rt>つた</rt></ruby>える・<ruby>関係<rt>かんけい</rt></ruby>の<ruby>修復<rt>しゅうふく</rt></ruby>","titleKana":"ふまんをつたえる・かんけいのしゅうふく","situation":"연락이 뜸했던 친구에게 서운함을 부드럽게 전하는 대화","a":"f","b":"m","lines":[{"r":"A","jp":"最近、連絡くれなくなったね。忙しいのは分かってるんだけど。","ruby":"<ruby>最近<rt>さいきん</rt></ruby>、<ruby>連絡<rt>れんらく</rt></ruby>くれなくなったね。<ruby>忙<rt>いそが</rt></ruby>しいのは<ruby>分<rt>わ</rt></ruby>かってるんだけど。","kana":"さいきん、れんらくくれなくなったね。いそがしいのはわかってるんだけど。","ko":"요즘 연락이 없네. 바쁜 건 알겠는데.","note":"사실 + 상대 사정 인정. 비난 없이 문제를 표면화."},{"r":"B","jp":"ごめん、本当に忙しくて。連絡しようとは思ってたんだ。","ruby":"ごめん、<ruby>本当<rt>ほんとう</rt></ruby>に<ruby>忙<rt>いそが</rt></ruby>しくて。<ruby>連絡<rt>れんらく</rt></ruby>しようとは<ruby>思<rt>おも</rt></ruby>ってたんだ。","kana":"ごめん、ほんとうにいそがしくて。れんらくしようとはおもってたんだ。","ko":"미안, 정말 바빠서. 연락하려고는 생각했어.","note":"변명보다 사과 먼저. 思ってたんだ로 마음은 있었음을 전함."},{"r":"A","jp":"責めるつもりはないんだけど、私の感じ方かもしれないけど、寂しかった。","ruby":"<ruby>責<rt>せ</rt></ruby>める<ruby>つもり<rt>つもり</rt></ruby>はないんだけど、<ruby>私<rt>わたし</rt></ruby>の<ruby>感<rt>かん</rt></ruby>じ<ruby>方<rt>かた</rt></ruby>かもしれないけど、<ruby>寂<rt>さび</rt></ruby>しかった。","kana":"せめるつもりはないんだけど、わたしのかんじかたかもしれないけど、さびしかった。","ko":"탓할 생각은 아닌데, 내가 예민한 걸 수도 있지만, 외로웠어.","note":"쿠션어 2개 + 감정. 단정하지 않아 상대가 방어하지 않음."},{"r":"B","jp":"ごめんね。気づけなくて。距離を置きたいわけじゃないんだ。","ruby":"ごめんね。<ruby>気<rt>き</rt></ruby>づけなくて。<ruby>距離<rt>きょり</rt></ruby>を<ruby>置<rt>お</rt></ruby>きたいわけじゃないんだ。","kana":"ごめんね。きづけなくて。きょりをおきたいわけじゃないんだ。","ko":"미안. 눈치채지 못했어. 거리를 두고 싶은 건 아니야.","note":"오해를 먼저 없애는 문장. 이게 없으면 갈등이 커짐."},{"r":"A","jp":"うん、分かってる。一言もらえるだけで全然違うから。","ruby":"うん、<ruby>分<rt>わ</rt></ruby>かってる。<ruby>一言<rt>ひとこと</rt></ruby>もらえるだけで<ruby>全然<rt>ぜんぜん</rt></ruby><ruby>違<rt>ちが</rt></ruby>うから。","kana":"うん、わかってる。ひとこともらえるだけでぜんぜんちがうから。","ko":"응, 알아. 한마디만 있어도 전혀 달라.","note":"구체적 대안 제시. '연락해'보다 실행 가능."},{"r":"B","jp":"分かった。忙しくても、短くても連絡するようにするね。","ruby":"<ruby>分<rt>わ</rt></ruby>かった。<ruby>忙<rt>いそが</rt></ruby>しくても、<ruby>短<rt>みじか</rt></ruby>くても<ruby>連絡<rt>れんらく</rt></ruby>するようにするね。","kana":"わかった。いそがしくても、みじかくてもれんらくするようにするね。","ko":"알겠어. 바빠도 짧게라도 연락하도록 할게.","note":"구체적 약속. ようにする는 '노력하겠다'의 완곡한 확약."}]},{"id":"D10","lv":4,"title":"落ち込む友人を支える","titleRuby":"<ruby>落<rt>お</rt></ruby>ち<ruby>込<rt>こ</rt></ruby>む<ruby>友人<rt>ゆうじん</rt></ruby>を<ruby>支<rt>ささ</rt></ruby>える","titleKana":"おちこむゆうじんをささえる","situation":"시험에 실패한 친구가 아무 말도 하지 않는 밤","a":"f","b":"m","lines":[{"r":"A","jp":"今日、元気ないね。なにかあった？","ruby":"<ruby>今日<rt>きょう</rt></ruby>、<ruby>元気<rt>げんき</rt></ruby>ないね。なにかあった？","kana":"きょう、げんきないね。なにかあった？","ko":"오늘 기운이 없네. 무슨 일 있었어?","note":"상태를 관찰해 말을 거는 방식. 캐묻지 않음."},{"r":"B","jp":"…実は、試験に落ちたんだ。二回目で。","ruby":"…<ruby>実<rt>じつ</rt></ruby>は、<ruby>試験<rt>しけん</rt></ruby>に<ruby>落<rt>お</rt></ruby>ちたんだ。<ruby>二回目<rt>にかいめ</rt></ruby>で。","kana":"…じつは、しけんにおちたんだ。にかいめで。","ko":"…실은 시험에 떨어졌어. 두 번째로.","note":"짧게 털어놓음. 이때 질문을 이어 붙이면 닫힘."},{"r":"A","jp":"そうだったんだ…。返す言葉が見つからないけど、一緒にいるね。","ruby":"そうだったんだ…。<ruby>返<rt>かえ</rt></ruby>す<ruby>言葉<rt>ことば</rt></ruby>が<ruby>見<rt>み</rt></ruby>つからないけど、<ruby>一緒<rt>いっしょ</rt></ruby>にいるね。","kana":"そうだったんだ…。かえすことばがみつからないけど、いっしょにいるね。","ko":"그랬구나… 무슨 말을 해야 할지 모르겠지만, 같이 있을게.","note":"'할 말을 모르겠다'는 솔직함이 오히려 신뢰를 만듦."},{"r":"B","jp":"ありがとう。無理に励まさないでくれるのが、今はありがたい。","ruby":"ありがとう。<ruby>無理<rt>むり</rt></ruby>に<ruby>励<rt>はげ</rt></ruby>まさないでくれるのが、<ruby>今<rt>いま</rt></ruby>はありがたい。","kana":"ありがとう。むりにはげまさないでくれるのが、いまはありがたい。","ko":"고마워. 억지로 격려하지 않아 주는 게 지금은 고마워.","note":"칭찬보다 '격려하지 않기'가 위로라는 일본적 감각."},{"r":"A","jp":"うん。焦らなくていいよ。言葉を返さなくても大丈夫。","ruby":"うん。<ruby>焦<rt>あせ</rt></ruby>らなくていいよ。<ruby>言葉<rt>ことば</rt></ruby>を<ruby>返<rt>かえ</rt></ruby>さなくても<ruby>大丈夫<rt>だいじょうぶ</rt></ruby>。","kana":"うん。あせらなくていいよ。ことばをかえさなくてもだいじょうぶ。","ko":"응. 조급해하지 않아도 돼. 뭐라고 답하지 않아도 괜찮아.","note":"返事 강요를 없애는 배려."},{"r":"B","jp":"…ちょっと楽になった。話せてよかった。","ruby":"…ちょっと<ruby>楽<rt>らく</rt></ruby>になった。<ruby>話<rt>はな</rt></ruby>せてよかった。","kana":"…ちょっとらくになった。はなせてよかった。","ko":"…조금 편해졌어. 얘기하길 잘했어.","note":"상담의 성과를 상대가 직접 말해 주는 마무리."}]},{"id":"D11","lv":5,"title":"進路の迷い","titleRuby":"<ruby>進路<rt>しんろ</rt></ruby>の<ruby>迷<rt>まよ</rt></ruby>い","titleKana":"しんろのまよい","situation":"전직을 고민하는 친구와 깊은 대화","a":"m","b":"f","lines":[{"r":"A","jp":"最近、自分が何をしたいのか、わからなくなって。転職も考えてるんだ。","ruby":"<ruby>最近<rt>さいきん</rt></ruby>、<ruby>自分<rt>じぶん</rt></ruby>が<ruby>何<rt>なに</rt></ruby>をしたいのか、わからなくなって。<ruby>転職<rt>てんしょく</rt></ruby>も<ruby>考<rt>かんが</rt></ruby>えてるんだ。","kana":"さいきん、じぶんがなにをしたいのか、わからなくなって。てんしょくもかんがえてるんだ。","ko":"요즘 내가 뭘 하고 싶은지 모르겠어. 이직도 생각 중이야.","note":"방향 상실 + 구체적 고민. 5단계 대화의 입구."},{"r":"B","jp":"そうなんだ。今の仕事は、嫌いになった感じ？それとも別の理由？","ruby":"そうなんだ。<ruby>今<rt>いま</rt></ruby>の<ruby>仕事<rt>しごと</rt></ruby>は、<ruby>嫌<rt>きら</rt></ruby>いになった<ruby>感<rt>かん</rt></ruby>じ？それとも<ruby>別<rt>べつ</rt></ruby>の<ruby>理由<rt>りゆう</rt></ruby>？","kana":"そうなんだ。いまのしごとは、きらいになったかんじ？それともべつのりゆう？","ko":"그렇구나. 지금 일이 싫어진 느낌이야? 아니면 다른 이유?","note":"선택지로 물어 상대가 언어화하기 쉽게 돕는 질문."},{"r":"A","jp":"嫌いっていうより、期待されることに疲れてしまって。自分の軸が見えないんだ。","ruby":"<ruby>嫌<rt>きら</rt></ruby>いっていうより、<ruby>期待<rt>きたい</rt></ruby>されることに<ruby>疲<rt>つか</rt></ruby>れてしまって。<ruby>自分<rt>じぶん</rt></ruby>の<ruby>軸<rt>じく</rt></ruby>が<ruby>見<rt>み</rt></ruby>えないんだ。","kana":"きらいっていうより、きたいされることにつかれてしまって。じぶんのじくがみえないんだ。","ko":"싫다기보다는 기대받는 것에 지쳐 버려서. 내 중심축이 안 보여.","note":"軸＝중심축. 추상 개념을 쓰면 대화가 깊어짐."},{"r":"B","jp":"期待に応えようとしてきたんだね。自分にとって、何が一番大事だと思う？","ruby":"<ruby>期待<rt>きたい</rt></ruby>に<ruby>応<rt>こた</rt></ruby>えようとしてきたんだね。<ruby>自分<rt>じぶん</rt></ruby>にとって、<ruby>何<rt>なに</rt></ruby>が<ruby>一番<rt>いちばん</rt></ruby><ruby>大事<rt>だいじ</rt></ruby>だと<ruby>思<rt>おも</rt></ruby>う？","kana":"きたいにこたえようとしてきたんだね。じぶんにとって、なにがいちばんだいじだとおもう？","ko":"기대에 부응하려고 해 왔구나. 자기한테 가장 중요한 게 뭐라고 생각해?","note":"공감 → 가치관 질문. 5단계의 핵심 전환."},{"r":"A","jp":"…たぶん、誰かの役に立ってる実感がほしいんだと思う。評価じゃなくて。","ruby":"…たぶん、<ruby>誰<rt>だれ</rt></ruby>かの<ruby>役<rt>やく</rt></ruby>に<ruby>立<rt>た</rt></ruby>ってる<ruby>実感<rt>じっかん</rt></ruby>がほしいんだと<ruby>思<rt>おも</rt></ruby>う。<ruby>評価<rt>ひょうか</rt></ruby>じゃなくて。","kana":"…たぶん、だれかのやくにたってるじっかんがほしいんだとおもう。ひょうかじゃなくて。","ko":"…아마, 누군가에게 도움이 된다는 실감이 갖고 싶은 것 같아. 평가가 아니라.","note":"評価じゃなくて로 대비. 스스로 답을 찾아가는 순간."},{"r":"B","jp":"答えを出さなくてもいいのかもしれないね。今の言葉、忘れないでほしいな。","ruby":"<ruby>答<rt>こた</rt></ruby>えを<ruby>出<rt>だ</rt></ruby>さなくてもいいのかもしれないね。<ruby>今<rt>いま</rt></ruby>の<ruby>言葉<rt>ことば</rt></ruby>、<ruby>忘<rt>わす</rt></ruby>れないでほしいな。","kana":"こたえをださなくてもいいのかもしれないね。いまのことば、わすれないでほしいな。","ko":"답을 내지 않아도 되는 걸지도. 지금 그 말, 잊지 않았으면 해.","note":"해결을 강요하지 않고 발견을 남겨 주는 마무리."}]},{"id":"D12","lv":5,"title":"後悔と選択","titleRuby":"<ruby>後悔<rt>こうかい</rt></ruby>と<ruby>選択<rt>せんたく</rt></ruby>","titleKana":"こうかいとせんたく","situation":"오랜 선택을 돌아보는 새벽 대화","a":"f","b":"m","lines":[{"r":"A","jp":"後悔してるわけじゃないんだけど、たまに考えるんだ。昔の選択のこと。","ruby":"<ruby>後悔<rt>こうかい</rt></ruby>してるわけじゃないんだけど、たまに<ruby>考<rt>かんが</rt></ruby>えるんだ。<ruby>昔<rt>むかし</rt></ruby>の<ruby>選択<rt>せんたく</rt></ruby>のこと。","kana":"こうかいしてるわけじゃないんだけど、たまにかんがえるんだ。むかしのせんたくのこと。","ko":"후회하는 건 아닌데, 가끔 생각해. 옛날 선택에 대해.","note":"후회를 부정하며 미련을 인정하는 틀. 대화를 여는 안전한 입구."},{"r":"B","jp":"後悔って、答えがないから残るんだよね。どの選択が正しかったかは、誰にも分からないし。","ruby":"<ruby>後悔<rt>こうかい</rt></ruby>って、<ruby>答<rt>こた</rt></ruby>えがないから<ruby>残<rt>のこ</rt></ruby>るんだよね。どの<ruby>選択<rt>せんたく</rt></ruby>が<ruby>正<rt>ただ</rt></ruby>しかったかは、<ruby>誰<rt>だれ</rt></ruby>にも<ruby>分<rt>わ</rt></ruby>からないし。","kana":"こうかいって、こたえがないからのこるんだよね。どのせんたくがただしかったかは、だれにもわからないし。","ko":"후회는 답이 없어서 남는 거지. 어떤 선택이 맞았는지는 아무도 모르니까.","note":"단정하지 않고 함께 생각하는 문장. ～し로 여운을 남김."},{"r":"A","jp":"うん。あのとき、違う選択をしていたらどうなってたんだろうね。","ruby":"うん。あのとき、<ruby>違<rt>ちが</rt></ruby>う<ruby>選択<rt>せんたく</rt></ruby>をしていたらどうなってたんだろうね。","kana":"うん。あのとき、ちがうせんたくをしていたらどうなってたんだろうね。","ko":"응. 그때 다른 선택을 했더라면 어땠을까.","note":"가정법. 답이 아니라 상상의 공유."},{"r":"B","jp":"今ある自分は、その選択の上にあるんだよね。後悔も含めて、今のあなたなんだと思う。","ruby":"<ruby>今<rt>いま</rt></ruby>ある<ruby>自分<rt>じぶん</rt></ruby>は、その<ruby>選択<rt>せんたく</rt></ruby>の<ruby>上<rt>うえ</rt></ruby>にあるんだよね。<ruby>後悔<rt>こうかい</rt></ruby>も<ruby>含<rt>ふく</rt></ruby>めて、<ruby>今<rt>いま</rt></ruby>のあなたなんだと<ruby>思<rt>おも</rt></ruby>う。","kana":"いまあるじぶんは、そのせんたくのうえにあるんだよね。こうかいもふくめて、いまのあなたなんだとおもう。","ko":"지금의 나는 그 선택 위에 있는 거지. 후회까지 포함해서 지금의 너인 것 같아.","note":"전체 수용. 含めて가 핵심어."},{"r":"A","jp":"…そう言ってもらえると、少し救われる。言葉にすると、軽くなる気がするね。","ruby":"…そう<ruby>言<rt>い</rt></ruby>ってもらえると、<ruby>少<rt>すこ</rt></ruby>し<ruby>救<rt>すく</rt></ruby>われる。<ruby>言葉<rt>ことば</rt></ruby>にすると、<ruby>軽<rt>かる</rt></ruby>くなる<ruby>気<rt>き</rt></ruby>がするね。","kana":"…そういってもらえると、すこしすくわれる。ことばにすると、かるくなるきがするね。","ko":"…그렇게 말해 주면 조금 위로가 돼. 말로 하면 가벼워지는 것 같아.","note":"언어화의 효과. 상담 대화의 전환점."},{"r":"B","jp":"今夜みたいに、またこうやって話せたら嬉しい。","ruby":"<ruby>今夜<rt>こんや</rt></ruby>みたいに、またこうやって<ruby>話<rt>はな</rt></ruby>せたら<ruby>嬉<rt>うれ</rt></ruby>しい。","kana":"こんやみたいに、またこうやってはなせたらうれしい。","ko":"오늘 밤처럼, 또 이렇게 이야기할 수 있으면 좋겠어.","note":"관계의 지속을 청하는 완곡한 초대. 부담 없는 마무리."}]},{"id":"D13","lv":5,"title":"深夜の本音トーク","titleRuby":"<ruby>深夜<rt>しんや</rt></ruby>の<ruby>本音<rt>ほんね</rt></ruby>トーク","titleKana":"しんやのほんねトーク","situation":"오랜 친구와 새벽에 나누는 진심 대화","a":"m","b":"f","lines":[{"r":"A","jp":"弱さを見せるのが怖いんだと思う。嫌われるのが怖くて、平気な顔してた。","ruby":"<ruby>弱<rt>よわ</rt></ruby>さを<ruby>見<rt>み</rt></ruby>せるのが<ruby>怖<rt>こわ</rt></ruby>いんだと<ruby>思<rt>おも</rt></ruby>う。<ruby>嫌<rt>きら</rt></ruby>われるのが<ruby>怖<rt>こわ</rt></ruby>くて、<ruby>平気<rt>へいき</rt></ruby>な<ruby>顔<rt>かお</rt></ruby>してた。","kana":"よわさをみせるのがこわいんだとおもう。きらわれるのがこわくて、へいきなかおしてた。","ko":"약한 모습을 보이는 게 무서운 것 같아. 미움받는 게 무서워서 아무렇지 않은 척했어.","note":"자기 분석 + 행동. 깊은 대화는 '왜'보다 '무엇이 두려운지'로."},{"r":"B","jp":"平気な顔してる人ほど、中で色々抱えてるんだよね。私もそうだった。","ruby":"<ruby>平気<rt>へいき</rt></ruby>な<ruby>顔<rt>かお</rt></ruby>してる<ruby>人<rt>ひと</rt></ruby>ほど、<ruby>中<rt>なか</rt></ruby>で<ruby>色々<rt>いろいろ</rt></ruby><ruby>抱<rt>かか</rt></ruby>えてるんだよね。<ruby>私<rt>わたし</rt></ruby>もそうだった。","kana":"へいきなかおしてるひとほど、なかでいろいろかかえてるんだよね。わたしもそうだった。","ko":"아무렇지 않은 얼굴을 하는 사람일수록 속에 여러 가지를 안고 있지. 나도 그랬어.","note":"자기 개방. 상대를 특별하게 만들지 않고 함께 있는 느낌을 줌."},{"r":"A","jp":"言ってしまえば簡単なのに、言うと重いかなって思って。人に言えなかった。","ruby":"<ruby>言<rt>い</rt></ruby>ってしまえば<ruby>簡単<rt>かんたん</rt></ruby>なのに、<ruby>言<rt>い</rt></ruby>うと<ruby>重<rt>おも</rt></ruby>いかなって<ruby>思<rt>おも</rt></ruby>って。<ruby>人<rt>ひと</rt></ruby>に<ruby>言<rt>い</rt></ruby>えなかった。","kana":"いってしまえばかんたんなのに、いうとおもいかなっておもって。ひとにいえなかった。","ko":"말해 버리면 간단한데, 말하면 무거울까 봐. 사람에게 말 못 했어.","note":"'무겁다'는 일본 특유의 관계 부담을 정확히 표현."},{"r":"B","jp":"重くないよ。話してくれてありがとう。ここで置いていってもいいんだよ。","ruby":"<ruby>重<rt>おも</rt></ruby>くないよ。<ruby>話<rt>はな</rt></ruby>してくれてありがとう。ここで<ruby>置<rt>お</rt></ruby>いていってもいいんだよ。","kana":"おもくないよ。はなしてくれてありがとう。ここでおいていってもいいんだよ。","ko":"무겁지 않아. 얘기해 줘서 고마워. 여기다 두고 가도 돼.","note":"'두고 가도 된다'는 이미지가 부담을 실제로 없애 줌."},{"r":"A","jp":"…そうか。じゃあ、今日だけは強がらないでおくよ。","ruby":"…そうか。じゃあ、<ruby>今日<rt>きょう</rt></ruby>だけは<ruby>強<rt>つよ</rt></ruby>がらないでおくよ。","kana":"…そうか。じゃあ、きょうだけはつよがらないでおくよ。","ko":"…그런가. 그럼 오늘만큼은 센 척하지 않을게.","note":"허락을 받아들인 표시. 변화의 시작을 스스로 선언."},{"r":"B","jp":"うん、それでいい。無理に変わらなくても、そのままでいいんじゃないかな。","ruby":"うん、それでいい。<ruby>無理<rt>むり</rt></ruby>に<ruby>変<rt>か</rt></ruby>わらなくても、そのままでいいんじゃないかな。","kana":"うん、それでいい。むりにかわらなくても、そのままでいいんじゃないかな。","ko":"응, 그래도 돼. 억지로 변하지 않아도 그대로도 괜찮지 않을까.","note":"수용으로 닫음. 조언 없이도 대화가 완결되는 구조."}]},{"id":"D14","lv":4,"title":"恋人とのすれ違い","titleRuby":"<ruby>恋人<rt>こいびと</rt></ruby>とのすれ<ruby>違<rt>ちが</rt></ruby>い","titleKana":"こいびととのすれちがい","situation":"연락과 거리감에 대한 오해를 풀어 가는 대화","a":"f","b":"m","lines":[{"r":"A","jp":"最近、一緒にいても遠く感じるんだ。私の気にしすぎかな。","ruby":"<ruby>最近<rt>さいきん</rt></ruby>、<ruby>一緒<rt>いっしょ</rt></ruby>にいても<ruby>遠<rt>とお</rt></ruby>く<ruby>感<rt>かん</rt></ruby>じるんだ。<ruby>私<rt>わたし</rt></ruby>の<ruby>気<rt>き</rt></ruby>にしすぎかな。","kana":"さいきん、いっしょにいてもとおくかんじるんだ。わたしのきにしすぎかな。","ko":"요즘 같이 있어도 멀게 느껴져. 내가 너무 예민한 걸까.","note":"감정을 '나의 느낌'으로 한정해 상대를 공격하지 않음."},{"r":"B","jp":"ごめん、そんなつもりはなかった。忙しくて余裕がなかったのは本当だけど。","ruby":"ごめん、そんなつもりはなかった。<ruby>忙<rt>いそが</rt></ruby>しくて<ruby>余裕<rt>よゆう</rt></ruby>がなかったのは<ruby>本当<rt>ほんとう</rt></ruby>だけど。","kana":"ごめん、そんなつもりはなかった。いそがしくてよゆうがなかったのはほんとうだけど。","ko":"미안, 그럴 생각은 아니었어. 바빠서 여유가 없었던 건 사실이지만.","note":"사과 + 사실 인정. 변명으로 들리지 않게 本当だけど로 한정."},{"r":"A","jp":"理由が知りたかっただけ。責めてるんじゃなくて、置いていかれそうで怖かった。","ruby":"<ruby>理由<rt>りゆう</rt></ruby>が<ruby>知<rt>し</rt></ruby>りたかっただけ。<ruby>責<rt>せ</rt></ruby>めてるんじゃなくて、<ruby>置<rt>お</rt></ruby>いていかれそうで<ruby>怖<rt>こわ</rt></ruby>かった。","kana":"りゆうがしりたかっただけ。せめてるんじゃなくて、おいていかれそうでこわかった。","ko":"이유를 알고 싶었을 뿐이야. 탓하는 게 아니라, 뒤처질 것 같아서 무서웠어.","note":"요구가 아니라 두려움을 말함. 갈등이 정보 교환으로 바뀜."},{"r":"B","jp":"言ってくれてありがとう。忙しいときこそ、一言伝えるようにするね。","ruby":"<ruby>言<rt>い</rt></ruby>ってくれてありがとう。<ruby>忙<rt>いそが</rt></ruby>しいときこそ、<ruby>一言<rt>ひとこと</rt></ruby><ruby>伝<rt>つた</rt></ruby>えるようにするね。","kana":"いってくれてありがとう。いそがしいときこそ、ひとことつたえるようにするね。","ko":"말해 줘서 고마워. 바쁠 때일수록 한마디 전하도록 할게.","note":"구체적 행동 약속. ようにする로 부담 없이 확약."},{"r":"A","jp":"うん。私も、察してほしいだけじゃなくて、言葉で言うようにする。","ruby":"うん。私も、<ruby>察<rt>さっ</rt></ruby>してほしいだけじゃなくて、<ruby>言葉<rt>ことば</rt></ruby>で<ruby>言<rt>い</rt></ruby>うようにする。","kana":"うん。私も、さっしてほしいだけじゃなくて、ことばでいうようにする。","ko":"응. 나도 눈치채 주기만 바라지 말고 말로 하도록 할게.","note":"상호 책임을 인정. 察する(눈치채다) 문화의 한계를 보완."},{"r":"B","jp":"一緒に直していこう。距離を置きたいわけじゃないから。","ruby":"<ruby>一緒<rt>いっしょ</rt></ruby>に<ruby>直<rt>なお</rt></ruby>していこう。<ruby>距離<rt>きょり</rt></ruby>を<ruby>置<rt>お</rt></ruby>きたいわけじゃないから。","kana":"いっしょになおしていこう。きょりをおきたいわけじゃないから。","ko":"같이 고쳐 가자. 거리를 두고 싶은 건 아니니까.","note":"'함께'와 '오해 해소'로 닫는 마무리."}]}],"meta":{"app":{"title":"일본어 스피킹 훈련소","sub":"회화 표현 · 쉐도잉 · 실전 롤플레이","version":"1.0","builtAt":"2026-11-20"},"method":[{"n":1,"t":"한국어 뜻만 보고 먼저 말하기","d":"카드 앞면에는 한국어 뜻만 나옵니다. 일본어를 떠올려 소리 내어 말한 뒤에 넘기세요. '알고 있는 것'과 '입에서 나오는 것'은 다릅니다. 인출(retrieval)이 기억을 만듭니다."},{"n":2,"t":"원어민 음성 듣고 바로 따라 말하기(쉐도잉)","d":"표현 카드의 '듣고 3초 따라말하기' 루프를 쓰세요. 음성을 듣고 → 3초 안에 따라 말하고 → 다시 듣습니다. 속도는 0.75x부터 시작해 1.15x까지 올리면 리듬이 몸에 붙습니다."},{"n":3,"t":"내 목소리 녹음과 비교","d":"한 번 말하고 녹음해 원어민 음성과 번갈아 들어 보세요. 억양·길이·강세가 어디서 어긋나는지 귀로 확인하는 것이 가장 빠른 교정입니다."},{"n":4,"t":"롤플레이는 A를 듣고 B를 말하기","d":"실전 대화에서는 상대(A) 음성을 먼저 듣고, 내 차례(B)의 한국어 힌트만 보고 말합니다. 막히면 정답을 열어 성우 음성을 듣고, 같은 턴을 다시 말해 보세요."},{"n":5,"t":"매일 10문장 드릴","d":"'오늘의 드릴'은 전체 표현에서 무작위 10문장을 뽑습니다. 10분이면 끝나고, 완료 체크와 저장함은 이 기기에 남습니다."}],"tips":[{"cat":"발음·억양","t":"일본어는 '박자(モーラ)' 언어","d":"한 글자 = 한 박자입니다. きって는 '킷-테'(3박), きて는 '키-테'(2박). 한국어처럼 붙여 읽으면 길이가 뭉개지므로, 손뼉으로 박자를 치며 따라 말해 보세요.","src":"https://shadowingjapanese.com/ja/practice","srcName":"ShadowingJapanese"},{"cat":"발음·억양","t":"피치(고저)를 같이 따라하기","d":"일본어는 강세가 아니라 높낮이입니다. はし(橋·다리)는 '하-시↘', はし(箸·젓가락)는 '하↗시'. 단어 카드에서 로마자 밑 화살표 대신 원어민 음성의 높낮이를 그대로 흉내 내 보세요.","src":"https://www.tofugu.com/japanese-learning-resources-database/studyin-daily-japanese/","srcName":"Tofugu / StudyIn Daily Japanese"},{"cat":"발음·억양","t":"쉐도잉은 '1~2초 늦게, 같은 리듬으로'","d":"통역사 훈련에서 온 방법입니다. 뜻을 이해하려 애쓰지 말고 소리·억양·속도를 그림자처럼 복제하세요. 하루 15분이면 3주 안에 리듬이 바뀝니다.","src":"https://shadowingjapanese.com/ja/practice","srcName":"ShadowingJapanese"},{"cat":"쉐도잉 교재","t":"'新・シャドーイング 日本語を話そう!' 시리즈","d":"초~중급부터 상급까지 단계별 문장과 정중체/반말 표기가 함께 있는 교재. 음원을 내려받아 앱의 쉐도잉 루프와 같이 쓰기 좋습니다.","src":"https://www.9640.jp/nihongo/ja/detail/?850","srcName":"くろしお出版"},{"cat":"유튜브","t":"日本語の森 — JLPT별 문법·회화","d":"N1~N5 문법과 회화를 레벨별로 정리. 관서 사투리 강좌도 있어 리듬 적응에 도움.","src":"https://nihongocafe.jp/8-youtube-channels-for-learning-japanese-language/","srcName":"nihongocafe / YouTube"},{"cat":"유튜브","t":"Japanese with Shun — 레벨 표기된 실제 대화","d":"제목에 N5~N3 레벨이 붙은 인터뷰·일상 대화. 화면 자막과 함께 3~4줄씩 따라 말하기에 적합.","src":"https://playlingo.app/ja/blog/best-youtube-channels-to-learn-japanese","srcName":"PlayLingo"},{"cat":"유튜브","t":"Sayuri Saying / Miku Real Japanese — 자연스러운 수다","d":"원어민끼리 실제로 주고받는 속도와 추임새를 익히기 좋습니다. 자막을 켜고 본 뒤 끄고 다시 보세요.","src":"https://nihongocafe.jp/8-youtube-channels-for-learning-japanese-language/","srcName":"nihongocafe"},{"cat":"유튜브","t":"あかね的日本語教室 — 생활 장면 회화","d":"전화 응대, 아르바이트 면접, 택배 재배달 같은 '실제로 막히는 장면'을 다룹니다. Lv.2~3과 함께 보면 좋습니다.","src":"https://konekura.com/nihongo-youtube-2/","srcName":"ジャパリのまち"},{"cat":"유튜브","t":"Speak Japanese Naturally — 후리가나 Vlog","d":"일상 브이로그에 학습자용 나레이션과 후리가나 자막. 앱의 후리가나 토글과 병행하면 읽기 훈련이 됩니다.","src":"https://playlingo.app/ja/blog/best-youtube-channels-to-learn-japanese","srcName":"PlayLingo"},{"cat":"네이버 블로그","t":"추임새·리액션 표현은 '짧게' 익히기","d":"そうなんだ！・なるほど・確かに・それな・それはちょっと… 같은 한 줄 리액션이 회화 체감을 가장 크게 바꿉니다. Lv.1 카드가 이 역할입니다.","src":"https://m.blog.naver.com/shj0504/221667027820","srcName":"네이버 블로그"},{"cat":"네이버 블로그","t":"'그냥'은 なんとなく, '뭐래는거야'는 意味わからない","d":"한국어 '그냥'을 ただ로 옮기면 어색합니다. 이유 없이 말할 때는 なんとなく가 자연스럽고, 상대 말이 이해 안 될 때는 意味わからない(→わかんない)를 씁니다.","src":"https://m.blog.naver.com/sonyloves/221985183205","srcName":"네이버 블로그"},{"cat":"네이버 블로그","t":"한국인이 자주 틀리는 경어 습관","d":"自分の家族には さん을 붙이지 않습니다(私の父は…). 先生様처럼 존칭 위에 様를 겹치지도 않습니다. 한국어 경어 습관이 그대로 나오는 지점입니다.","src":"https://m.blog.naver.com/cufspr/222468575982","srcName":"사이버한국외대 블로그"},{"cat":"네이버 블로그","t":"간사이벤 최소 세트","d":"あかん=안 돼, ええ=좋아, ほんま=진짜, ちゃう=아니야, めっちゃ=엄청, おおきに=고맙습니다. 오사카·교토 여행 전에 이 여섯 개만 익혀도 반응이 달라집니다.","src":"https://m.blog.naver.com/hackersjapan/223872742971","srcName":"해커스 일본어 블로그"},{"cat":"여행 회화","t":"です/ます만 붙여도 절반은 통한다","d":"짧은 표현 + です·ます + 미소. 모르면 すみません + 제스처 + 번역앱. 정중한 말투 자체를 일본인은 크게 평가합니다.","src":"https://m.blog.naver.com/heechul1204/224159133130","srcName":"네이버 블로그"},{"cat":"X(트위터)","t":"요즘 말은 '줄임'과 '접두어'로 만든다","d":"2025년 전후로는 爆(ばく)·激(げき)을 붙이는 강조(激うま·爆バズ), 긴 말을 줄이는 축약(あーね·きまZ·り)이 유행. 세대·장면을 벗어나면 통하지 않으니 친한 사이에서만.","src":"https://x.com/dannydenny95356/status/2118905016392315181","srcName":"X 공개 포스트"},{"cat":"X(트위터)","t":"유행어는 반감기가 짧다","d":"ぴえん·まじ卍처럼 한 세대를 지나면 '옛말'이 됩니다. 앱의 Lv.1은 지금 쓰이는 것과 곧 사라질 것을 구분해 표시했으니, 처음 만난 사람에게는 Lv.2 표준 표현을 쓰세요.","src":"https://www.koukouseishinbun.jp/articles/-/11188","srcName":"고교생신문 설문"},{"cat":"인스타그램","t":"짧은 릴스로 장면별 표현 수집","d":"공개 계정의 릴스는 문장이 짧고 자막이 붙어 있어 표현 수집에 좋습니다(예: StudyIn Daily Japanese). 단, 인스타는 로그인 장벽이 있어 공개 웹에 색인된 범위만 참고했습니다.","src":"https://www.tofugu.com/japanese-learning-resources-database/studyin-daily-japanese/","srcName":"Tofugu"},{"cat":"인스타그램","t":"소셜 미디어 몰입 루틴","d":"일본어 계정만 20~30개 팔로우 → 하루 10분 표현 캡처 → 주 1회 3문장 요약. 피드를 '일본어만'으로 바꾸는 것이 가장 큰 효과.","src":"https://hanabira.org/blog/social-media-immersion-for-japanese","srcName":"Hanabira"},{"cat":"경청(Lv.4~5)","t":"조언보다 '받아주기'가 먼저","d":"「たいしたことじゃない」「元気出して」는 역효과. 「そうだったんだ」「それは辛かったね」「よく話してくれたね」가 실제로 위로가 됩니다.","src":"https://www4.city.sapporo.jp/hottokenai-kokoro/shinpai/taiou/sakeru.html","srcName":"삿포로시 마음의 나비"},{"cat":"경청(Lv.4~5)","t":"오ウム返し · 요약 · 감정 언어화","d":"상대 말을 그대로 되돌려 주고(「仕事が忙しくて大変なんですね」), 마지막에 요약(「つまり〜ということですね」), 감정을 단어로(「不安なんですね」). 이 세 가지만으로 대화의 깊이가 달라집니다.","src":"https://www.therapeia.jp/20250212/","srcName":"심리상담실 세라페이아"},{"cat":"경청(Lv.4~5)","t":"'어떻게 들어주길 원하는지' 먼저 묻기","d":"「話を聞くだけでいい？アドバイスがほしい？」 — 조언·공감·정리를 먼저 확인하면 엇나간 위로를 막을 수 있습니다.","src":"https://lightring.or.jp/magazine/magazine04/","srcName":"NPO Light Ring"},{"cat":"경청(Lv.4~5)","t":"Why 대신 How로 묻기","d":"「どうして？」는 추궁으로 들립니다. 「どんな感じだった？」「どんなふうに思う？」가 대화를 엽니다. I(아이)메시지로 내 감정을 주어로 말하는 것도 같은 원리.","src":"https://www.mhlw.go.jp/kokoro/parent/mental/ftf/ftf_02.html","srcName":"후생노동성"},{"cat":"비즈니스","t":"쿠션어는 '한 문장에 하나만'","d":"恐れ入りますが·お手数ですが·差し支えなければ를 겹치면 용건이 묻힙니다. 하나 고르고 곧바로 구체적 부탁(무엇을·언제까지)을 붙이세요.","src":"https://mail-sakusei.com/guide/kushion-kotoba","srcName":"비즈니스 문서 AI"},{"cat":"비즈니스","t":"거절은 3단 구조로","d":"감사(ありがたいお話ですが) → 사정(あいにく) → 결론(今回は見送らせていただきます). 이 순서를 지키면 관계가 상하지 않습니다.","src":"https://mail-sakusei.com/guide/kushion-kotoba","srcName":"비즈니스 문서 AI"},{"cat":"비즈니스","t":"보고는 결론부터","d":"「結論から申し上げますと」로 시작하고, 원인·대응·다음 단계를 붙입니다. 사과는 변명 없이 '내 확인 부족'을 먼저 인정.","src":"https://www.business-bunrei.com/mail/697/","srcName":"비즈니스 문례 내비"}],"sources":[{"k":"YouTube","n":"日本語の森 / Japanese with Shun / Sayuri Saying / Miku Real Japanese / Meshclass 日本語 / Speak Japanese Naturally / あかね的日本語教室 / Japanese Ammo with Misa","u":"https://nihongocafe.jp/8-youtube-channels-for-learning-japanese-language/"},{"k":"YouTube","n":"레벨별 추천 채널 정리(2026-10 실제 확인)","u":"https://playlingo.app/ja/blog/best-youtube-channels-to-learn-japanese"},{"k":"네이버 블로그","n":"일상생활 일본어 회화 표현 정리(리액션 30선)","u":"https://m.blog.naver.com/shj0504/221667027820"},{"k":"네이버 블로그","n":"현지인이 진짜 쓰는 일본어(なんとなく·意味わからない)","u":"https://m.blog.naver.com/sonyloves/221985183205"},{"k":"네이버 블로그","n":"한국인이 실수하기 쉬운 일본어 어휘·회화","u":"https://m.blog.naver.com/cufspr/222468575982"},{"k":"네이버 블로그","n":"간사이벤 회화 정리(해커스)","u":"https://m.blog.naver.com/hackersjapan/223872742971"},{"k":"네이버 블로그","n":"일본 여행 필수 회화 상황별 모음","u":"https://m.blog.naver.com/heechul1204/224159133130"},{"k":"X","n":"2025 유행어 'ドパガキ'·신어 후보 분석 포스트","u":"https://x.com/dannydenny95356/status/2118905016392315181"},{"k":"웹","n":"Z세대若者言葉 45선(닛푸티부동산, 2025-10 설문)","u":"https://myhome-style.com/column/kaji/251126509670/"},{"k":"웹","n":"중고생 若者言葉·LINE用語 설문(고교생신문)","u":"https://www.koukouseishinbun.jp/articles/-/11188"},{"k":"웹","n":"2025 若者言葉 완전 가이드(OMOTENASHI)","u":"https://omotenashi-world.com/content/article2/"},{"k":"웹","n":"クッション言葉 40선·거절 3단 구조","u":"https://mail-sakusei.com/guide/kushion-kotoba"},{"k":"웹","n":"傾聴(경청) 3원칙·반영·요약","u":"https://www.therapeia.jp/20250212/"},{"k":"웹","n":"삿포로시 '피하고 싶은 말 걸기'","u":"https://www4.city.sapporo.jp/hottokenai-kokoro/shinpai/taiou/sakeru.html"},{"k":"웹","n":"후생노동성 '이야기를 듣는 요령'","u":"https://www.mhlw.go.jp/kokoro/parent/mental/ftf/ftf_02.html"},{"k":"인스타그램(공개 웹)","n":"StudyIn Daily Japanese — 짧은 표현 릴스(공개 색인 범위)","u":"https://www.tofugu.com/japanese-learning-resources-database/studyin-daily-japanese/"},{"k":"인스타그램(공개 웹)","n":"소셜 미디어 몰입 학습법","u":"https://hanabira.org/blog/social-media-immersion-for-japanese"},{"k":"쉐도잉","n":"쉐도잉 방법론·연습 영상","u":"https://shadowingjapanese.com/ja/practice"},{"k":"쉐도잉","n":"新・シャドーイング 日本語を話そう! (くろしお出版)","u":"https://www.9640.jp/nihongo/ja/detail/?850"}],"limits":["인스타그램은 로그인 장벽이 있어 공개 웹에 색인된 게시물·소개 글만 참고했습니다. 계정 내부 릴스·스토리·저장 콘텐츠는 수집 대상이 아닙니다.","네이버는 블로그 공개 글을 참고했고, 카페·지식iN 로그인 전용 게시판은 제외했습니다.","X는 공개 검색 결과만 사용했고, 보호된 계정·DM은 포함하지 않았습니다.","유튜브는 영상 자막이 아닌 공개 설명·추천 목록·학습 후기 글을 근거로 삼았습니다.","모든 표현은 원문 인용이 아니라 학습용으로 다시 쓴 것이며, 유행어는 2025~2026년 공개 자료 기준입니다. 실제 사용 전에는 상대와 장면(TPO)을 확인하세요."]}};
+var RATES = [0.8, 1, 1.2, 1.4];
 
 /* ═════════ state ═════════ */
-var KEY = 'jpspk.v1';
-var S = {furi:true, pol:true, rate:1, lv:0, q:'', saved:{}, done:{}, rev:{}, tab:'card', drill:null};
-try { var raw = localStorage.getItem(KEY); if (raw) { var o = JSON.parse(raw); for (var k in o) S[k] = o[k]; } } catch(e) {}
+var KEY = 'jpspk.v2', OLD = 'jpspk.v1';
+var S = {furi:true, pol:true, rate:1.2, lv:0, q:'', saved:{}, done:{}, rev:{}, tab:'card', drill:null};
+try {
+  var raw = localStorage.getItem(KEY);
+  if (raw) { var o = JSON.parse(raw); for (var k in o) S[k] = o[k]; }
+  else {
+    var old = localStorage.getItem(OLD);
+    if (old) { var p = JSON.parse(old); ['furi','pol','lv','q','saved','done','rev'].forEach(function(k){ if (p[k] !== undefined) S[k] = p[k]; }); S.rate = 1.2; save(); }
+  }
+} catch(e) {}
 function save(){ try { localStorage.setItem(KEY, JSON.stringify(S)); } catch(e) {} }
 function $(s){ return document.querySelector(s); }
 function esc(s){ return String(s).replace(/[&<>"]/g, function(c){ return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]; }); }
@@ -270,9 +313,9 @@ function romaji(str){
   var out = '', i = 0, lastVowel = '';
   while (i < s.length) {
     var c = s[i], two = s.substr(i,2);
-    if (c === 'っ') { i++; var nx = s[i]; var r0 = R2[s.substr(i,2)] || R1[nx] || ''; if (r0) out += r0[0]; continue; }
+    if (c === 'っ') { i++; var r0 = R2[s.substr(i,2)] || R1[s[i]] || ''; if (r0) out += r0[0]; continue; }
     if (c === 'ー') { out += lastVowel; i++; continue; }
-    if (c === 'ん') { var nx2 = s[i+1] || ''; out += (/[あいうえおやゆよ]/.test(nx2) ? "n'" : 'n'); i++; continue; }
+    if (c === 'ん') { var nx2 = s[i+1] || ''; out += (/[あいうえおやゆゆよ]/.test(nx2) ? "n'" : 'n'); i++; continue; }
     var r = R2[two];
     if (r) { out += r; lastVowel = r.slice(-1); i += 2; continue; }
     r = R1[c];
@@ -283,71 +326,89 @@ function romaji(str){
   return out.replace(/\s+/g,' ').trim();
 }
 
-/* ═════════ audio ═════════ */
-var curA = null, curBtn = null, loopTimer = null, loopOn = false, loopCount = 0;
+/* ═════════ audio (all playback uses S.rate, default 1.2) ═════════ */
+var curA = null, loopTimer = null, loopOn = false;
 var canAudio = (typeof Audio !== 'undefined') && !/^file:/i.test(location.protocol||'');
 function stopAll(){
-  loopOn = false; loopCount = 0; clearTimeout(loopTimer); loopTimer = null;
+  loopOn = false; clearTimeout(loopTimer); loopTimer = null;
   if (curA) { try{ curA.pause(); }catch(e){} curA = null; }
-  if (curBtn) { curBtn.classList.remove('on'); curBtn = null; }
-  document.querySelectorAll('.line.playing').forEach(function(l){ l.classList.remove('playing'); });
-  var lb = $('#loopBtn'); if (lb) { lb.classList.remove('on'); lb.textContent = '🔁 쉐도잉 루프'; }
-  var sp = $('#spk'); if (sp && window.speechSynthesis) { try{ speechSynthesis.cancel(); }catch(e){} }
+  document.querySelectorAll('.playing').forEach(function(l){ l.classList.remove('playing'); });
+  var lb = $('#rLoop'); if (lb) lb.classList.remove('on');
+  var lbl = $('#rLoopLbl'); if (lbl) lbl.textContent = '따라말하기';
+  if (window.speechSynthesis) { try{ speechSynthesis.cancel(); }catch(e){} }
 }
-function playFile(name, btn, onend, opts){
+function playFile(name, onend, opts){
   opts = opts || {};
   if (!opts.keep) stopAll();
-  if (!canAudio) { toast('이 환경에서는 음원을 재생할 수 없습니다'); return; }
+  if (!canAudio) { toast('이 환경에서는 음원을 재생할 수 없습니다'); return null; }
   var a = new Audio('audio/' + name + '.mp3');
   a.preload = 'auto';
+  a.volume = 1;
   try { a.playbackRate = S.rate; } catch(e){}
   a.onplaying = function(){ try { if (Math.abs((a.playbackRate||1)-S.rate) > .01) a.playbackRate = S.rate; } catch(e){} };
-  a.onended = function(){ if (curA === a) curA = null; if (onend) onend(); else if (btn) btn.classList.remove('on'); };
-  a.onerror = function(){ toast('음원을 불러오지 못했습니다'); if (btn) btn.classList.remove('on'); };
-  curA = a; curBtn = btn || null;
-  if (btn) btn.classList.add('on');
-  var p = a.play(); if (p && p.catch) p.catch(function(){ toast('재생이 차단되었습니다. 다시 눌러 주세요'); if (btn) btn.classList.remove('on'); });
+  a.onended = function(){ if (curA === a) curA = null; if (onend) onend(); };
+  a.onerror = function(){ toast('음원을 불러오지 못했습니다'); };
+  curA = a;
+  var p = a.play(); if (p && p.catch) p.catch(function(){ toast('재생이 차단되었습니다. 다시 눌러 주세요'); });
+  return a;
 }
+function rateLabel(){ return (Math.round(S.rate*10)/10) + 'x'; }
 
-/* ═════════ recording ═════════ */
-var rec = null, recChunks = [], recUrl = null, recStream = null, recTimer = null, recBtnEl = null;
+/* ═════════ recording & comparison ═════════ */
+var rec = null, recChunks = [], recUrl = null, recStream = null, recTimer = null, recOwner = null, recCard = null;
 function hasRec(){ return !!(navigator.mediaDevices && navigator.mediaDevices.getUserMedia && window.MediaRecorder); }
 function stopRec(){
   if (rec && rec.state !== 'inactive') { try { rec.stop(); } catch(e){} }
   clearTimeout(recTimer);
   if (recStream) { recStream.getTracks().forEach(function(t){ t.stop(); }); recStream = null; }
-  if (recBtnEl) { recBtnEl.classList.remove('on'); recBtnEl.textContent = '● 녹음'; }
+  var rb = $('#rRec'); if (rb) { rb.classList.remove('on'); }
+  var rl = $('#rRecLbl'); if (rl) rl.textContent = hasRec() ? '녹음/비교' : '녹음 불가';
 }
-function toggleRec(btn, phId){
+function startRec(){
   if (!hasRec()) { toast('이 브라우저는 녹음을 지원하지 않아요 (Safari 최신 버전 권장)'); return; }
-  if (rec && rec.state === 'recording') { stopRec(); return; }
   stopAll();
-  recBtnEl = btn;
   navigator.mediaDevices.getUserMedia({audio:{echoCancellation:true, noiseSuppression:true}}).then(function(st){
     recStream = st; recChunks = [];
     var mime = (window.MediaRecorder.isTypeSupported && MediaRecorder.isTypeSupported('audio/mp4')) ? 'audio/mp4' : '';
     try { rec = mime ? new MediaRecorder(st, {mimeType:mime}) : new MediaRecorder(st); } catch(e){ rec = new MediaRecorder(st); }
     rec.ondataavailable = function(e){ if (e.data && e.data.size) recChunks.push(e.data); };
     rec.onstop = function(){
-      var blob = new Blob(recChunks, {type: recChunks[0] && recChunks[0].type || 'audio/mp4'});
+      var blob = new Blob(recChunks, {type: (recChunks[0] && recChunks[0].type) || 'audio/mp4'});
       if (recUrl) URL.revokeObjectURL(recUrl);
       recUrl = URL.createObjectURL(blob);
-      var pb = document.getElementById('playRec_' + phId);
-      if (pb) { pb.style.display = 'flex'; pb.textContent = '▶ 내 목소리'; }
-      var wrap = document.getElementById('recwrap_' + phId);
-      if (wrap) wrap.textContent = '녹음 완료 — 원어민 음성과 번갈아 들어 보세요';
+      recCard = recOwner;
+      var rl = $('#rRecLbl'); if (rl) rl.textContent = '내 목소리';
+      var rw = $('#recbar'); if (rw) rw.innerHTML = '<span>녹음 완료</span><button id="playMine">▶ 내 목소리</button><button id="cmpBtn">⇄ 원어민과 비교</button><button id="reRec">● 다시</button>';
+      var pm = $('#playMine'); if (pm) pm.onclick = function(){ playMine(pm); };
+      var cb = $('#cmpBtn'); if (cb) cb.onclick = function(){ compare(); };
+      var rr = $('#reRec'); if (rr) rr.onclick = function(){ recUrl = null; recCard = null; startRec(); };
     };
     rec.start();
-    btn.classList.add('on'); btn.textContent = '■ 중지';
-    recTimer = setTimeout(stopRec, 12000);
-  }).catch(function(){
-    toast('마이크 권한이 필요합니다. 설정 > Safari > 마이크에서 허용해 주세요');
-  });
+    var rb = $('#rRec'); if (rb) rb.classList.add('on');
+    var rl2 = $('#rRecLbl'); if (rl2) rl2.textContent = '■ 중지';
+    recTimer = setTimeout(stopRec, 10000);
+  }).catch(function(){ toast('마이크 권한이 필요합니다. 설정 > Safari > 마이크에서 허용해 주세요'); });
 }
-function playRec(btn){ if (!recUrl) return; stopAll(); var a = new Audio(recUrl); curA = a; btn.classList.add('on'); a.onended = function(){ btn.classList.remove('on'); }; a.play(); }
+function playMine(btn){
+  if (!recUrl) return;
+  stopAll();
+  var a = new Audio(recUrl); curA = a;
+  if (btn) btn.classList.add('on');
+  a.onended = function(){ if (btn) btn.classList.remove('on'); };
+  a.play();
+}
+function compare(){
+  if (!recUrl || !recCard) return;
+  stopAll();
+  var owner = recCard, url = recUrl;
+  playFile('p_' + owner, function(){
+    var a = new Audio(url); curA = a; a.play();
+  }, {keep:true});
+}
 
 /* ═════════ card deck ═════════ */
 var deck = [], di = 0, revealed = false;
+var POL = {casual:'반말 · タメ口', polite:'정중체 · です/ます'};
 function filtered(){
   var q = S.q.trim().toLowerCase();
   return DATA.phrases.filter(function(p){
@@ -356,32 +417,35 @@ function filtered(){
     return (p.ko + ' ' + p.jp + ' ' + p.kana + ' ' + p.tag + ' ' + p.ex + ' ' + p.note).toLowerCase().indexOf(q) >= 0;
   });
 }
-function buildDeck(keepIdx){
+function cardById(id){ for (var i=0;i<DATA.phrases.length;i++) if (DATA.phrases[i].id === id) return DATA.phrases[i]; return null; }
+function buildDeck(){
   var ids = filtered().map(function(p){ return p.id; });
-  var curId = deck[di];
+  var cur = deck[di];
   deck = ids;
-  di = keepIdx && curId && ids.indexOf(curId) >= 0 ? ids.indexOf(curId) : 0;
+  di = (cur && ids.indexOf(cur) >= 0) ? ids.indexOf(cur) : 0;
   revealed = false;
   renderDeck();
 }
-function cardById(id){ for (var i=0;i<DATA.phrases.length;i++) if (DATA.phrases[i].id === id) return DATA.phrases[i]; return null; }
-var POL = {casual:'반말 · タメ口', polite:'정중체 · です/ます'};
-
 function renderDeck(){
   var host = $('#deck');
-  if (!deck.length) { host.innerHTML = '<div class="empty">조건에 맞는 표현이 없어요.<br>검색어나 레벨을 바꿔 보세요.</div>'; return; }
+  if (!deck.length) { host.innerHTML = '<div class="empty">조건에 맞는 표현이 없어요.<br>검색어나 레벨을 바꿔 보세요.</div>'; setRemote(null); return; }
   var p = cardById(deck[di]);
   var done = !!S.done[p.id], sv = !!S.saved[p.id];
   var rubyOn = S.furi && !document.body.classList.contains('nofuri');
-  var h = '';
-  h += '<div class="card qcard' + (done ? ' done' : '') + '" id="qcard">';
-  h += '<div class="meta"><span class="badge b-lv">Lv.' + p.lv + '</span><span class="badge b-tag">' + esc(p.tag) + '</span>';
-  if (S.pol) h += '<span class="badge ' + (p.pol === 'casual' ? 'b-cas' : 'b-pol') + '">' + POL[p.pol] + '</span>';
-  h += '<span class="idx" style="margin-left:auto">' + (di+1) + ' / ' + deck.length + '</span></div>';
+  var h = '<div class="card qcard' + (done ? ' done' : '') + '">';
+  h += '<div class="chead">';
+  h += '<button class="ico" id="prevBtn" aria-label="이전">‹</button>';
+  h += '<span class="badge b-lv">Lv.' + p.lv + '</span><span class="badge b-tag">' + esc(p.tag) + '</span>';
+  if (S.pol) h += '<span class="badge ' + (p.pol === 'casual' ? 'b-cas' : 'b-pol') + '">' + (p.pol === 'casual' ? '반말' : '정중체') + '</span>';
+  h += '<span class="sp"></span><span class="idx">' + (di+1) + '/' + deck.length + '</span>';
+  h += '<button class="ico' + (sv ? ' on' : '') + '" id="saveBtn" aria-label="저장">' + (sv ? '★' : '☆') + '</button>';
+  h += '<button class="ico' + (done ? ' on' : '') + '" id="doneBtn" aria-label="완료">✓</button>';
+  h += '</div>';
+  h += '<div class="qbody">';
   h += '<div class="qko">' + esc(p.ko) + '</div>';
   if (!revealed) {
-    h += '<div class="qtip">일본어로 소리 내어 말해 본 뒤, 정답을 여세요.<br>바로 들으면 인출 훈련이 되지 않습니다.</div>';
-    h += '<div class="krow"><button class="btn pri" id="revealBtn" style="flex:1;justify-content:center">정답 보기 · 答え</button></div>';
+    h += '<div class="qtip">일본어로 소리 내어 말해 보세요</div>';
+    h += '<button class="reveal" id="revealBtn">정답 보기 · 答え<small>탭하면 일본어·후리가나·예문이 열립니다</small></button>';
   } else {
     h += '<div class="answer">';
     h += '<div class="ajp jp">' + (rubyOn ? p.ruby : esc(p.jp)) + '</div>';
@@ -389,63 +453,68 @@ function renderDeck(){
     h += '<div class="aroma">' + esc(romaji(p.kana)) + '</div>';
     h += '<div class="note">💡 ' + esc(p.note) + '</div>';
     h += '<div class="ex"><div class="ej jp">' + (rubyOn ? p.exRuby : esc(p.ex)) + '</div><div class="ek">' + esc(p.exKo) + '</div>' +
-         '<button class="btn ghost" style="padding:5px 9px;margin-top:7px;font-size:11.5px" id="exPlay">🔊 예문</button></div>';
-    h += '<div class="acts">';
-    h += '<button class="btn pri" id="spk">🔊 원어민</button>';
-    h += '<button class="btn" id="loopBtn">🔁 쉐도잉 루프</button>';
-    h += '<button class="btn rec" id="recBtn">● 녹음</button>';
-    h += '<button class="btn" id="playRec_' + 'x" style="display:none">▶ 내 목소리</button>';
-    h += '</div>';
-    h += '<div class="recbar" id="recwrap_' + p.id + '">듣고 → 3초 안에 따라 말하기 → 다시 듣기</div>';
-    h += '<div class="acts" style="margin-top:11px">';
-    h += '<button class="btn' + (sv ? ' on' : '') + '" id="saveBtn">' + (sv ? '★ 저장됨' : '☆ 저장') + '</button>';
-    h += '<button class="btn' + (done ? ' on' : '') + '" id="doneBtn">' + (done ? '✓ 연습 완료' : '✓ 완료 체크') + '</button>';
-    h += '<div class="rate">';
-    [0.75,1,1.15].forEach(function(r){ h += '<button data-rate="' + r + '" class="' + (Math.abs(S.rate-r)<.01?'on':'') + '">' + r + 'x</button>'; });
-    h += '</div></div>';
+         '<button class="explay" id="exPlay">🔊 예문 듣기</button></div>';
+    h += '<div class="recbar" id="recbar">' + ((recUrl && recCard === p.id) ? '<span>녹음 완료</span><button id="playMine">▶ 내 목소리</button><button id="cmpBtn">⇄ 원어민과 비교</button>' : '녹음은 아래 🎙️ 버튼으로') + '</div>';
     h += '</div>';
   }
-  h += '</div>';
-  h += '<div class="krow" style="margin-top:10px">';
-  h += '<button class="btn" id="prevBtn">← 이전</button>';
-  h += '<button class="btn" id="shufBtn">🔀 섞기</button>';
-  h += '<button class="btn" id="nextBtn">다음 →</button>';
-  h += '</div>';
+  h += '</div></div>';
+  h += '<div class="krow"><button class="btn" id="shufBtn">🔀 카드 섞기</button><button class="btn" id="openSet">⚙️ 레벨·속도</button></div>';
   host.innerHTML = h;
 
-  // wire
-  var rb = $('#revealBtn'); if (rb) rb.onclick = function(){ revealed = true; renderDeck(); };
-  var sp = $('#spk'); if (sp) sp.onclick = function(){ playFile('p_' + p.id, sp); };
-  var ep = $('#exPlay'); if (ep) ep.onclick = function(){ playFile('e_' + p.id, ep); };
-  var lb = $('#loopBtn'); if (lb) lb.onclick = function(){ startLoop(p, lb); };
-  var rc = $('#recBtn'); if (rc) rc.onclick = function(){ toggleRec(rc, p.id); };
-  var pr = host.querySelector('.btn[style*="display:none"]'); // 내 목소리
-  if (pr) { pr.id = 'playRec_' + p.id; pr.onclick = function(){ playRec(pr); }; }
-  var sb = $('#saveBtn'); if (sb) sb.onclick = function(){ S.saved[p.id] = !S.saved[p.id]; save(); renderDeck(); updateHead(); };
-  var db = $('#doneBtn'); if (db) db.onclick = function(){ S.done[p.id] = !S.done[p.id]; save(); renderDeck(); updateHead(); toast(S.done[p.id] ? '연습 완료로 표시했어요' : '완료를 해제했어요'); };
-  document.querySelectorAll('.rate button').forEach(function(b){ b.onclick = function(){ S.rate = parseFloat(b.dataset.rate); save(); renderDeck(); }; });
-  var pb = $('#prevBtn'); if (pb) pb.onclick = function(){ if (di>0){ di--; revealed=false; stopAll(); renderDeck(); } };
-  var nb = $('#nextBtn'); if (nb) nb.onclick = function(){ if (di<deck.length-1){ di++; revealed=false; stopAll(); renderDeck(); } else { toast('마지막 카드예요'); } };
-  var sh = $('#shufBtn'); if (sh) sh.onclick = function(){ deck.sort(function(){ return Math.random()-.5; }); di=0; revealed=false; stopAll(); renderDeck(); toast('카드를 섞었어요'); };
+  $('#revealBtn') && ($('#revealBtn').onclick = function(){ revealed = true; renderDeck(); });
+  $('#exPlay') && ($('#exPlay').onclick = function(){ playFile('e_' + p.id); });
+  $('#saveBtn').onclick = function(){ S.saved[p.id] = !S.saved[p.id]; save(); renderDeck(); updateHead(); };
+  $('#doneBtn').onclick = function(){ S.done[p.id] = !S.done[p.id]; save(); renderDeck(); updateHead(); toast(S.done[p.id] ? '연습 완료로 표시했어요' : '완료를 해제했어요'); };
+  $('#prevBtn').onclick = function(){ if (di>0){ di--; revealed=false; stopAll(); renderDeck(); } };
+  $('#shufBtn').onclick = function(){ deck.sort(function(){ return Math.random()-.5; }); di=0; revealed=false; stopAll(); renderDeck(); toast('카드를 섞었어요'); };
+  $('#openSet').onclick = openSheet;
+  var pm = $('#playMine'); if (pm) pm.onclick = function(){ playMine(pm); };
+  var cb = $('#cmpBtn'); if (cb) cb.onclick = function(){ compare(); };
+  setRemote(p);
+  // tap anywhere on the card to reveal
+  var qc = host.querySelector('.qcard');
+  qc.addEventListener('click', function(e){
+    if (revealed || e.target.closest('button')) return;
+    revealed = true; renderDeck();
+  });
 }
-function startLoop(p, btn){
+function setRemote(p){
+  var rl = $('#rListenLbl'); if (rl) rl.textContent = rateLabel() + ' 듣기';
+  var rb = $('#rLoop'); if (rb) rb.classList.remove('on');
+  var lo = $('#rLoopLbl'); if (lo) lo.textContent = '따라말하기';
+  var lbl = $('#rRecLbl'); if (lbl) lbl.textContent = hasRec() ? (recUrl ? '내 목소리' : '녹음/비교') : '녹음 불가';
+  var rn = $('#rNext'); if (rn) rn.disabled = !p;
+  window.__cur = p || null;
+}
+function currentCard(){ return window.__cur; }
+function listen(){
+  var p = currentCard(); if (!p) return;
+  if (!revealed) { revealed = true; renderDeck(); }
+  playFile('p_' + p.id);
+}
+function startLoop(){
+  var p = currentCard(); if (!p) return;
   if (loopOn) { stopAll(); return; }
-  loopOn = true; loopCount = 0; btn.classList.add('on');
+  if (!revealed) { revealed = true; renderDeck(); }
+  loopOn = true;
+  var btn = $('#rLoop'), lbl = $('#rLoopLbl');
+  if (btn) btn.classList.add('on');
+  var n = 0;
   var step = function(){
     if (!loopOn) return;
-    loopCount++;
-    btn.textContent = '🔁 ' + loopCount + '/5 듣는 중';
-    playFile('p_' + p.id, null, function(){
+    n++;
+    if (lbl) lbl.textContent = n + '/5 듣기';
+    playFile('p_' + p.id, function(){
       if (!loopOn) return;
       var left = 3;
-      btn.textContent = '🗣 ' + left + '초 안에 따라 말하기';
+      if (lbl) lbl.textContent = left + '초 따라말하기';
       var tick = setInterval(function(){
         left--;
         if (!loopOn) { clearInterval(tick); return; }
-        if (left > 0) { btn.textContent = '🗣 ' + left + '초 안에 따라 말하기'; }
+        if (left > 0) { if (lbl) lbl.textContent = left + '초 따라말하기'; }
         else {
           clearInterval(tick);
-          if (loopCount >= 5) { stopAll(); toast('5회 완료 — 다음 카드로 넘어가세요'); return; }
+          if (n >= 5) { stopAll(); toast('5회 완료 — 다음 카드로'); return; }
           step();
         }
       }, 1000);
@@ -453,18 +522,27 @@ function startLoop(p, btn){
   };
   step();
 }
+function recToggle(){
+  if (rec && rec.state === 'recording') { stopRec(); return; }
+  var p = currentCard(); if (!p) return;
+  if (!revealed) { revealed = true; renderDeck(); }
+  recOwner = p.id;
+  if (recUrl && recCard === p.id) { compare(); return; }   // this card already recorded: native ↔ mine
+  recUrl = null; recCard = null;
+  startRec();
+}
 
 /* ═════════ roleplay ═════════ */
 var openD = null;
 function renderRoleList(){
   var host = $('#roleList'), v = $('#roleView');
   v.style.display = 'none'; host.style.display = 'block';
-  var h = '<h2 class="sec">실전 롤플레이 <small>' + DATA.dialogues.length + '개 상황 · ' + DATA.dialogues.reduce(function(a,d){return a+d.lines.length;},0) + '턴</small></h2><div class="dlist">';
+  var h = '<h2 class="sec">실전 롤플레이 <small>' + DATA.dialogues.length + '개 · ' + DATA.dialogues.reduce(function(a,d){return a+d.lines.length;},0) + '턴</small></h2><div class="dlist">';
   DATA.dialogues.forEach(function(d){
     var revN = d.lines.filter(function(l,i){ return S.rev[d.id+':'+i]; }).length;
     var bN = d.lines.filter(function(l){ return l.r==='B'; }).length;
     h += '<button class="card ditem" data-d="' + d.id + '"><div class="dnum">' + d.id + '</div><div style="min-width:0"><div class="dt jp">' + d.titleRuby + '</div>';
-    h += '<div class="ds">Lv.' + d.lv + ' · ' + esc(d.situation) + (revN ? ' · B ' + revN + '/' + bN + ' 확인' : '') + '</div></div><div class="arw">›</div></button>';
+    h += '<div class="ds">Lv.' + d.lv + ' · ' + esc(d.situation) + (revN ? ' · B ' + revN + '/' + bN : '') + '</div></div><div class="arw">›</div></button>';
   });
   h += '</div>';
   host.innerHTML = h;
@@ -476,17 +554,16 @@ function openDialogue(id){
   openD = d;
   $('#roleList').style.display = 'none';
   var v = $('#roleView'); v.style.display = 'block';
-  var h = '<button class="linkback" id="backRole">‹ 롤플레이 목록</button>';
-  h += '<div class="meta" style="margin:2px 0 8px"><span class="badge b-lv">Lv.' + d.lv + '</span><span class="badge b-tag">' + d.lines.length + '턴</span></div>';
+  var h = '<button class="linkback" id="backRole">‹ 목록</button>';
+  h += '<div class="meta" style="margin:2px 0 8px"><span class="badge b-lv">Lv.' + d.lv + '</span><span class="badge b-tag">' + d.lines.length + '턴</span><span class="badge b-pol">' + rateLabel() + ' 재생</span></div>';
   h += '<h2 class="sec jp" style="font-size:17px">' + d.titleRuby + '</h2>';
   h += '<p style="font-size:12.5px;color:var(--sub);margin:0 0 11px">' + esc(d.situation) + '</p>';
-  h += '<div class="acts" style="margin:0 0 11px"><button class="btn pri" id="playAll">▶ 전체 연속 재생</button><button class="btn" id="playB">🎙 B(내 턴)만</button><button class="btn" id="stopAll">■ 정지</button></div>';
+  h += '<div class="krow" style="margin:0 0 11px"><button class="btn pri" id="playAll">▶ 전체 재생</button><button class="btn" id="playB">🎙 내 턴만</button><button class="btn" id="stopAll">■ 정지</button></div>';
   h += '<div class="card chat" id="chat">';
   d.lines.forEach(function(l, i){
     var rev = !!S.rev[d.id + ':' + i];
     var isB = l.r === 'B';
-    var show = !isB || rev;
-    h += '<div class="line ' + l.r + (show ? '' : ' hidden-b') + '" id="ln' + i + '" data-i="' + i + '">';
+    h += '<div class="line ' + l.r + '" id="ln' + i + '">';
     h += '<div class="ava">' + l.r + '</div><div class="bub' + (isB && !rev ? ' bturn' : '') + '">';
     if (isB && !rev) {
       h += '<div class="hint">' + esc(l.ko) + '</div><div class="say">내 차례 — 일본어로 말해 보세요</div>';
@@ -511,18 +588,18 @@ function openDialogue(id){
 }
 function playLine(d, i){
   var ln = document.getElementById('ln' + i);
-  if (ln) { document.querySelectorAll('.line.playing').forEach(function(x){ x.classList.remove('playing'); }); ln.classList.add('playing'); }
-  playFile('d' + d.id + '_' + i, null, function(){ if (ln) ln.classList.remove('playing'); });
+  document.querySelectorAll('.line.playing').forEach(function(x){ x.classList.remove('playing'); });
+  if (ln) ln.classList.add('playing');
+  playFile('d' + d.id + '_' + i, function(){ if (ln) ln.classList.remove('playing'); });
 }
 function playSeq(d, arr, k){
   if (k >= arr.length) return;
-  var i = arr[k];
-  var ln = document.getElementById('ln' + i);
+  var i = arr[k], ln = document.getElementById('ln' + i);
   document.querySelectorAll('.line.playing').forEach(function(x){ x.classList.remove('playing'); });
   if (ln) { ln.classList.add('playing'); if (ln.scrollIntoView) ln.scrollIntoView({block:'center', behavior:'smooth'}); }
-  playFile('d' + d.id + '_' + i, null, function(){
+  playFile('d' + d.id + '_' + i, function(){
     if (ln) ln.classList.remove('playing');
-    loopTimer = setTimeout(function(){ playSeq(d, arr, k+1); }, 350);
+    loopTimer = setTimeout(function(){ playSeq(d, arr, k+1); }, 320);
   }, {keep:true});
 }
 
@@ -536,66 +613,64 @@ function startDrill(){
 function renderDrill(){
   var host = $('#drillWrap');
   if (!S.drill || !S.drill.ids.length) { startDrill(); return; }
-  var D = S.drill, id = D.ids[D.i], p = cardById(id);
+  var D = S.drill, p = cardById(D.ids[D.i]);
   if (!p) { startDrill(); return; }
-  var h = '<div class="drilltop"><span class="idx">오늘의 드릴 ' + (D.i+1) + '/10</span>';
-  h += '<div class="pdots">';
+  var h = '<div class="drilltop"><span class="idx">오늘의 드릴 ' + (D.i+1) + '/10</span><div class="pdots">';
   for (var i=0;i<D.ids.length;i++) h += '<i class="' + (i < D.i ? 'on' : (i===D.i?'cur':'')) + '"></i>';
   h += '</div><button class="btn ghost" id="reDrill" style="padding:5px 9px;font-size:11.5px">🔄 새로</button></div>';
-  h += '<div class="card qcard">';
+  h += '<div class="card qcard"><div class="qbody">';
   h += '<div class="meta"><span class="badge b-lv">Lv.' + p.lv + '</span><span class="badge b-tag">' + esc(p.tag) + '</span></div>';
   h += '<div class="qko">' + esc(p.ko) + '</div>';
   if (!D.rev) {
-    h += '<div class="qtip">10초 안에 일본어로 말해 보세요. 막히면 정답을 여세요.</div>';
-    h += '<div class="krow"><button class="btn pri" id="dRev" style="flex:1;justify-content:center">정답 보기</button></div>';
+    h += '<div class="qtip">10초 안에 일본어로 말해 보세요</div>';
+    h += '<button class="reveal" id="dRev">정답 보기</button>';
   } else {
     h += '<div class="answer"><div class="ajp jp">' + (S.furi ? p.ruby : esc(p.jp)) + '</div>';
     h += '<div class="akana jp">' + esc(p.kana) + '</div><div class="aroma">' + esc(romaji(p.kana)) + '</div>';
-    h += '<div class="note">💡 ' + esc(p.note) + '</div>';
-    h += '<div class="acts"><button class="btn pri" id="dSpk">🔊 원어민</button><button class="btn" id="dAgain">🗣 다시 말하기</button>';
-    h += '<button class="btn" id="dSave">' + (S.saved[p.id] ? '★' : '☆') + '</button></div></div>';
+    h += '<div class="note">💡 ' + esc(p.note) + '</div></div>';
+    h += '<div class="krow"><button class="btn pri" id="dSpk">🔊 ' + rateLabel() + ' 듣기</button><button class="btn" id="dAgain">🗣 다시 말하기</button><button class="btn' + (S.saved[p.id]?' on':'') + '" id="dSave">' + (S.saved[p.id] ? '★' : '☆') + '</button></div>';
   }
-  h += '</div>';
-  h += '<div class="krow" style="margin-top:10px"><button class="btn" id="dPrev">← 이전</button><button class="btn pri" id="dNext">' + (D.i === 9 ? '드릴 완료' : '다음 →') + '</button></div>';
-  if (D.done) h += '<div class="empty" style="padding:18px 0">🎉 오늘의 드릴 10문장 완료! 수고했어요.<br><button class="btn pri" id="dRestart" style="margin-top:12px">새 드릴 시작</button></div>';
+  h += '</div></div>';
+  h += '<div class="krow"><button class="btn" id="dPrev">← 이전</button><button class="btn pri" id="dNext">' + (D.i === 9 ? '드릴 완료' : '다음 →') + '</button></div>';
+  if (D.done) h += '<div class="empty" style="padding:18px 0">🎉 오늘의 드릴 10문장 완료!<br><button class="btn pri" id="dRestart" style="margin-top:12px">새 드릴 시작</button></div>';
   host.innerHTML = h;
-  var rv = $('#dRev'); if (rv) rv.onclick = function(){ D.rev = true; save(); renderDrill(); };
-  var sp = $('#dSpk'); if (sp) sp.onclick = function(){ playFile('p_' + p.id, sp); };
-  var ag = $('#dAgain'); if (ag) ag.onclick = function(){ D.rev = false; save(); renderDrill(); };
-  var sv = $('#dSave'); if (sv) sv.onclick = function(){ S.saved[p.id] = !S.saved[p.id]; save(); renderDrill(); updateHead(); };
-  var pv = $('#dPrev'); if (pv) pv.onclick = function(){ if (D.i>0){ D.i--; D.rev=false; stopAll(); save(); renderDrill(); } };
-  var nx = $('#dNext'); if (nx) nx.onclick = function(){
+  $('#dRev') && ($('#dRev').onclick = function(){ D.rev = true; save(); renderDrill(); });
+  $('#dSpk') && ($('#dSpk').onclick = function(){ playFile('p_' + p.id); });
+  $('#dAgain') && ($('#dAgain').onclick = function(){ D.rev = false; save(); renderDrill(); });
+  $('#dSave') && ($('#dSave').onclick = function(){ S.saved[p.id] = !S.saved[p.id]; save(); renderDrill(); updateHead(); });
+  $('#dPrev').onclick = function(){ if (D.i>0){ D.i--; D.rev=false; stopAll(); save(); renderDrill(); } };
+  $('#dNext').onclick = function(){
     S.done[p.id] = true; save(); updateHead();
     if (D.i < 9) { D.i++; D.rev=false; stopAll(); save(); renderDrill(); }
     else { D.done = true; save(); renderDrill(); toast('드릴 10문장 완료!'); }
   };
-  var rd = $('#reDrill'); if (rd) rd.onclick = function(){ stopAll(); startDrill(); };
-  var rs = $('#dRestart'); if (rs) rs.onclick = function(){ stopAll(); startDrill(); };
+  $('#reDrill').onclick = function(){ stopAll(); startDrill(); };
+  $('#dRestart') && ($('#dRestart').onclick = function(){ stopAll(); startDrill(); });
 }
 
 /* ═════════ saved ═════════ */
 function renderSaved(){
   var host = $('#savedWrap');
   var ids = Object.keys(S.saved).filter(function(k){ return S.saved[k]; });
-  if (!ids.length) { host.innerHTML = '<div class="empty">저장한 표현이 없어요.<br>카드를 넘기다가 ☆ 버튼으로 담아 두세요.</div>'; return; }
+  if (!ids.length) { host.innerHTML = '<div class="empty">저장한 표현이 없어요.<br>카드 상단 ☆ 버튼으로 담아 두세요.</div>'; return; }
   var h = '<h2 class="sec">저장함 <small>' + ids.length + '개</small></h2><div class="dlist">';
   ids.forEach(function(id){
     var p = cardById(id); if (!p) return;
     h += '<div class="card ditem"><div class="dnum">Lv' + p.lv + '</div><div style="min-width:0;flex:1">';
     h += '<div class="dt jp">' + (S.furi ? p.ruby : esc(p.jp)) + '</div><div class="ds">' + esc(p.ko) + '</div></div>';
-    h += '<button class="btn" data-p="' + id + '" style="padding:7px 10px">🔊</button>';
-    h += '<button class="btn" data-u="' + id + '" style="padding:7px 10px;margin-left:5px">✕</button></div>';
+    h += '<button class="ico" data-p="' + id + '">🔊</button>';
+    h += '<button class="ico" data-u="' + id + '" style="margin-left:5px">✕</button></div>';
   });
   h += '</div>';
   host.innerHTML = h;
-  host.querySelectorAll('[data-p]').forEach(function(b){ b.onclick = function(){ playFile('p_' + b.dataset.p, b); }; });
+  host.querySelectorAll('[data-p]').forEach(function(b){ b.onclick = function(){ playFile('p_' + b.dataset.p); }; });
   host.querySelectorAll('[data-u]').forEach(function(b){ b.onclick = function(){ S.saved[b.dataset.u] = false; save(); renderSaved(); updateHead(); }; });
 }
 
 /* ═════════ tips ═════════ */
 function renderTips(){
   var M = DATA.meta, h = '';
-  h += '<h2 class="sec">훈련법 <small>이 앱을 제대로 쓰는 5단계</small></h2><div class="card" style="padding:4px 14px">';
+  h += '<h2 class="sec">훈련법 <small>5단계</small></h2><div class="card" style="padding:4px 14px">';
   M.method.forEach(function(m){ h += '<div class="mitem"><div class="mnum">' + m.n + '</div><div><b>' + esc(m.t) + '</b><p>' + esc(m.d) + '</p></div></div>'; });
   h += '</div>';
   var cats = [], byCat = {};
@@ -613,9 +688,38 @@ function renderTips(){
   h += '<h3>수집 한계 (정직 고지)</h3><div class="card" style="padding:2px 14px">';
   M.limits.forEach(function(l){ h += '<div class="warn">· ' + esc(l) + '</div>'; });
   h += '</div>';
-  h += '<h3>아이폰 홈 화면에 추가</h3><div class="card" style="padding:4px 14px"><div class="tip"><p>Safari에서 이 페이지를 연 뒤 <b>공유(□↑) → 홈 화면에 추가</b>를 누르면 앱처럼 전체 화면으로 열립니다. 음성은 사전 녹음된 MP3라 아이폰 무음 모드에서도 재생됩니다.</p></div></div>';
+  h += '<h3>아이폰 홈 화면에 추가</h3><div class="card" style="padding:4px 14px"><div class="tip"><p>Safari에서 이 페이지를 연 뒤 <b>공유(□↑) → 홈 화면에 추가</b>. 음성은 사전 녹음된 MP3라 아이폰 무음 모드에서도 재생됩니다.</p></div></div>';
   $('#tipsWrap').innerHTML = h;
 }
+
+/* ═════════ settings sheet ═════════ */
+function buildSheet(){
+  var lvName = {0:'전체',1:'Lv.1 유행·SNS',2:'Lv.2 일상',3:'Lv.3 직장',4:'Lv.4 상담',5:'Lv.5 심화'};
+  $('#lvchips').innerHTML = [0,1,2,3,4,5].map(function(v){
+    return '<button class="chip' + (S.lv===v?' on':'') + '" data-lv="' + v + '">' + lvName[v] + '</button>';
+  }).join('');
+  $('#lvchips').querySelectorAll('.chip').forEach(function(c){
+    c.onclick = function(){
+      S.lv = +c.dataset.lv; save(); buildSheet(); updateHead();
+      if (S.tab === 'drill') { S.drill = null; startDrill(); }
+      if (S.tab === 'card') buildDeck();
+      renderDeckCount();
+    };
+  });
+  $('#rateBox').innerHTML = RATES.map(function(r){
+    return '<button data-r="' + r + '" class="' + (Math.abs(S.rate-r)<.01?'on':'') + '">' + r + 'x</button>';
+  }).join('');
+  $('#rateBox').querySelectorAll('button').forEach(function(b){
+    b.onclick = function(){ S.rate = parseFloat(b.dataset.r); save(); buildSheet(); setRemote(currentCard()); if (S.tab==='card') renderDeck(); if (openD) openDialogue(openD.id); };
+  });
+  $('#furiSw').classList.toggle('on', S.furi);
+  $('#polSw').classList.toggle('on', S.pol);
+  $('#sfoot').innerHTML = '완료 ' + Object.keys(S.done).filter(function(k){return S.done[k];}).length + ' / ' + DATA.phrases.length +
+    ' · 저장 ' + Object.keys(S.saved).filter(function(k){return S.saved[k];}).length + '개<br>진행 상황은 이 기기에만 저장됩니다.';
+}
+function renderDeckCount(){ var el=$('#hlv'); if (!el) return; el.textContent = S.lv ? ('Lv.' + S.lv) : '전체'; }
+function openSheet(){ buildSheet(); $('#sheetWrap').classList.add('on'); }
+function closeSheet(){ $('#sheetWrap').classList.remove('on'); }
 
 /* ═════════ head / tabs ═════════ */
 function updateHead(){
@@ -623,15 +727,17 @@ function updateHead(){
   var n = DATA.phrases.filter(function(p){ return S.done[p.id]; }).length;
   $('#doneN').textContent = n; $('#doneT').textContent = '/' + total;
   $('#hbar').style.width = (n / total * 100) + '%';
+  renderDeckCount();
 }
 function setTab(t){
   S.tab = t; save();
   document.querySelectorAll('nav button').forEach(function(b){ b.classList.toggle('on', b.dataset.tab === t); });
   document.querySelectorAll('.tab').forEach(function(s){ s.classList.remove('on'); });
   $('#tab-' + t).classList.add('on');
+  document.body.classList.toggle('tab-card', t === 'card');
   stopAll();
   if (t === 'card') renderDeck();
-  if (t === 'role') { if (openD && $('#roleView').style.display !== 'none') { /* keep open */ } else renderRoleList(); }
+  if (t === 'role') renderRoleList();
   if (t === 'drill') { if (!S.drill) startDrill(); else renderDrill(); }
   if (t === 'saved') renderSaved();
   if (t === 'tips') renderTips();
@@ -640,24 +746,26 @@ function setTab(t){
 
 /* ═════════ init ═════════ */
 document.body.classList.toggle('nofuri', !S.furi);
-$('#furiSw').classList.toggle('on', S.furi);
-$('#polSw').classList.toggle('on', S.pol);
-$('#furiBtn').onclick = function(){ S.furi = !S.furi; save(); document.body.classList.toggle('nofuri', !S.furi); $('#furiSw').classList.toggle('on', S.furi); if (S.tab === 'card') renderDeck(); if (openD) openDialogue(openD.id); };
-$('#polBtn').onclick = function(){ S.pol = !S.pol; save(); $('#polSw').classList.toggle('on', S.pol); renderDeck(); };
+$('#setBtn').onclick = openSheet;
+$('#sheetBack').onclick = closeSheet;
+$('#sheetClose').onclick = closeSheet;
+$('#furiSw').onclick = function(){ S.furi = !S.furi; save(); document.body.classList.toggle('nofuri', !S.furi); buildSheet(); if (S.tab==='card') renderDeck(); if (openD && $('#roleView').style.display !== 'none') openDialogue(openD.id); };
+$('#polSw').onclick = function(){ S.pol = !S.pol; save(); buildSheet(); if (S.tab==='card') renderDeck(); };
 $('#q').value = S.q || '';
 var qi;
-$('#q').oninput = function(e){ clearTimeout(qi); var v = e.target.value; qi = setTimeout(function(){ S.q = v; save(); buildDeck(); }, 220); };
-document.querySelectorAll('#lvchips .chip').forEach(function(c){
-  if (+c.dataset.lv === S.lv) { document.querySelectorAll('#lvchips .chip').forEach(function(x){ x.classList.remove('on'); }); c.classList.add('on'); }
-  c.onclick = function(){
-    S.lv = +c.dataset.lv; save();
-    document.querySelectorAll('#lvchips .chip').forEach(function(x){ x.classList.remove('on'); }); c.classList.add('on');
-    buildDeck(); if (S.tab === 'drill') { S.drill = null; startDrill(); }
-  };
-});
+$('#q').oninput = function(e){ clearTimeout(qi); var v = e.target.value; qi = setTimeout(function(){ S.q = v; save(); if (S.tab==='card') buildDeck(); renderDeckCount(); }, 220); };
+
+$('#rListen').onclick = listen;
+$('#rLoop').onclick = startLoop;
+$('#rRec').onclick = recToggle;
+$('#rNext').onclick = function(){
+  if (di < deck.length-1) { di++; revealed=false; stopAll(); renderDeck(); window.scrollTo({top:0,behavior:'smooth'}); }
+  else toast('마지막 카드예요');
+};
 document.querySelectorAll('nav button').forEach(function(b){ b.onclick = function(){ setTab(b.dataset.tab); }; });
 
-buildDeck(); updateHead();
+buildDeck(); updateHead(); setRemote(currentCard());
+if (S.rate) { /* stored, keep */ }
 if (S.tab && S.tab !== 'card') setTab(S.tab);
 
 // swipe on the deck
